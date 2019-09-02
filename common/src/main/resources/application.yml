@@ -1,0 +1,29 @@
+server:
+  port: 8763
+
+spring:
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 1MB
+  application:
+    name: common
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    servlet:
+      content-type: text/html
+    suffix: .html
+  datasource:
+    url: jdbc:mysql://120.79.223.58:3306/test1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+mybatis:
+  type-aliases-package: com.example.common.mapper

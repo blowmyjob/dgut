@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" th:src="@{http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js}"></script>
+    <script type="text/javascript" th:src="@{http://libs.useso.com/js/respond.js/1.4.2/respond.min.js}"></script>
+    <script type="text/javascript" th:src="@{http://cdn.bootcss.com/css3pie/2.0beta1/PIE_IE678.js}"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" th:href="@{./h-ui/css/H-ui.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{./h-ui.admin/css/H-ui.admin.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{./font/font-awesome.min.css}"/>
+    <!--[if IE 7]>
+    <link th:href="@{http://www.bootcss.com/p/font-awesome/assets/css/font-awesome-ie7.min.css}" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <title>上传简历</title>
+</head>
+<body>
+<div class="pd-20">
+    <form class="Huiform" action="/add-resume" method="post" enctype="multipart/form-data">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th width="100" class="text-r"><span class="c-red">*</span>简历：</th>
+                <td><input type="file" style="width:200px" value="" id="Resume" name="Resume"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><button class="btn btn-success radius" type="submit"><i class="icon-ok"></i> 提交</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{./h-ui/js/H-ui.js}"></script>
+<script type="text/javascript" th:src="@{./h-ui.admin/js/H-ui.admin.js}"></script>
+<script type="text/javascript" th:inline="none">
+/*图片-添加*/
+function picture_add(title,url){
+    var index = layer.open({
+        type: 2,
+        title: title,
+        content: url
+    });
+    layer.full(index);
+}
+</script>
+</body>
+</html>
