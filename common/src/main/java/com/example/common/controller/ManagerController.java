@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.jws.WebParam;
 import java.util.List;
 
 @Controller
@@ -30,5 +32,22 @@ public class ManagerController {
     @RequiresPermissions("manager:add")
     public String addManager(){
         return "user/admin-add";
+    }
+
+    @GetMapping("/User")
+    //@RequiresPermissions("/manager:seeUser")
+    public String seeUser(Model model){
+        List<User>users = userService.getUsers();
+        model.addAttribute("users",users);
+        model.addAttribute("size",users.size());
+        return "user/user-list";
+    }
+
+    @RequestMapping("/User/toEdit/{id}")
+    public String toEdit(@PathVariable(value = "id")String id,Model model){
+        Integer userId = Integer.valueOf(id);
+        User user = userService.getUser(userId);
+        model.addAttribute("user",user);
+        return "user/admin-role-add";
     }
 }

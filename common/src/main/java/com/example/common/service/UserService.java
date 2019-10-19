@@ -14,6 +14,12 @@ public interface UserService {
     public void delUser(Integer userId);
 
     /**
+     * 通过id查找用户
+     * @param userId
+     * @return
+     */
+    public User getUser(Integer userId);
+    /**
      * 修改用户
      * @param user
      */

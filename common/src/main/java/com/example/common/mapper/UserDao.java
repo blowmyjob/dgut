@@ -18,8 +18,16 @@ public interface UserDao {
      * @return
      */
     @Select("select * from User")
+    @Results({@Result(property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "sex",column = "sex"),
+            @Result(property = "identify",column = "identify"),
+            @Result(property = "available",column = "available"),
+            @Result(property = "entertime",column = "entertime")})
     public List<User> getUsers();
 
+    @Select("select * from User where id = #{id}")
+    public User getUser(Integer id);
     /**
      * 找出密码
      * @param userName
@@ -93,6 +101,5 @@ public interface UserDao {
      */
     @Select("select * from User where identify = 'ADMIN' ")
     public List<User> getManagers();
-
 
 }

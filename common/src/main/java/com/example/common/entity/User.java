@@ -14,7 +14,7 @@ public class User {
     private identify identify; //身份
     private Boolean available; //可用状态
     private Timestamp entertime; //加入的时间
-    private List<SysRole> roleList;// 一个用户具有多个角色
+    private SysRole role;       // 一个用户具有一个角色
 
     public identify getIdentify() {
         return identify;
@@ -32,13 +32,12 @@ public class User {
         this.sex = sex;
     }
 
-
-    public List<SysRole> getRoleList() {
-        return roleList;
+    public SysRole getRole() {
+        return role;
     }
 
-    public void setRoleList(List<SysRole> roleList) {
-        this.roleList = roleList;
+    public void setRole(SysRole role) {
+        this.role = role;
     }
 
     public Boolean getAvailable() {
