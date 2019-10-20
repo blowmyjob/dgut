@@ -42,15 +42,21 @@ public class PermissionController {
     }
 
     /**
-     * 修改角色
+     * 添加角色
      * @return
      */
     @RequiresPermissions("userInfo:role")
     @PostMapping("/user/addRole")
     public String addRole(){
-        return "";
+
+        return "user/admin-role-add";
     }
 
+    @RequiresPermissions("userInfo:role")
+    @PostMapping("/user/editRole")
+    public String editRole(){
+        return "";
+    }
     /*************权限模块**************/
     /**
      * 查看权限

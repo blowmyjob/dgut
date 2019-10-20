@@ -52,17 +52,17 @@ public interface UserDao {
 
     /**
      * 修改密码
-     * @param passWord
+     * @param password
      * @param username
      */
-    @Update("update User set password = #{passWord} where username = #{username}")
-    public void updatePasswd(String passWord,String username);
+    @Update("update User set password = #{password} where username = #{username}")
+    public void updatePasswd(String password,String username);
 
     /**
      * 注册用户
      * @param user
      */
-    @Insert("insert into User values(#{userName},#{passWord},#{sex},#{identify})")
+    @Insert("insert into User (username,password,sex,identify,available) values(#{username},#{password},#{sex},#{identify},'false')")
     public void addUser(User user);
 
     /**
@@ -101,5 +101,4 @@ public interface UserDao {
      */
     @Select("select * from User where identify = 'ADMIN' ")
     public List<User> getManagers();
-
 }
