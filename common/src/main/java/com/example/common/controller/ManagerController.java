@@ -52,10 +52,6 @@ public class ManagerController {
         return "user/admin-list";
     }
 
-    @RequestMapping("")
-    public String roleEdit(){
-        return "";
-    }
 
     @GetMapping("/User")
     //@RequiresPermissions("/manager:seeUser")
@@ -71,6 +67,7 @@ public class ManagerController {
         Integer userId = Integer.valueOf(id);
         User user = userService.getUser(userId);
         model.addAttribute("user",user);
-        return "user/admin-role-add";
+        return "user/admin-role-edit";
     }
+
 }

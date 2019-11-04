@@ -26,15 +26,16 @@
 <div class="page-container">
 	<form class="form form-horizontal" id="form-article-add">
 		<div class="row cl">
+			<div> <input type="hidden" th:value="${user.id}" name="userId" /></div>
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-4">
-				<input type="text" class="input-text" value="" placeholder="" id="userName" name="userName">
+				<input type="text" class="input-text" th:value="${user.username}" placeholder="" id="userName" name="userName">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">性别：</label>
 			<div class="formControls col-xs-8 col-sm-4">
-				<input type="text" class="input-text" value="" placeholder="" id="sex" name="sex">
+				<input type="text" class="input-text" th:value="${user.sex}" placeholder="" id="sex" name="sex">
 			</div>
 		</div>
 		<div class="row cl">
@@ -62,6 +63,27 @@
 function article_save(){
 	window.parent.location.reload();
 }
+</script>
+<script type="text/javascript" th:inline="javascript">
+	function article_save_submit() {
+		$.ajax({
+			//几个参数需要注意一下
+			type: "POST",//方法类型
+			dataType: "json",//预期服务器返回的数据类型
+			url: "/updateuser",//url
+			data: $('#form-article-add').serialize(),
+			success: function (result) {
+				console.log(result);//打印服务端返回的数据(调试用)
+				if (result== 200) {
+					alert("SUCCESS");
+				};
+			},
+			error : function() {
+				alert("异常！");
+			}
+		});
+
+	}
 </script>
 </body>
 </html>

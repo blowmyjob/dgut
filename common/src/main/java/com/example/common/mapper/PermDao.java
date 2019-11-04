@@ -41,7 +41,7 @@ public interface PermDao {
     @Insert("insert into SysRole (role,description,username) values (#{role},#{description},#{username})")
     public void addRole(SysRole role);
 
-    @Update("update SysRole set role = #{role},description=#{description},username=#{username} where id = #{id}")
+    @Update("update SysRole set role = #{role},description=#{description}where id = #{id}")
     public void updateRole(SysRole role,@Param(value = "id") Integer id);
 
     @Delete("delete from SysRole where id = #{id}")

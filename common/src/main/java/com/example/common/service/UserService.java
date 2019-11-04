@@ -14,6 +14,13 @@ public interface UserService {
     public void delUser(Integer userId);
 
     /**
+     * 通过用户名查找用户
+     * @param userName
+     * @return
+     */
+    public User getUser(String userName);
+
+    /**
      * 通过id查找用户
      * @param userId
      * @return
@@ -88,4 +95,11 @@ public interface UserService {
      * @return
      */
     List<User>getManagers();
+
+
+    /**
+     * 停用用户
+     * @param userId
+     */
+    void stopUser(Integer userId);
 }

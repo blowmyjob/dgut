@@ -2,6 +2,8 @@ package com.example.common.controller;
 
 import com.example.common.entity.Resume;
 import com.example.common.entity.SystemLog;
+import com.example.common.entity.User;
+import com.example.common.enums.Sex;
 import com.example.common.enums.identify;
 import com.example.common.service.SystemService;
 import com.example.common.service.UserService;
@@ -94,13 +96,26 @@ public class UserController {
         return "200";
     }
     @GetMapping("/updateuser")
-    public String updateUser1(){
+    public String updateUser1(HttpServletRequest request,Model model){
+        String userName = (String)request.getSession().getAttribute("userName");
+        User user = userService.getUser(userName);
+        model.addAttribute("user",user);
         return "user/user-information-edit";
     }
 
     @PostMapping("/updateuser")
+    @ResponseBody
     public String updateUser2(HttpServletRequest request,Model model){
-        return "";
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
+        String userName = request.getParameter("userName");
+        String sex = request.getParameter("sex");
+        User user = new User();
+        user.setUsername(userName); user.setId(userId); user.setSex(Sex.valueOf(sex));
+        userService.updateUser(user);
+        user = userService.getUser(userName);
+        request.getSession().setAttribute("userName",user.getUsername());
+        model.addAttribute("user",user);
+        return "200";
     }
 
     @GetMapping("/user-resume")
@@ -119,6 +134,7 @@ public class UserController {
     }
 
     @PostMapping("/add-resume")
+    @ResponseBody
     public String addResume(@RequestParam("Resume") MultipartFile file,HttpServletRequest request){
         if(file.isEmpty()){
             return "";
@@ -145,7 +161,7 @@ public class UserController {
             }
             System.out.println(file.getOriginalFilename());
         }
-        return "user/user-resume-list";
+        return "200";
     }
 
     @DeleteMapping("/resume/{id}")
@@ -153,5 +169,18 @@ public class UserController {
     public String delResume(@PathVariable(value = "id")String id){
         userService.deleteResume(Integer.valueOf(id));
         return "1";
+    }
+
+    @DeleteMapping("/user/{id}")
+    @ResponseBody
+    public String delUser(@PathVariable("id")String id){
+        try{
+            Integer userId = Integer.valueOf(id);
+            userService.delUser(userId);
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "500";
     }
 }

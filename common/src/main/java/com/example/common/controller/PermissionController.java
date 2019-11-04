@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -41,22 +42,34 @@ public class PermissionController {
         return "user/admin-role";
     }
 
-    /**
-     * 添加角色
-     * @return
-     */
     @RequiresPermissions("userInfo:role")
-    @PostMapping("/user/addRole")
-    public String addRole(){
-
-        return "user/admin-role-add";
+    @RequestMapping("/user/toEditRole")
+    public String toEditRole(){
+        return "/user/admin-role-edit";
     }
 
-    @RequiresPermissions("userInfo:role")
-    @PostMapping("/user/editRole")
-    public String editRole(){
+    @RequestMapping("/user/editRole")
+    public String editRole(HttpServletRequest request){
+        Integer roleId = Integer.valueOf(request.getParameter(""));
+        String roleName = request.getParameter("");
+        String roleValue = request.getParameter("");
+        SysRole role = new SysRole();
         return "";
     }
+
+    @DeleteMapping("/Role/{id}")
+    @ResponseBody
+    public String delRole(@PathVariable("id")String id){
+        Integer userId = Integer.valueOf(id);
+        try{
+            userService.delUser(userId);
+            return "200";
+        }catch (Exception e){
+
+        }
+        return "500";
+    }
+
     /*************权限模块**************/
     /**
      * 查看权限
@@ -145,4 +158,55 @@ public class PermissionController {
         userService.checkUser(Integer.valueOf(id));
         return "1";
     }
+
+
+    /**********管理员模块************/
+    @RequestMapping("/admin/edit/{id}")
+    public String toAdminEdit(@PathVariable("id")String id,Model model){
+        Integer userId = Integer.valueOf(id);
+        User user  = userService.getUser(userId);
+        model.addAttribute("user",user);
+        return "user/admin-edit";
+    }
+
+
+    @DeleteMapping("/admin/{id}")
+    @ResponseBody
+    public String adminDelete(@PathVariable("id")String id){
+        Integer userId = Integer.valueOf(id);
+        try {
+            userService.delUser(userId);
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @RequestMapping("/admin/start/{id}")
+    @ResponseBody
+    public String adminStart(@PathVariable("id")String id){
+        Integer userId = Integer.valueOf(id);
+        try{
+            userService.checkUser(userId);
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "500";
+    }
+
+    @RequestMapping("/admin/stop/{id}")
+    @ResponseBody
+    public String adminStop(@PathVariable("id")String id){
+        Integer userId = Integer.valueOf(id);
+        try{
+            userService.stopUser(userId);
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "500";
+    }
+
 }

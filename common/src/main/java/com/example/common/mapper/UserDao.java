@@ -28,6 +28,9 @@ public interface UserDao {
 
     @Select("select * from User where id = #{id}")
     public User getUser(Integer id);
+
+    @Select("select * from User where userName = #{userName}")
+    public User getUserByName(String userName);
     /**
      * 找出密码
      * @param userName
@@ -47,7 +50,7 @@ public interface UserDao {
      * 修改用户信息
      * @param user
      */
-    @Update("update User set userName = #{userName}, sex = #{sex}, identify = #{identify} where userId= #{userId}")
+    @Update("update User set username = #{username}, sex = #{sex} where id= #{id}")
     public void updateUser(User user);
 
     /**
@@ -88,11 +91,18 @@ public interface UserDao {
     public void addResume(Resume resume);
 
     /**
-     * 审核用户
+     * 启用用户
      * @param id
      */
     @Update("update User set available = 'true' where id = #{id}")
     public void checkUser(Integer id);
+
+    /**
+     * 停用用户
+     * @param id
+     */
+    @Update("update User set available = 'false' where id = #{id}")
+    public void stopUser(Integer id);
 
     /**************管理员模块****************/
     /**
@@ -101,4 +111,5 @@ public interface UserDao {
      */
     @Select("select * from User where identify = 'ADMIN' ")
     public List<User> getManagers();
+
 }

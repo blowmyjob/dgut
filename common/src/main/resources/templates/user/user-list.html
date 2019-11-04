@@ -21,43 +21,41 @@
 	<script type="text/javascript" th:src="@{./lib/DD_belatedPNG_0.0.8a-min.js}" ></script>
 	<script>DD_belatedPNG.fix('*');</script>
 	<![endif]-->
-	<title>管理员列表</title>
+	<title>用户列表</title>
 </head>
-<body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 管理员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 图片管理 <span class="c-gray en">&gt;</span> 图片列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </span> <span class="r">共有数据：<strong th:text="${size}">54</strong> 条</span> </div>
-	<table class="table table-border table-bordered table-bg">
-		<thead>
-		<tr>
-			<th scope="col" colspan="9">管理员列表</th>
-		</tr>
-		<tr class="text-c">
-			<th width="40">ID</th>
-			<th width="150">登录名</th>
-			<th>角色</th>
-			<th width="130">加入时间</th>
-			<th width="100">是否已启用</th>
-			<th width="100">操作</th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr class="text-c" th:each="obj:${users}">
-			<td th:text="${obj.getId()}"></td>
-			<td th:text="${obj.getUsername()}">admin</td>
-			<td th:text="${obj.getIdentify()}">13000000000</td>
-			<td th:text="${obj.getEntertime()}">2014-6-11 11:11:42</td>
-			<td class="td-status" th:if="${obj.getAvailable() eq true}"><span class="label label-success radius">已启用</span></td>
-			<td class="td-status" th:if="${obj.getAvailable() eq false}"><span class="label label-success radius">未启用</span></td>
-			<td class="td-manage">
-				<a style="text-decoration:none" onClick="admin_stop(this)" href="javascript:;" th:if="${obj.getAvailable() eq true}" th:name="${obj.getId()}" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>
-				<a style="text-decoration:none" onClick="admin_start(this)" href="javascript:;" th:if="${obj.getAvailable() eq false}" th:name="${obj.getId()}" title="启用"><i class="Hui-iconfont">&#xe631;</i></a>
-				<a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑',this,'800','500')" th:name="${obj.getId()}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-				<a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-			</td>
-		</tr>
-		</tbody>
-	</table>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="picture_add('添加图片','picture-add.html')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加图片</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+			<tr class="text-c">
+				<th width="40">ID</th>
+				<th width="150">登录名</th>
+				<th>角色</th>
+				<th width="130">加入时间</th>
+				<th width="100">是否已启用</th>
+				<th width="100">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c" th:each="obj:${users}">
+				<td th:text="${obj.getId()}"></td>
+				<td th:text="${obj.getUsername()}">admin</td>
+				<td th:text="${obj.getIdentify()}">13000000000</td>
+				<td th:text="${obj.getEntertime()}">2014-6-11 11:11:42</td>
+				<td class="td-status" th:if="${obj.getAvailable() eq true}"><span class="label label-success radius">已启用</span></td>
+				<td class="td-status" th:if="${obj.getAvailable() eq false}"><span class="label label-success radius">未启用</span></td>
+				<td class="td-manage">
+					<a style="text-decoration:none" onClick="admin_stop(this)" href="javascript:;" th:if="${obj.getAvailable() eq true}" th:name="${obj.getId()}" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>
+					<a style="text-decoration:none" onClick="admin_start(this)" href="javascript:;" th:if="${obj.getAvailable() eq false}" th:name="${obj.getId()}" title="启用"><i class="Hui-iconfont">&#xe631;</i></a>
+					<a title="编辑" href="javascript:;" th:name="${obj.getId()}" onclick="admin_edit('用户编辑',this,'/User/toEdit','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+					<a title="删除" href="javascript:;" onclick="admin_del(this,'1')" th:name ="${obj.getId()}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" th:src="@{./lib/jquery/1.9.1/jquery.min.js}"></script>
@@ -69,7 +67,15 @@
 <script type="text/javascript" th:src="@{./lib/My97DatePicker/4.8/WdatePicker.js}"></script>
 <script type="text/javascript" th:src="@{./lib/datatables/1.10.0/jquery.dataTables.min.js}"></script>
 <script type="text/javascript" th:src="@{./lib/laypage/1.2/laypage.js}"></script>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="none">
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+			//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+			{"orderable":false,"aTargets":[6]}// 制定列不参与排序
+		]
+	});
 	/*
         参数解释：
         title	标题
@@ -82,16 +88,19 @@
 	function admin_add(title,url,w,h){
 		layer_show(title,url,w,h);
 	}
-	/*管理员-删除*/
+	/*用户-删除*/
 	function admin_del(obj,id){
+        var id = $(obj).attr("name");
 		layer.confirm('确认要删除吗？',function(index){
 			$.ajax({
-				type: 'POST',
-				url: '',
+				type: 'DELETE',
+				url: '/user/'+id,
 				dataType: 'json',
 				success: function(data){
-					$(obj).parents("tr").remove();
-					layer.msg('已删除!',{icon:1,time:1000});
+				    if(data == 200) {
+				        $(obj).parents("tr").remove();
+                        layer.msg('已删除!',{icon:1,time:1000});
+                    }
 				},
 				error:function(data) {
 					console.log(data.msg);
@@ -101,9 +110,9 @@
 	}
 
 	/*管理员-编辑*/
-	function admin_edit(title,obj,w,h){
+	function admin_edit(title,obj,url,w,h){
 		var id = $(obj).attr("name");
-		var url="/User/toEdit/"+id;
+		url = url + "/"+id ;
 		layer_show(title,url,w,h);
 	}
 	/*管理员-停用*/

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,5 +54,10 @@ public class SystemController {
         model.addAttribute("logs",logs);
         model.addAttribute("count",logs.size());
         return "system/exception-log";
+    }
+
+    @GetMapping("/user/logs/{username}")
+    public String logsByUser(@PathVariable(value = "username")String username, Model model){
+        return "";
     }
 }
