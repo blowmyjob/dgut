@@ -65,7 +65,7 @@ public class PermissionController {
             userService.delUser(userId);
             return "200";
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return "500";
     }

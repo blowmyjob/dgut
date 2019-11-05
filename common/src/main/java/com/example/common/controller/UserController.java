@@ -183,4 +183,14 @@ public class UserController {
         }
         return "500";
     }
+
+    /*********面试进度**********/
+    @RequestMapping("/user/process/{id}/{state}")
+    public String selectProcess(@PathVariable("id")String id, @PathVariable("state")String state, Model model){
+        Integer userId = Integer.valueOf(id);
+
+        return "";
+    }
+
+
 }
