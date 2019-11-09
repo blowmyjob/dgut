@@ -6,6 +6,15 @@ public class Hire {
     private String description;
     private int hirecount;
     private int companyid;
+    private String companyname;
+
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
+    }
 
     public int getId() {
         return id;

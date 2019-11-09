@@ -19,19 +19,27 @@ public class JobController {
     public String getWorkProcess(@PathVariable("id")String id,@PathVariable("state")String state,Model model){
         List<WorkProcess>workProcesses = workService.getProcessByUserId(Integer.valueOf(id),state);
         model.addAttribute("workProcesses",workProcesses);
-        return "";
+        return "hire/hire-list";
     }
 
     @PostMapping("/{id}/{state}")
     @ResponseBody
-    public String updateWorkState(@PathVariable("id")String id,@PathVariable("state")String state){
+    public String updateWorkState(@PathVariable("id")String id,@PathVariable("state")String state,Model model){
         try{
             workService.updateProcess(state,Integer.valueOf(id));
-            return "200";
+            List<WorkProcess>workProcesses = workService.getProcessByUserId(Integer.valueOf(id),state);
+            model.addAttribute("workProcesses",workProcesses);
+            return "";
         }catch (Exception e){
             e.printStackTrace();
         }
         return "500";
     }
+
+    @PutMapping("")
+    public String addWorkProcess(){
+        return "";
+    }
+
 
 }

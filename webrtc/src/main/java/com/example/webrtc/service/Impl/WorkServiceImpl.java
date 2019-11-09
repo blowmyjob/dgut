@@ -32,4 +32,5 @@ public class WorkServiceImpl implements WorkService {
     public void delProcess(Integer id) {
         workDao.delProcess(id);
     }
+
 }
