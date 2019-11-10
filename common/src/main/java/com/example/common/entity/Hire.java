@@ -1,4 +1,4 @@
-package com.example.webrtc.entity;
+package com.example.common.entity;
 
 public class Hire {
     private int id;

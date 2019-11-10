@@ -1,4 +1,4 @@
-package com.example.webrtc.entity;
+package com.example.common.entity;
 
 public class WorkProcess {
     private int id;
@@ -6,6 +6,15 @@ public class WorkProcess {
     private String state;
     private int jobid;
     private int companyid;
+    private int resumeid;
+
+    public int getResumeid() {
+        return resumeid;
+    }
+
+    public void setResumeid(int resumeid) {
+        this.resumeid = resumeid;
+    }
 
     public int getCompanyid() {
         return companyid;

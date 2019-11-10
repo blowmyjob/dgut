@@ -32,12 +32,12 @@ public class UserController {
     private SystemService systemService;
 
     @GetMapping("/login")
-    public String login1(){
+    public String toLogin(){
         return "login";
     }
 
     @PostMapping("/login")
-    public String login2(@RequestParam("userName") String username, @RequestParam("passWord") String password,HttpServletRequest request){
+    public String login(@RequestParam("userName") String username, @RequestParam("passWord") String password,HttpServletRequest request){
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         SystemLog log  =new SystemLog();
@@ -57,6 +57,8 @@ public class UserController {
         if (subject.isAuthenticated()) {
             token.setRememberMe(true);
             subject.getSession().setAttribute("userName",token.getUsername());
+            User user = userService.getUser(token.getUsername());
+            subject.getSession().setAttribute("userid",user.getId());
             log.setContent("登陆成功");
             log.setLoginTime(new Timestamp(System.currentTimeMillis()));
             log.setUserName(token.getUsername());
@@ -171,18 +173,6 @@ public class UserController {
         return "1";
     }
 
-    @DeleteMapping("/user/{id}")
-    @ResponseBody
-    public String delUser(@PathVariable("id")String id){
-        try{
-            Integer userId = Integer.valueOf(id);
-            userService.delUser(userId);
-            return "200";
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "500";
-    }
 
     /*********面试进度**********/
     @RequestMapping("/user/process/{id}/{state}")

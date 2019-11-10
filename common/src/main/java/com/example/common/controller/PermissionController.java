@@ -142,8 +142,14 @@ public class PermissionController {
     @DeleteMapping("/user/{id}")
     @ResponseBody
     public String deleteUser(@PathVariable("id")String id){
-        userService.delUser(Integer.valueOf(id));
-        return "1";
+        try{
+            Integer userId = Integer.valueOf(id);
+            userService.delUser(userId);
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "500";
     }
 
     /**

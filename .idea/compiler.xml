@@ -15,6 +15,7 @@
     <bytecodeTargetLevel>
       <module name="eureka-zuul" target="1.8" />
       <module name="service-ribbon" target="1.8" />
+      <module name="webrtc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

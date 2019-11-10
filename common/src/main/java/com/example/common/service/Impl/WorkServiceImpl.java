@@ -1,8 +1,11 @@
-package com.example.webrtc.service.Impl;
+package com.example.common.service.Impl;
 
-import com.example.webrtc.entity.WorkProcess;
-import com.example.webrtc.mapper.WorkDao;
-import com.example.webrtc.service.WorkService;
+import com.example.common.entity.WorkProcess;
+import com.example.common.mapper.WorkDao;
+import com.example.common.entity.WorkProcess;
+import com.example.common.mapper.WorkDao;
+import com.example.common.service.WorkService;
+import com.example.common.vo.WorkDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,7 @@ public class WorkServiceImpl implements WorkService {
         workDao.updateProcess(state,id);
     }
 
+
     @Override
     public void insertProcess(WorkProcess workProcess) {
         workDao.insertProcess(workProcess);
@@ -33,4 +37,8 @@ public class WorkServiceImpl implements WorkService {
         workDao.delProcess(id);
     }
 
+    @Override
+    public List<WorkDetail> getWorkDetails(Integer userid, String state) {
+        return workDao.getWorkDetails(userid,state);
+    }
 }
