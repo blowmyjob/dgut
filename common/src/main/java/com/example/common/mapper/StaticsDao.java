@@ -10,15 +10,15 @@ import java.util.List;
 @Mapper
 @Repository
 public interface StaticsDao {
-    @Select("select Workprocess.id as id,state,workname from Workprocess,Hire where userid = #{userId} and month(updatetime)=#{month} and state=#{state}")
+    @Select("select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.userid = #{userId} and month(updatetime)=#{month} and Workprocess.state=#{state} and Workprocess.jobid = Hire.id GROUP BY month(updatetime)")
     List<Statics>getUserOneMonthById(Integer userId,Integer month,String state);
 
-    @Select("select Workprocess.id as id,state,workname from Workprocess,Hire where userid = #{userId} and year(updatetime)=#{year} and state=#{state}")
+    @Select("select year(updatetime) as year,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where userid = #{userId} and year(updatetime)=#{year} and state=#{state} and Workprocess.jobid = Hire.id group by year(updatetime)")
     List<Statics>getUserOneYearById(Integer userId,Integer year,String state);
 
-    @Select("select Workprocess.id as id,state,workname from Workprocess,Hire where userid = #{userid} and month(updatetime)=#{month} and state=#{state}")
-    List<Statics>getCompanyOneMonthById(Integer companyId,Integer month);
+    @Select("select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.companyid = #{companyid} and month(updatetime)=#{month} and Workprocess.jobid = Hire.id GROUP BY month(updatetime)")
+    List<Statics>getCompanyOneMonthById(Integer companyid,Integer month);
 
-    @Select("select Workprocess.id as id,state,workname from Workprocess,Hire where userid = #{userid} and year(updatetime)=#{year} and state=#{state}")
-    List<Statics>getCompanyOneYearById(Integer companyId,Integer year);
+    @Select("select count(*),year(updatetime) as year,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.companyid = #{companyid} and year(updatetime)=#{year} and Workprocess.jobid = Hire.id GROUP BY year(updatetime)")
+    List<Statics>getCompanyOneYearById(Integer companyid,Integer year);
 }
