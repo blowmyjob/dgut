@@ -10,15 +10,19 @@ import java.util.List;
 @Mapper
 @Repository
 public interface StaticsDao {
-    @Select("select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.userid = #{userId} and month(updatetime)=#{month} and Workprocess.state=#{state} and Workprocess.jobid = Hire.id GROUP BY month(updatetime)")
+    @Select("select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.userid = #{userId} and month(updatetime)=#{month} and state=#{state} and Workprocess.jobid = Hire.id GROUP BY month(updatetime)")
     List<Statics>getUserOneMonthById(Integer userId,Integer month,String state);
 
-    @Select("select year(updatetime) as year,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where userid = #{userId} and year(updatetime)=#{year} and state=#{state} and Workprocess.jobid = Hire.id group by year(updatetime)")
+    @Select("select year(updatetime) as year,month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where userid = #{userId} and year(updatetime)=#{year} and state=#{state} and Workprocess.jobid = Hire.id group by month(updatetime)")
     List<Statics>getUserOneYearById(Integer userId,Integer year,String state);
 
-    @Select("select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.companyid = #{companyid} and month(updatetime)=#{month} and Workprocess.jobid = Hire.id GROUP BY month(updatetime)")
+
+    @Select("select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.companyid = #{companyid} and month(updatetime)=#{month} and Workprocess.jobid = Hire.id  GROUP BY month(updatetime)")
     List<Statics>getCompanyOneMonthById(Integer companyid,Integer month);
 
-    @Select("select count(*),year(updatetime) as year,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.companyid = #{companyid} and year(updatetime)=#{year} and Workprocess.jobid = Hire.id GROUP BY year(updatetime)")
+    @Select("select count(*),year(updatetime) as year,month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count from Workprocess,Hire where Workprocess.companyid = #{companyid} and year(updatetime)=#{year} and Workprocess.jobid = Hire.id GROUP BY year(updatetime)")
     List<Statics>getCompanyOneYearById(Integer companyid,Integer year);
+
+    @Select("select companyid from Employee_Relationship where userid = #{userid}")
+    Integer getCompanyIdByUserId(Integer userId);
 }

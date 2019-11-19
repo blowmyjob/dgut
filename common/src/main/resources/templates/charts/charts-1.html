@@ -24,6 +24,12 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 折线图 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
+	<form>
+		<input id="time" th:value="${time}" hidden>
+	    <input id="state" th:value="${state}" hidden>
+	    <input id="year" th:value="${year}" hidden>
+	    <input id="month" th:value="${month}" hidden>
+	</form>
 	<div id="main" style="min-width:700px;height:400px"></div>
 </div>
 <!--_footer 作为公共模版分离出去-->
@@ -35,24 +41,37 @@
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" th:src="@{../lib/echarts/3.4.0/echarts.common.min.js}"></script>
 <script type="text/javascript">
-
+    var time = $("#time").val();
+    var year = $("#year").val();
+    var month = $("#month").val();
+    var state = $("#state").val();
+    var xName;
+    var url ;
+    if(time=='year'){
+        url="type=user&time=year&year="+year+"&state="+state;
+        xName = '月份';
+    }else{
+        url="type=user&time=month&month="+month+"&state="+state;
+        xName = '天';
+    }
 	var myChart = echarts.init(document.getElementById('main'));
 	// 显示标题，图例和空的坐标轴
 	myChart.setOption({
 		title: {
-			text: '年度应聘情况'
+			text: '应聘状态统计情况'
 		},
 		tooltip: {},
 		legend: {
-			data:['销量']
+			data:['数量']
 		},
 		xAxis: {
-			data: []
+			data: [],
+            name:xName,
 		},
 		yAxis: {},
 		series: [{
-			name: '销量',
-			type: 'bar',
+			name: '数量',
+			type: 'line',
 			data: []
 		}]
 	});
@@ -61,30 +80,30 @@
 
 	var names=[];    //类别数组（实际用来盛放X轴坐标值）
 	var nums=[];    //销量数组（实际用来盛放Y坐标值）
-
 	$.ajax({
 		type : "post",
 		async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-		url : "/charts/ChartByMonth",    //请求发送到TestServlet处
+		url : "/charts/Charts?"+url,
 		data : {},
 		dataType : "json",        //返回数据形式为json
 		success : function(result) {
 			//请求成功时执行该函数内容，result即为服务器返回的json对象
 			if (result) {
 				for(var i=0;i<result.length;i++){
-					names.push(result[i].name);    //挨个取出类别并填入类别数组
+					names.push(result[i].month);    //挨个取出类别并填入类别数组
 				}
 				for(var i=0;i<result.length;i++){
-					nums.push(result[i].num);    //挨个取出销量并填入销量数组
+					nums.push(result[i].count);    //挨个取出销量并填入销量数组
 				}
 				myChart.hideLoading();    //隐藏加载动画
 				myChart.setOption({        //加载数据图表
 					xAxis: {
-						data: names
+						data: names,
+                        name:xName,
 					},
 					series: [{
 						// 根据名字对应到相应的系列
-						name: '销量',
+						name: '数量',
 						data: nums
 					}]
 				});

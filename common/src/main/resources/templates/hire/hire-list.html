@@ -26,7 +26,7 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 工作进度 <span class="c-gray en">&gt;</span> 浏览记录 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span> <span class="r">共有数据：<strong>88</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span> <span class="r">共有数据：<strong th:text="${count}"></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-hover table-bg table-sort">
 			<thead>
@@ -44,12 +44,12 @@
 			<tbody>
 				<tr class="text-c" th:each="obj:${workDetails}">
 					<td><input type="checkbox" th:value="${obj.getId()}" th:name="id"></td>
-					<td th:text="${obj.getId()}">1</td>
-					<td th:text="${obj.getName()}">张三</td>
+					<td th:text="${obj.getId()}"></td>
+					<td th:text="${obj.getName()}"></td>
 					<td th:text="${obj.getJobid()}"></td>
-					<td th:text="${obj.getCompanyname()}">2015.01.16 22:12:24</td>
+					<td th:text="${obj.getCompanyname()}"></td>
 					<td th:text="${obj.getState()}"></td>
-					<td th:text="${obj.getUpdatetime()}">http://www.h-ui,net/</td>
+					<td th:text="${obj.getUpdatetime()}"></td>
 					<td class="f-14"><a title="删除" href="javascript:;" onclick="user_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 				</tr>
 			</tbody>

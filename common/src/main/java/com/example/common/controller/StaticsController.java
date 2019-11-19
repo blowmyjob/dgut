@@ -34,6 +34,13 @@ public class StaticsController {
         String time = request.getParameter("time");
         String state = request.getParameter("state");
         String chartType = request.getParameter("chartType");
+        if("year".equals(time)){
+            String year = request.getParameter("year");
+            model.addAttribute("year",year);
+        }else if("month".equals(time)){
+            String month = request.getParameter("month");
+            model.addAttribute("month",month);
+        }
         model.addAttribute("time",time);
         model.addAttribute("state",state);
         if("1".equals(chartType)){
@@ -52,9 +59,15 @@ public class StaticsController {
         String state = request.getParameter("state");
         String chartType = request.getParameter("chartType");
         String userid = (String)request.getSession().getAttribute("userid");
+        if("year".equals(time)){
+            String year = request.getParameter("year");
+            model.addAttribute("year",year);
+        }else if("month".equals(time)){
+            String month = request.getParameter("month");
+            model.addAttribute("month",month);
+        }
         model.addAttribute("time",time);
         model.addAttribute("state",state);
-        model.addAttribute("companyid","");
         if("1".equals(chartType)){
             return "charts/charts-1";
         }else if("2".equals(chartType)){
@@ -70,29 +83,39 @@ public class StaticsController {
     public String ChartsByMonth(HttpServletRequest request){
         String type = request.getParameter("type");
         String time = request.getParameter("time");
-        String chartType = request.getParameter("chartType");
         if("user".equals(type)) {
             if("year".equals(time)) {
-                Integer userid = Integer.valueOf(request.getParameter("userid"));
+                Integer userid = (Integer)request.getSession().getAttribute("userid");
                 Integer year = Integer.valueOf(request.getParameter("year"));
                 String state = request.getParameter("state");
                 String charts = staticsService.ChartUserByYear(userid, year, state);
                 return charts;
             }else if("month".equals(time)){
-                Integer userid = Integer.valueOf(request.getParameter("userid"));
+                Integer userid = (Integer)request.getSession().getAttribute("userid");
                 Integer month = Integer.valueOf(request.getParameter("month"));
                 String state = request.getParameter("state");
-                String charts = staticsService.ChartUserByMonth(userid, month, state);
+                String charts = "";
+                if(state.equals("1")){
+                    charts = staticsService.ChartUserByMonth(userid, month, "待查看");
+                }else if(state.equals("2")){
+                    charts = staticsService.ChartUserByMonth(userid, month, "待入职");
+                }else if(state.equals("3")){
+                    charts = staticsService.ChartUserByMonth(userid, month, "待面试");
+                }else if(state.equals("4")){
+                    charts = staticsService.ChartUserByMonth(userid, month, "待沟通");
+                }else if(state.equals("5")){
+                    charts = staticsService.ChartUserByMonth(userid, month, "不合适");
+                }
                 return charts;
             }
         }else if("company".equals(type)){
+            Integer userid = (Integer)request.getSession().getAttribute("userid");
+            Integer companyid = staticsService.getCompanyId(userid);
             if("year".equals(time)) {
-                Integer companyid = Integer.valueOf(request.getParameter("companyid"));
                 Integer year = Integer.valueOf(request.getParameter("year"));
                 String charts = staticsService.ChartCompanyByYear(companyid,year);
                 return charts;
             }else if("month".equals(time)){
-                Integer companyid = Integer.valueOf(request.getParameter("companyid"));
                 Integer month = Integer.valueOf(request.getParameter("month"));
                 String charts = staticsService.ChartCompanyByMonth(companyid,month);
                 return charts;

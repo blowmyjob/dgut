@@ -8,4 +8,6 @@ public interface StaticsService {
     String ChartCompanyByMonth(Integer companyId,Integer month);
 
     String ChartCompanyByYear(Integer companyId,Integer year);
+
+    Integer getCompanyId(Integer userid);
 }

@@ -58,7 +58,7 @@ public class UserController {
             token.setRememberMe(true);
             subject.getSession().setAttribute("userName",token.getUsername());
             User user = userService.getUser(token.getUsername());
-            subject.getSession().setAttribute("userid",user.getId());
+            request.getSession().setAttribute("userid",user.getId());
             log.setContent("登陆成功");
             log.setLoginTime(new Timestamp(System.currentTimeMillis()));
             log.setUserName(token.getUsername());

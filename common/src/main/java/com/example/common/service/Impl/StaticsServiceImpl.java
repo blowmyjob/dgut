@@ -39,4 +39,8 @@ public class StaticsServiceImpl implements StaticsService {
         return JSON.toJSONString(statics);
     }
 
+    @Override
+    public Integer getCompanyId(Integer userid) {
+        return staticsDao.getCompanyIdByUserId(userid);
+    }
 }

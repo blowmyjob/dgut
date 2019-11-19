@@ -22,29 +22,24 @@ public class JobController {
     @GetMapping("/{state}")
     public String getWorkDetails(@PathVariable("state")String state, Model model, HttpServletRequest request){
         Integer userid = (Integer)request.getSession().getAttribute("userid");
-        List<WorkDetail>workDetails = workService.getWorkDetails(Integer.valueOf(userid),state);
+        List<WorkDetail>workDetails = workService.getWorkDetailsByUserId(Integer.valueOf(userid),state);
         model.addAttribute("workDetails",workDetails);
+        model.addAttribute("count",workDetails.size());
         return "hire/hire-list";
     }
 
-    @PostMapping("/{id}/{state}")
-    @ResponseBody
-    public String updateWorkState(@PathVariable("id")String id,@PathVariable("state")String state,Model model){
+    @PostMapping("/hr/{state}")
+    public String updateWorkState(@PathVariable("state")String state,HttpServletRequest request,Model model){
         try{
-            workService.updateProcess(state,Integer.valueOf(id));
-            List<WorkProcess>workProcesses = workService.getProcessByUserId(Integer.valueOf(id),state);
-            model.addAttribute("workProcesses",workProcesses);
+            Integer userid = (Integer)request.getSession().getAttribute("userid");
+            Integer companyid = workService.findCompanyIdByUserId(userid);
+            List<WorkDetail>workDetails = workService.getWorkDetailsByCompanyId(companyid,state);
+            model.addAttribute("workDetails",workDetails);
+            model.addAttribute("count",workDetails.size());
             return "";
         }catch (Exception e){
             e.printStackTrace();
         }
         return "500";
     }
-
-    @PutMapping("")
-    public String addWorkProcess(){
-        return "";
-    }
-
-
 }

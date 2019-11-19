@@ -24,7 +24,7 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 折线图 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-    <form class="form form-horizontal" id="form-article-add" action="/charts/">
+    <form class="form form-horizontal" id="form-article-add" action="/charts/UserCharts">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">选择时间：</label>
             <div class="formControls col-xs-4 col-sm-2">
@@ -96,7 +96,6 @@
     /*1、定义复选框函数*/
     function test() {
         var vs = $("#time").find("option:selected").val();
-        console.log(vs);
         document.getElementById("yearSelect").style.display = 'none';
         document.getElementById("monthSelect").style.display = 'none';
         if (vs == 'year') {

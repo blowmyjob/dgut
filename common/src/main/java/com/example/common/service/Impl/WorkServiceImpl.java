@@ -38,7 +38,17 @@ public class WorkServiceImpl implements WorkService {
     }
 
     @Override
-    public List<WorkDetail> getWorkDetails(Integer userid, String state) {
+    public Integer findCompanyIdByUserId(Integer userid) {
+        return workDao.findCompanyIdByUserId(userid);
+    }
+
+    @Override
+    public List<WorkDetail> getWorkDetailsByCompanyId(Integer companyid, String state) {
+        return workDao.getProcessByCompanyId(companyid,state);
+    }
+
+    @Override
+    public List<WorkDetail> getWorkDetailsByUserId(Integer userid, String state) {
         return workDao.getWorkDetails(userid,state);
     }
 }

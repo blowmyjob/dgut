@@ -14,5 +14,9 @@ public interface WorkService {
 
     public void delProcess(Integer id);
 
-    public List<WorkDetail> getWorkDetails(Integer userid,String state);
+    public List<WorkDetail> getWorkDetailsByUserId(Integer userid,String state);
+
+    public List<WorkDetail> getWorkDetailsByCompanyId(Integer companyid,String state);
+
+    public Integer findCompanyIdByUserId(Integer userid);
 }
