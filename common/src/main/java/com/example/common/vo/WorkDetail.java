@@ -13,30 +13,6 @@ public class WorkDetail {
     private String state;
     private Timestamp updatetime;
 
-    public Timestamp getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Timestamp updatetime) {
-        this.updatetime = updatetime;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getId() {
         return id;
     }
@@ -61,6 +37,13 @@ public class WorkDetail {
         this.jobid = jobid;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getDescription() {
         return description;
@@ -84,5 +67,21 @@ public class WorkDetail {
 
     public void setJobdescription(String jobdescription) {
         this.jobdescription = jobdescription;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Timestamp getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Timestamp updatetime) {
+        this.updatetime = updatetime;
     }
 }

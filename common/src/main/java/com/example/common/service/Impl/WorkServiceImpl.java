@@ -33,8 +33,8 @@ public class WorkServiceImpl implements WorkService {
     }
 
     @Override
-    public void delProcess(Integer id) {
-        workDao.delProcess(id);
+    public void delProcessByUser(Integer id) {
+        workDao.updateState("false",id);
     }
 
     @Override
@@ -50,5 +50,10 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public List<WorkDetail> getWorkDetailsByUserId(Integer userid, String state) {
         return workDao.getWorkDetails(userid,state);
+    }
+
+    @Override
+    public void delProcessByHr(Integer id) {
+        workDao.delProcess(id);
     }
 }

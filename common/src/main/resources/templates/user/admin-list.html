@@ -100,8 +100,10 @@ function admin_del(obj,id){
 			url: '/admin/id',
 			dataType: 'json',
 			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
+				if(data == 200) {
+					$(obj).parents("tr").remove();
+					layer.msg('已删除!', {icon: 1, time: 1000});
+				}
 			},
 			error:function(data) {
 				console.log(data.msg);

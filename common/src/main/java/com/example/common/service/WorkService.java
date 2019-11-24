@@ -12,11 +12,13 @@ public interface WorkService {
 
     public void insertProcess(WorkProcess workProcess);
 
-    public void delProcess(Integer id);
+    public void delProcessByUser(Integer id);
 
     public List<WorkDetail> getWorkDetailsByUserId(Integer userid,String state);
 
     public List<WorkDetail> getWorkDetailsByCompanyId(Integer companyid,String state);
 
     public Integer findCompanyIdByUserId(Integer userid);
+
+    public void delProcessByHr(Integer id);
 }

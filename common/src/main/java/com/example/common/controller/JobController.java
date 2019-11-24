@@ -28,15 +28,51 @@ public class JobController {
         return "hire/hire-list";
     }
 
-    @PostMapping("/hr/{state}")
-    public String updateWorkState(@PathVariable("state")String state,HttpServletRequest request,Model model){
+    @GetMapping("/hr/{state}")
+    public String getWorkStateByHr(@PathVariable("state")String state,HttpServletRequest request,Model model){
         try{
             Integer userid = (Integer)request.getSession().getAttribute("userid");
             Integer companyid = workService.findCompanyIdByUserId(userid);
             List<WorkDetail>workDetails = workService.getWorkDetailsByCompanyId(companyid,state);
             model.addAttribute("workDetails",workDetails);
             model.addAttribute("count",workDetails.size());
-            return "";
+            return "user/hire-list";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "500";
+    }
+
+    @PostMapping("/hr/{state}/{id}")
+    @ResponseBody
+    public String updateState(@PathVariable("state")String state,@PathVariable("id")String id,HttpServletRequest request,Model model){
+        try{
+            String newState = request.getParameter("newState");
+            workService.updateProcess(newState,Integer.valueOf(id));
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "500";
+    }
+
+    @DeleteMapping("/user/{id}")
+    @ResponseBody
+    public String delWorkprocessByUser(@PathVariable("id")String id){
+        try{
+            workService.delProcessByUser(Integer.valueOf(id));
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "500";
+    }
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    public String delWorkprocessByHr(@PathVariable("id")String id){
+        try {
+            workService.delProcessByHr(Integer.valueOf(id));
+            return "200";
         }catch (Exception e){
             e.printStackTrace();
         }

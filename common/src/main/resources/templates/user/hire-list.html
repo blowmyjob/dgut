@@ -24,7 +24,7 @@
 <title>浏览记录</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 工作进度 <span class="c-gray en">&gt;</span> 浏览记录 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 应聘进度 <span class="c-gray en">&gt;</span> 应聘状态 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span> <span class="r">共有数据：<strong th:text="${count}"></strong> 条</span> </div>
 	<div class="mt-20">
@@ -50,9 +50,7 @@
 					<td th:text="${obj.getCompanyname()}"></td>
 					<td th:text="${obj.getState()}"></td>
 					<td th:text="${obj.getUpdatetime()}"></td>
-					<td class="f-14">
-                        <a title="删除" href="javascript:;" onclick="user_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-                    </td>
+					<td class="f-14"><a title="删除" href="javascript:;" th:value="${obj.getId()}" onclick="user_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -84,7 +82,7 @@ function user_del(obj){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '/job/'+id,
+			url: '/job/user/'+id,
 			dataType: 'json',
 			success: function(data){
 				if(data == 200) {
