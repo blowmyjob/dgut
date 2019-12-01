@@ -45,6 +45,7 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         //配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/static/**","anon");
+        filterChainDefinitionMap.put("/css/**","anon");
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/login", "anon");
         // authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="Bookmark" th:href="@{../../favicon.ico}" >
-    <link rel="Shortcut Icon" th:href="@{../../favicon.ico}" />
+    <link rel="Shortcut Icon" th:href="@{../favicon.ico}" />
     <!--[if lt IE 9]>
     <script type="text/javascript" th:src="@{../../lib/html5shiv.js}"></script>
     <script type="text/javascript" th:src="@{../../lib/respond.min.js}"></script>
@@ -21,38 +21,43 @@
     <script type="text/javascript" th:src="@{../../lib/DD_belatedPNG_0.0.8a-min.js}" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
-    <title>管理员修改</title>
+    <title>发布招聘</title>
 </head>
 <body>
 <div class="page-container">
-    <form class="form form-horizontal">
+    <form action="" method="post" class="form form-horizontal" id="form-hire-add">
         <div class="row cl">
-            <div> <input type="hidden" th:value="${user.id}" name="userId" /></div>
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
-            <div class="formControls col-xs-8 col-sm-4">
-                <input disabled="disabled" type="text" class="input-text" th:value="${user.username}" placeholder="" id="userName" name="userName">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>招聘岗位：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="hireName" name="hireName">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">角色：</label>
-            <div class="formControls col-xs-8 col-sm-4">
-                <select name="role">
-                    <option value="ADMIN">管理员</option>
-                    <option value="HR">Hr</option>
-                    <option value="TECH">面试官</option>
-                    <option value="USER">应聘者</option>
-                </select>
+            <label class="form-label col-xs-4 col-sm-2">招聘人数：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="0" placeholder="" id="hireCount" name="hireCount">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">招聘要求：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="hireDescription" id="hireDescription" placeholder="" value="" class="input-text">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">招聘结束时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="hireEndtime"onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'datemin\')}' })" id="datemax" class="input-text Wdate" style="width:180px;">
             </div>
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-                <button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 取消</button>
+                <button onClick="hire_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+                <button onClick="hire_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
             </div>
         </div>
     </form>
 </div>
-<!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" th:src="@{../../lib/jquery/1.9.1/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{../../lib/layer/2.4/layer.js}"></script>
 <script type="text/javascript" th:src="@{../../h-ui/js/H-ui.min.js}"></script>
@@ -63,7 +68,27 @@
 <script type="text/javascript" th:src="@{../../lib/datatables/1.10.0/jquery.dataTables.min.js}"></script>
 <script type="text/javascript" th:src="@{../../lib/laypage/1.2/laypage.js}"></script>
 <script type="text/javascript" th:inline="none">
-    function article_save(){
+    function hire_save(){
+        layer.confirm('确认要发布吗？',function(index){
+            $.ajax({
+                type: 'POST',
+                url: '/job/hr/发布',
+                data: $('#form-hire-add').serialize(),
+                dataType: 'json',
+                success: function(data){
+                    if(data == 200) {
+                        $(obj).parents("tr").remove();
+                        layer.msg('已提交!', {icon: 1, time: 1000});
+                        window.parent.location.reload();
+                    }
+                },
+                error:function(data) {
+                    layer.msg('提交失败!', {icon: 1, time: 1000});
+                },
+            });
+        });
+    }
+    function hire_close() {
         window.parent.location.reload();
     }
 </script>

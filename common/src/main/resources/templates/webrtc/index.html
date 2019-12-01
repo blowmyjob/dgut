@@ -25,9 +25,9 @@
         </div>
           <label for="userId">用户名:</label>
           <!-- <select class="form-control" id="userId"></select> -->
-          <input class="form-control" id="userId" type="text" value="" />
+          <input class="form-control" id="userId" type="text" th:value="${userid}" />
           <label for="room-number">房间号:</label>
-          <input class="form-control" id="roomid" type="text" value="113355" placeholder="请输入数字(1~999999999)" maxlength="9" minlength="1" onkeyup="value=value.replace(/[^\d]/g,'')">
+          <input class="form-control" id="roomid" type="text" value="" placeholder="请输入数字(1~999999999)" maxlength="9" minlength="1" onkeyup="value=value.replace(/[^\d]/g,'')">
       </div>
       <button class="btn btn-default" type="button" onclick="push()">我要视频通话</button>
       <br />

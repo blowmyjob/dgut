@@ -121,6 +121,7 @@ public class PermissionController {
     public String getUsers(Model model){
         List<User> users = userService.getUsers();
         model.addAttribute("users",users);
+        model.addAttribute("count",users.size());
         return "user/user-list";
     }
 
@@ -167,15 +168,6 @@ public class PermissionController {
 
 
     /**********管理员模块************/
-    @RequestMapping("/admin/edit/{id}")
-    public String toAdminEdit(@PathVariable("id")String id,Model model){
-        Integer userId = Integer.valueOf(id);
-        User user  = userService.getUser(userId);
-        model.addAttribute("user",user);
-        return "user/admin-edit";
-    }
-
-
     @DeleteMapping("/admin/{id}")
     @ResponseBody
     public String adminDelete(@PathVariable("id")String id){

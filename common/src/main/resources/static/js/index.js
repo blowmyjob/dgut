@@ -1,7 +1,9 @@
 // 渲染出用户
 (function render() {
+    /*
     var html = 'u' + Math.floor(Math.random() * 10000);
     document.getElementById('userId').value = html;
+    */
 })();
 
 function onKickout() {

@@ -1,5 +1,6 @@
 package com.example.common.service;
 
+import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.vo.WorkDetail;
 
@@ -21,4 +22,6 @@ public interface WorkService {
     public Integer findCompanyIdByUserId(Integer userid);
 
     public void delProcessByHr(Integer id);
+
+    public void insertHire(Hire hire);
 }

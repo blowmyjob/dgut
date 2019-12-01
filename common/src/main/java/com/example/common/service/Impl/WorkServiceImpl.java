@@ -1,5 +1,6 @@
 package com.example.common.service.Impl;
 
+import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.mapper.WorkDao;
 import com.example.common.entity.WorkProcess;
@@ -55,5 +56,10 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public void delProcessByHr(Integer id) {
         workDao.delProcess(id);
+    }
+
+    @Override
+    public void insertHire(Hire hire) {
+        workDao.insertJob(hire);
     }
 }

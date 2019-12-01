@@ -6,12 +6,21 @@ public class WorkDetail {
     private int id;
     private int userid;
     private int jobid;
+    private String jobname;
     private String name;
     private String description;
     private String companyname;
     private String jobdescription;
     private String state;
     private Timestamp updatetime;
+
+    public String getJobname() {
+        return jobname;
+    }
+
+    public void setJobname(String jobname) {
+        this.jobname = jobname;
+    }
 
     public int getId() {
         return id;

@@ -1,5 +1,6 @@
 package com.example.common.controller;
 
+import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.service.WorkService;
 import com.example.common.entity.WorkProcess;
@@ -25,7 +26,25 @@ public class JobController {
         List<WorkDetail>workDetails = workService.getWorkDetailsByUserId(Integer.valueOf(userid),state);
         model.addAttribute("workDetails",workDetails);
         model.addAttribute("count",workDetails.size());
-        return "hire/hire-list";
+        return "user/hire-list";
+    }
+
+    @GetMapping("/hr/发布")
+    public String toCreateJob(){
+        return "hire/hire-new";
+    }
+
+    @PostMapping("/hr/发布")
+    public String createJob(HttpServletRequest request,Model model){
+        Integer userId = (Integer) request.getSession().getAttribute("userid");
+        String hireName = request.getParameter("");
+        Integer hireCount = Integer.valueOf(request.getParameter(""));
+        String hireDescription = request.getParameter("");
+        Integer companyId = workService.findCompanyIdByUserId(userId);
+        Hire hire = new Hire();
+        hire.setWorkname(hireName);hire.setHirecount(hireCount);
+        hire.setDescription(hireDescription);hire.setCompanyid(companyId);
+        return "";
     }
 
     @GetMapping("/hr/{state}")
@@ -36,7 +55,7 @@ public class JobController {
             List<WorkDetail>workDetails = workService.getWorkDetailsByCompanyId(companyid,state);
             model.addAttribute("workDetails",workDetails);
             model.addAttribute("count",workDetails.size());
-            return "user/hire-list";
+            return "hire/hire-list";
         }catch (Exception e){
             e.printStackTrace();
         }
