@@ -24,4 +24,6 @@ public interface WorkService {
     public void delProcessByHr(Integer id);
 
     public void insertHire(Hire hire);
+
+    public List<Hire> selectAllJob();
 }

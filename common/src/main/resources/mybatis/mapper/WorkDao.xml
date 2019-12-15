@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.common.mapper.WorkDao" >
+    <select id="getProcessByUserId" resultType="com.example.common.entity.WorkProcess">
+        select * from Workprocess where userid = #{id} and state = #{state} and visable = 'true'
+    </select>
+
+    <update id="updateProcess">
+        update Workprocess set state = #{state} where id = #{id}
+    </update>
+
+    <insert id="insertProcess">
+        insert into Workprocess (userid,state,jobid,resumeid) values(#{userid},'待查看',#{jobid},#{resumeid})
+    </insert>
+
+    <delete id="delProcess">
+        delete from Workprocess where id = #{id}
+    </delete>
+
+    <select id="getProcessByIdAndState" resultType="com.example.common.entity.WorkProcess">
+        select * from Workprocess where id = #{id} and state = #{state}
+    </select>
+
+    <select id="getWorkDetails" resultType="com.example.common.vo.WorkDetail">
+        select DISTINCT Workprocess.id as id,userid,jobid,state,username as name,Hire.description,companyname,Hire.description as jobdescription,updatetime
+        from Company,Workprocess ,User,Hire
+        where Company.id=Workprocess.Companyid and Workprocess.userid=#{userid} and Workprocess.state=#{state} and Hire.companyid=Workprocess.companyid and User.id = Workprocess.userid
+    </select>
+
+    <select id="getProcessByCompanyId" resultType="com.example.common.vo.WorkDetail">
+        select Workprocess.id as id,Workprocess.userid,state,User.username as name,jobid,Hire.workname as jobname,Hire.companyid,updatetime,Hire.description
+        from Workprocess,User,Hire
+        where User.id = Workprocess.userid and Hire.id = Workprocess.jobid and Workprocess.companyid=#{companyid} and state=#{state}
+    </select>
+
+    <select id="findCompanyIdByUserId" resultType="java.lang.Integer">
+        select companyid from Employee_Relationship where userid = #{userid}
+    </select>
+
+    <update id="updateState">
+        update Workprocess set visable = #{state} where id = #{id}
+    </update>
+
+    <insert id="insertJob" parameterType="com.example.common.entity.Hire">
+        insert into Hire (workname,description,hirecount,companyid) values(#{workname},#{description},#{hirecount},#{companyid})
+    </insert>
+
+    <select id="selectAllJob" resultType="com.example.common.entity.Hire">
+        select * from Hire limit 0,6
+    </select>
+</mapper>

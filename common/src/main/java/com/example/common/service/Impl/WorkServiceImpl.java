@@ -62,4 +62,9 @@ public class WorkServiceImpl implements WorkService {
     public void insertHire(Hire hire) {
         workDao.insertJob(hire);
     }
+
+    @Override
+    public List<Hire> selectAllJob() {
+        return workDao.selectAllJob();
+    }
 }

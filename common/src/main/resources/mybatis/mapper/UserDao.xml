@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.common.mapper.UserDao" >
+    <select id="getUsers" resultType="com.example.common.entity.User">
+        select * from User
+    </select>
+
+    <select id="getUser" resultType="com.example.common.entity.User">
+        select * from User where id = #{id}
+    </select>
+
+    <select id="getUserByName" resultType="com.example.common.entity.User">
+        select * from User where userName = #{userName}
+    </select>
+
+    <select id="findPasswd" resultType="java.lang.String">
+        select password from User where username = #{userName}
+    </select>
+
+    <delete id="deleteUser">
+        delete from User where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.example.common.entity.User">
+        update User
+          <set>
+              <if test="username != null">username = #{username}, </if>
+              <if test="sex != null">sex = #{sex} </if>
+          </set>
+        where id= #{id}
+    </update>
+
+    <update id="updatePasswd">
+        update User
+         <set>
+           <if test="password != null">password = #{password}</if>
+        </set>
+         where username = #{username}
+    </update>
+
+    <insert id="addUser">
+        insert into User (username,password,sex,identify,available)
+        values(#{username},#{password},#{sex},#{identify},'false')
+    </insert>
+
+    <delete id="deleteResume">
+        delete from  Resume where id = #{id}
+    </delete>
+
+    <select id="getResumes" resultType="com.example.common.entity.Resume">
+        select * from Resume where userName = #{userName}
+    </select>
+
+    <insert id="addResume">
+        insert into Resume (fileName,address,userName) values (#{fileName},#{address},#{userName})
+    </insert>
+
+    <update id="checkUser">
+        update User set available = 'true' where id = #{id}
+    </update>
+
+    <update id="stopUser">
+        update User set available = 'false' where id = #{id}
+    </update>
+
+    <select id="getManagers" resultType="com.example.common.entity.User">
+        select * from User where identify = 'ADMIN'
+    </select>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.common.mapper.PermDao" >
+    <resultMap id="RoleMap" type="com.example.common.entity.SysRole">
+        <result property = "id" column = "id" />
+        <result property = "role" column = "role" />
+        <result property = "description" column = "description"/>
+        <result property = "username" column = "username" />
+        <association property="syspermissions" javaType="com.example.common.entity.SysPermission">
+            <id property="id" column = "id" javaType="Integer" jdbcType="INTEGER"/>
+            <result property="name" column = "name" javaType="String" jdbcType="VARCHAR"/>
+            <result property="url" column = "url" javaType="String" jdbcType="VARCHAR"/>
+            <result property="permission" column = "permission" javaType="String" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+    <select id="getRoles" resultType="com.example.common.entity.SysRole">
+        select * from SysRole a,SysPermission b
+        where username = #{userName} and a.role = b.name
+    </select>
+
+    <select id="getPermsByRole" resultType="com.example.common.entity.SysRole">
+        select * from SysPermission where name = #{role}
+    </select>
+
+    <select id="getPerm" resultType="com.example.common.entity.SysPermission">
+        select * from SysPermission
+    </select>
+
+    <insert id="addPerm" parameterType="com.example.common.entity.SysPermission">
+        insert into SysPermission (name,url,permission) values (#{name},#{url},#{permission})
+    </insert>
+
+    <update id="updatePerm">
+        update SysPermission set name = #{sysPermission.name},url = #{sysPermission.url},permission=#{sysPermission.permission} where id = #{id}
+    </update>
+
+    <delete id="delPerm">
+        delete from SysPermission where id = #{id}
+    </delete>
+
+    <select id="getRole" resultType="com.example.common.entity.SysRole">
+        select * from SysRole
+    </select>
+
+    <insert id="addRole" parameterType="com.example.common.entity.SysRole">
+        insert into SysRole (role,description,username) values (#{role},#{description},#{username})
+    </insert>
+
+    <update id="updateRole">
+        update SysRole set role = #{role.role},description=#{role.description}where id = #{id}
+    </update>
+
+    <delete id="deleteRole">
+        delete from SysRole where id = #{id}
+    </delete>
+</mapper>

@@ -1,5 +1,6 @@
 	<!DOCTYPE html>
-	<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org">
+	<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org"
+		  xmlns:text-overflow="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
 	<head>
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -59,7 +60,7 @@
 					<div class="row fullscreen d-flex align-items-center justify-content-center">
 						<div class="banner-content col-lg-12">
 							<h1 class="text-white">
-								<span>1500+</span> Jobs posted last week				
+								上周有<span>1500+</span> 工作发布
 							</h1>	
 							<form action="search.html" class="serach-form-area">
 								<div class="row justify-content-center form-wrap">
@@ -218,7 +219,7 @@
 								<li><a href="#">Intern</a></li>
 								<li><a href="#">part Time</a></li>
 							</ul>
-							<div class="single-post d-flex flex-row">
+							<div class="single-post d-flex flex-row" th:each="obj:${hires}">
 								<div class="thumb">
 									<img src="./../fontimg/post.png" alt="">
 									<ul class="tags">
@@ -229,226 +230,30 @@
 											<a href="#">Media</a>
 										</li>
 										<li>
-											<a href="#">Design</a>					
+											<a href="#">Design</a>
 										</li>
 									</ul>
 								</div>
-								<div class="details">
+								<div class="details" style="width:500px">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
+											<a href="single.html"><h4 th:text="${obj.getWorkname()}">Creative Art Designer</h4></a>
+											<h6>Premium Labels Limited</h6>
 										</div>
 										<ul class="btns">
 											<li><a href="#">Apply</a></li>
 										</ul>
 									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
+									<div style="width:500px">
+										<p th:text="${obj.getDescription()}" text-overflow:ellipsis;>
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+										</p>
+									</div>
 									<h5>Job Nature: Full time</h5>
 									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
 									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
 								</div>
 							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="./../fontimg/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="./../fontimg/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>		
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="./../fontimg/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="./../fontimg/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="./../fontimg/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>															
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="./../fontimg/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>	
 							
 							<a class="text-uppercase loadmore-btn mx-auto d-block" href="category.html">Load More job Posts</a>
 
@@ -521,58 +326,6 @@
 									<li><a class="justify-content-between d-flex" href="category.html"><p>Accounting</p><span>17</span></a></li>
 								</ul>
 							</div>
-
-							<div class="single-slidebar">
-								<h4>Carrer Advice Blog</h4>
-								<div class="blog-list">
-									<div class="single-blog " style="background:#000 url(./../img/blog1.jpg);">
-										<a href="single.html"><h4>Home Audio Recording <br>
-										For Everyone</h4></a>
-										<div class="meta justify-content-between d-flex">
-											<p>
-												02 Hours ago
-											</p>
-											<p>
-												<span class="lnr lnr-heart"></span>
-												06
-												 <span class="lnr lnr-bubble"></span>
-												02
-											</p>
-										</div>
-									</div>
-									<div class="single-blog " style="background:#000 url(./../img/blog2.jpg);">
-										<a href="single.html"><h4>Home Audio Recording <br>
-										For Everyone</h4></a>
-										<div class="meta justify-content-between d-flex">
-											<p>
-												02 Hours ago
-											</p>
-											<p>
-												<span class="lnr lnr-heart"></span>
-												06
-												 <span class="lnr lnr-bubble"></span>
-												02
-											</p>
-										</div>
-									</div>
-									<div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-										<a href="single.html"><h4>Home Audio Recording <br>
-										For Everyone</h4></a>
-										<div class="meta justify-content-between d-flex">
-											<p>
-												02 Hours ago
-											</p>
-											<p>
-												<span class="lnr lnr-heart"></span>
-												06
-												 <span class="lnr lnr-bubble"></span>
-												02
-											</p>
-										</div>
-									</div>																		
-								</div>
-							</div>							
-
 						</div>
 					</div>
 				</div>	

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.common.mapper.StaticsDao" >
+    <select id="getUserOneMonthById" resultType="com.example.common.entity.Statics">
+        select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
+        from Workprocess,Hire
+        where Workprocess.userid = #{userId} and month(updatetime)=#{month} and state=#{state} and Workprocess.jobid = Hire.id
+        GROUP BY month(updatetime)
+    </select>
+
+    <select id="getUserOneYearById" resultType="com.example.common.entity.Statics">
+        select year(updatetime) as year,month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
+        from Workprocess,Hire
+        where userid = #{userId} and year(updatetime)=#{year} and state=#{state} and Workprocess.jobid = Hire.id
+        group by month(updatetime)
+    </select>
+
+    <select id="getCompanyOneMonthById" resultType="com.example.common.entity.Statics">
+        select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
+        from Workprocess,Hire
+        where Workprocess.companyid = #{companyid} and month(updatetime)=#{month} and Workprocess.jobid = Hire.id
+        GROUP BY month(updatetime)
+    </select>
+
+    <select id="getCompanyOneYearById" resultType="com.example.common.entity.Statics">
+        select count(*),year(updatetime) as year,month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
+        from Workprocess,Hire
+        where Workprocess.companyid = #{companyid} and year(updatetime)=#{year} and Workprocess.jobid = Hire.id
+        GROUP BY year(updatetime)
+    </select>
+
+    <select id="getCompanyIdByUserId" resultType="com.example.common.entity.Statics">
+        select companyid from Employee_Relationship where userid = #{userid}
+    </select>
+</mapper>

@@ -31,4 +31,5 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 mybatis:
-  type-aliases-package: com.example.common.mapper
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml

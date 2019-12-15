@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.common.mapper.SystemDao" >
+    <select id="selectSystem" resultType="com.example.common.entity.System">
+        select * from System
+    </select>
+
+    <update id="updateSystem" parameterType="com.example.common.entity.System">
+        update System
+        <set>
+         <if test="websiteTitle != null">websiteTitle=#{websiteTitle},</if>
+         <if test="websiteDescription != null">websiteDescription=#{websiteDescription},</if>
+         <if test="websiteUploadfile != null">websiteUploadfile=#{websiteUploadfile}</if>
+        </set>
+    </update>
+
+    <select id="getLogs" resultType="com.example.common.entity.SystemLog">
+        select * from SystemLog
+    </select>
+
+    <insert id="addLog" parameterType="com.example.common.entity.SystemLog">
+        insert into SystemLog (userName,content,ipAddress,loginTime) values (#{userName},#{content},#{ipAddress},#{loginTime})
+    </insert>
+</mapper>
