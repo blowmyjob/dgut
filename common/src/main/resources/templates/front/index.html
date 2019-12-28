@@ -40,10 +40,9 @@
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="index.html">首页</a></li>
+				          <li class="menu-active"><a href="/fore/">首页</a></li>
 				          <li><a href="about-us.html">关于我们</a></li>
 				          <li><a href="category.html">职位</a></li>
-				          <li><a href="price.html">Price</a></li>
 				          <li><a class="ticker-btn" href="#">注册</a></li>
 				          <li><a class="ticker-btn" href="#">登录</a></li>
 				        </ul>
@@ -241,7 +240,7 @@
 											<h6>Premium Labels Limited</h6>
 										</div>
 										<ul class="btns">
-											<li><a th:href="@{/teacherShowMember(class_id=${class.classId},class_name=${class.className})}}">Apply</a></li>
+											<li><a th:href="${obj.getWorkname()}">Apply</a></li>
 										</ul>
 									</div>
 									<div style="width:500px">

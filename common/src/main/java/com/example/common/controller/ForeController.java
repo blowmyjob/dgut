@@ -25,4 +25,11 @@ public class ForeController {
         model.addAttribute("hires",hires);
         return "front/index";
     }
+
+    @RequestMapping("/search")
+    public String search(Model model){
+        List<Hire>hires = workService.selectAllJob();
+        model.addAttribute("hires",hires);
+        return "front/search";
+    }
 }
