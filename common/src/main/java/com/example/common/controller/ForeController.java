@@ -19,7 +19,7 @@ public class ForeController {
     @Autowired
     private WorkService workService;
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String index(Model model){
         List<Hire>hires = workService.selectAllJob();
         model.addAttribute("hires",hires);
