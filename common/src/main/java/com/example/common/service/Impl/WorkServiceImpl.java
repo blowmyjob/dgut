@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WorkServiceImpl implements WorkService {
@@ -61,6 +62,11 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public void insertHire(Hire hire) {
         workDao.insertJob(hire);
+    }
+
+    @Override
+    public List<Hire> searchJob(Map<String, String> map) {
+        return workDao.searchJob(map);
     }
 
     @Override

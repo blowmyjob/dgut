@@ -48,4 +48,20 @@
     <select id="selectAllJob" resultType="com.example.common.entity.Hire">
         select * from Hire limit 0,6
     </select>
+
+    <select id="searchJob" resultType="com.example.common.entity.Hire">
+        select * from Hire
+        <where>
+            <if test="keyword != null">
+                 workname like '%${keyword}%'
+            </if>
+            <if test="location != null">
+                AND location = #{location}
+            </if>
+            <if test="category != null">
+                AND category = #{category}
+            </if>
+        </where>
+        order by endtime
+    </select>
 </mapper>

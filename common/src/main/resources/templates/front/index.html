@@ -61,26 +61,26 @@
 							<h1 class="text-white">
 								上周有<span>1500+</span> 工作发布
 							</h1>	
-							<form action="search.html" class="serach-form-area">
+							<form action="/fore/search" class="serach-form-area">
 								<div class="row justify-content-center form-wrap">
 									<div class="col-lg-4 form-cols">
-										<input type="text" class="form-control" name="search" placeholder="想要查找什么?">
+										<input type="text" class="form-control" name="keyword" placeholder="想要查找什么?">
 									</div>
 									<div class="col-lg-3 form-cols">
 										<div class="default-select" id="default-selects">
-											<select>
-												<option value="1">地区</option>
-												<option value="2">广州</option>
-												<option value="3">深圳</option>
-												<option value="4">上海</option>
-												<option value="5">北京</option>
+											<select name="area">
+												<option value="all">地区</option>
+												<option value="guangzhou">广州</option>
+												<option value="shenzhou">深圳</option>
+												<option value="shanghai">上海</option>
+												<option value="beijing">北京</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-lg-3 form-cols">
 										<div class="default-select" id="default-selects2">
-											<select>
-												<option value="1">所有种类</option>
+											<select name="category">
+												<option value="all">所有种类</option>
 												<option value="2">医学</option>
 												<option value="3">技术</option>
 												<option value="4">国企</option>
@@ -89,7 +89,7 @@
 										</div>										
 									</div>
 									<div class="col-lg-2 form-cols">
-									    <button type="button" class="btn btn-info">
+									    <button type="submit" class="btn btn-info">
 									      <span class="lnr lnr-magnifier"></span> Search
 									    </button>
 									</div>								

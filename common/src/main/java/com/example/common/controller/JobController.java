@@ -97,4 +97,12 @@ public class JobController {
         }
         return "500";
     }
+
+    @GetMapping("/apply/{id}/{companyid}")
+    @ResponseBody
+    public String apply(@PathVariable("id")String id,@PathVariable("companyid")String companyid, HttpServletRequest request){
+        WorkProcess workProcess = new WorkProcess();
+        String userId = (String)request.getSession().getAttribute("userid");
+        return "";
+    }
 }

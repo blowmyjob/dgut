@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -32,4 +33,6 @@ public interface WorkDao {
     public void insertJob(Hire hire);
 
     public List<Hire> selectAllJob();
+
+    public List<Hire> searchJob(Map<String,String>map);
 }

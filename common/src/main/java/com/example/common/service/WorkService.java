@@ -5,6 +5,7 @@ import com.example.common.entity.WorkProcess;
 import com.example.common.vo.WorkDetail;
 
 import java.util.List;
+import java.util.Map;
 
 public interface WorkService {
     public List<WorkProcess>getProcessByUserId(Integer id,String state);
@@ -26,4 +27,6 @@ public interface WorkService {
     public void insertHire(Hire hire);
 
     public List<Hire> selectAllJob();
+
+    public List<Hire> searchJob(Map<String,String> map);
 }
