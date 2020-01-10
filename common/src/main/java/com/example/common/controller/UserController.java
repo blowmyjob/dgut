@@ -83,6 +83,16 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/resigter")
+    public String toResigter(){
+        return "resigter";
+    }
+
+    @PostMapping("/resigter")
+    public String Resigter(HttpServletRequest request){
+        String userName = request.getParameter("userName");
+        return "1";
+    }
     @GetMapping("/updatepasswd")
     public String updatePassWd1(HttpServletRequest request,Model model){
         return "user/user-password-edit";
