@@ -105,6 +105,11 @@ public class UserController {
             user.setAvailable(false);
             user.setPassword(passWord);
             String roleName = request.getParameter("role");
+            if(roleName.equals("HR")){
+                user.setIdentify(identify.HR);
+            }else if(roleName.equals("USER")){
+                user.setIdentify(identify.USER);
+            }
             userService.addUser(user);
             SysRole role = new SysRole();
             role.setRole(roleName);

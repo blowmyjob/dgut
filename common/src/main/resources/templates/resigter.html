@@ -12,14 +12,14 @@
     <div class="container">
       <h2>Welcome</h2>
       <form class="form" id="form-article-add">
-          <input name="userName" type="text" placeholder="请输入用户名">
+          <input name="userName" type="text" id="userName" placeholder="请输入用户名">
           <select th:width="250px" placeholder="请选择用户角色" name="role">
             <option value="HR">招聘方</option>
             <option value="USER">应聘方</option>
           </select>
           <input name="passWord1" type="password" id="passsWord1" placeholder="请输入密码">
           <input name="passWord2" type="password" id="passsWord2" placeholder="请再输入密码">
-        <button type="submit" id="submitAdd">Resigter</button>
+          <button type="button" id="submitAdd">注册</button>
       </form>
     </div>
 
@@ -41,35 +41,39 @@
 </div>
 
 <script th:src="@{./lib/jquery/1.9.1/jquery.min.js}" type="text/javascript"></script>
-<script>
-  $(function() {
-    $("#submitAdd").on('click', function() {
-        var passwd1 = $("#passsWord1").val();
-        var passwd2 = $("#passsWord2").val();
-        if(passwd1 != passwd2){
-            alert("两次输入的密码不一致！");
-            return ;
-        }
-        $.ajax({
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "/resigter",//url
-            data: $('#form-article-add').serialize(),
-            success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result== 200) {
-                    alert("注册成功");
-                  window.location.replace("http://localhost:8763/fore");
+<script type="text/javascript" th:inline="javascript">
+  $("#submitAdd").click(function(){
+    var data = $("#form-article-add").serialize();
+    var userName = $("userName").val();
+    var password1 = $("password1").val();
+    var password2 = $("password2").val();
+    console.log("表单序列化=============="+data+" , "+userName);
+    if(userName == ""){
+      return;
+    }else if(password1 == '' || password2 == ''){
+      return;
+    }else if(password1 != password2){
+      return ;
+    }
+    $.ajax({
+      type:'post',
+      url:'resigter',
+      cache: false,
+      data:data,  //重点必须为一个变量如：data
+      dataType:'json',
+      success:function(data){
+        if(data == 200){
+          alert("注册成功！");
 
-                }else if(result == 201){
-                    alert("用户名已被注册，请重新换一个");
-                };
-            },
-            error : function() {
-                alert("异常！");
-            }
-        });
+        }else if(data == 201){
+          alert("已被注册！")
+        }
+      },
+      error:function(){
+        alert("请求失败")
+      }
     })
+
   })
 </script>
 <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#000000">
