@@ -1,10 +1,13 @@
 package com.example.common.controller;
 
 import com.example.common.entity.Resume;
+import com.example.common.entity.SysRole;
 import com.example.common.entity.SystemLog;
 import com.example.common.entity.User;
 import com.example.common.enums.Sex;
 import com.example.common.enums.identify;
+import com.example.common.service.PermService;
+import com.example.common.service.RoleService;
 import com.example.common.service.SystemService;
 import com.example.common.service.UserService;
 import org.apache.shiro.SecurityUtils;
@@ -30,6 +33,9 @@ public class UserController {
 
     @Autowired
     private SystemService systemService;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/login")
     public String toLogin(){
@@ -89,9 +95,25 @@ public class UserController {
     }
 
     @PostMapping("/resigter")
+    @ResponseBody
     public String Resigter(HttpServletRequest request){
         String userName = request.getParameter("userName");
-        return "1";
+        String passWord = request.getParameter("passWord1");
+        User user = new User();
+        if(userService.getUser(userName)==null){
+            user.setUsername(userName);
+            user.setAvailable(false);
+            user.setPassword(passWord);
+            String roleName = request.getParameter("role");
+            userService.addUser(user);
+            SysRole role = new SysRole();
+            role.setRole(roleName);
+            role.setUsername(userName);
+            roleService.addRole(role);
+            return "200";
+        }else{
+            return "201";
+        }
     }
     @GetMapping("/updatepasswd")
     public String updatePassWd1(HttpServletRequest request,Model model){
