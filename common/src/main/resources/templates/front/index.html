@@ -43,8 +43,10 @@
 				          <li class="menu-active"><a th:href="@{/fore/}">首页</a></li>
 				          <li><a href="about-us.html">关于我们</a></li>
 				          <li><a href="category.html">职位</a></li>
-				          <li><a class="ticker-btn" th:href="@{/resigter}">注册</a></li>
-				          <li><a class="ticker-btn" th:href="@{/}">登录</a></li>
+				          <li><a class="ticker-btn" th:href="@{/resigter}" th:if="${session.userid==null}">注册</a></li>
+				          <li><a class="ticker-btn" th:href="@{/}" th:if="${session.userid==null}">登录</a></li>
+						  <li><a class="ticker-btn" th:href="@{/}" th:if="${session.userid!=null}">我的</a></li>
+						  <li><a class="ticker-btn" th:href="@{/logout}" th:if="${session.userid!=null}">注销</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
@@ -240,7 +242,7 @@
 											<h6>Premium Labels Limited</h6>
 										</div>
 										<ul class="btns">
-											<li><a th:href="${obj.getWorkname()}">Apply</a></li>
+											<li><a th:href="@{/job/apply/{id}/{companyid}(id=${obj.getId()},companyid=${obj.getCompanyid()})}">Apply</a></li>
 										</ul>
 									</div>
 									<div style="width:500px">
@@ -347,6 +349,9 @@
 			<script th:src="@{./../fontjs/parallax.min.js}"></script>
 			<script th:src="@{./../fontjs/mail-script.js}"></script>
 			<script th:src="@{./../fontjs/main.js}"></script>
+		    <script>
+
+			</script>
 		</body>
 	</html>
 

@@ -100,13 +100,12 @@ public class JobController {
 
     @GetMapping("/apply/{id}/{companyid}")
     @ResponseBody
-    public String apply(@PathVariable("id")Integer id,@PathVariable("companyid")Integer companyid,@PathVariable("resumeId")Integer resumeId, HttpServletRequest request){
+    public String apply(@PathVariable("id")Integer id,@PathVariable("companyid")Integer companyid, HttpServletRequest request){
         WorkProcess workProcess = new WorkProcess();
         Integer userId = (Integer)request.getSession().getAttribute("userid");
         workProcess.setUserid(userId);
         workProcess.setJobid(id);
         workProcess.setCompanyid(companyid);
-        workProcess.setResumeid(resumeId);
         workService.insertProcess(workProcess);
 
         return "1";

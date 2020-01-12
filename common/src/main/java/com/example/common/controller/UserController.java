@@ -70,7 +70,7 @@ public class UserController {
             log.setUserName(token.getUsername());
             log.setIpAddress(request.getRemoteAddr());
             systemService.addLog(log);
-            return "redirect:/index";
+            return "redirect:/fore";
         } else {
             log.setContent("登陆失败");
             log.setLoginTime(new Timestamp(System.currentTimeMillis()));

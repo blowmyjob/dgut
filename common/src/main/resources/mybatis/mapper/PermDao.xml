@@ -6,15 +6,17 @@
         <result property = "role" column = "role" />
         <result property = "description" column = "description"/>
         <result property = "username" column = "username" />
-        <association property="syspermissions" javaType="com.example.common.entity.SysPermission">
-            <id property="id" column = "id" javaType="Integer" jdbcType="INTEGER"/>
+        <collection property="syspermissions" ofType="com.example.common.entity.SysPermission">
+            <id property="id" column = "id1" javaType="Integer" jdbcType="INTEGER"/>
             <result property="name" column = "name" javaType="String" jdbcType="VARCHAR"/>
             <result property="url" column = "url" javaType="String" jdbcType="VARCHAR"/>
             <result property="permission" column = "permission" javaType="String" jdbcType="VARCHAR"/>
-        </association>
+        </collection>
     </resultMap>
-    <select id="getRoles" resultType="com.example.common.entity.SysRole">
-        select * from SysRole a,SysPermission b
+    <select id="getRoles" resultMap="RoleMap">
+        select a.id as id,a.role as role, a.description as description,a.username as username,b.id as id1,
+               b.name as name,b.url as url,b.permission as permission
+        from SysRole a,SysPermission b
         where username = #{userName} and a.role = b.name
     </select>
 
