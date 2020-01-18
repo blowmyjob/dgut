@@ -114,7 +114,6 @@ public class JobController {
         workProcess.setJobid(id);
         workProcess.setCompanyid(companyid);
         workService.insertProcess(workProcess);
-
         return "1";
     }
 

@@ -9,6 +9,15 @@ public class Hire {
     private String companyname;
     private String salary;
     private String location;
+    private String requirements;
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
 
     public String getCompanyname() {
         return companyname;
