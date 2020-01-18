@@ -118,7 +118,7 @@
                         <p class="address"><span class="lnr lnr-database" th:text="${job.getSalary()}"></span></p>
                     </div>
                 </div>
-                <div class="single-post job-details">
+                <div class="single-post job-details" th:if="${job.getDescription()!=null}">
                     <h4 class="single-title">Whom we are looking for</h4>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
@@ -149,20 +149,11 @@
                     </ul>
                 </div>
                 <div class="single-post job-experience">
-                    <h4 class="single-title">Job Features & Overviews</h4>
-                    <ul>
-                        <li>
-                            <img th:src="@{./../../fontimg/pages/list.jpg}" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="single-post job-experience">
                     <h4 class="single-title">Education Requirements</h4>
                     <ul>
                         <li>
                             <img th:src="@{./../../fontimg/pages/list.jpg}" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
+                            <span th:if="{}"></span>
                         </li>
                     </ul>
                 </div>
