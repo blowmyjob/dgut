@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:text-overflow="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>招聘网站</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+	<!--
+    CSS
+    ============================================= -->
+	<link rel="stylesheet" th:href="@{./../../fontcss/linearicons.css}">
+	<link rel="stylesheet" th:href="@{./../../fontcss/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{./../../fontcss/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{./../../fontcss/magnific-popup.css}">
+	<link rel="stylesheet" th:href="@{./../../fontcss/nice-select.css}">
+	<link rel="stylesheet" th:href="@{./../../fontcss/animate.min.css}">
+	<link rel="stylesheet" th:href="@{./../../fontcss/owl.carousel.css}">
+	<link rel="stylesheet" th:href="@{./../../fontcss/main.css}">
+</head>
+<body>
+
+<header id="header">
+	<div class="container" id="home">
+		<div class="row align-items-center justify-content-between d-flex">
+			<div id="logo">
+				<a href="index.html"><img src="./../../fontimg/logo.png" alt="" title="" /></a>
+			</div>
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					<li class="menu-active"><a th:href="@{/fore/}">首页</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">职位</a></li>
+					<li><a class="ticker-btn" href="#">注册</a></li>
+					<li><a class="ticker-btn" th:href="@{/}">登录</a></li>
+				</ul>
+			</nav><!-- #nav-menu-container -->
+		</div>
+	</div>
+</header><!-- #header -->
+
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home" style="height: 60px">
+	<div class="overlay overlay-bg" ></div>
+	<div class="container">
+		<div class="row fullscreen d-flex align-items-center justify-content-center">
+			<div class="banner-content col-lg-12"></div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start features Area -->
+<section class="features-area">
+	<div class="container"></div>
+</section>
+<!-- End features Area -->
+
+<!-- Start feature-cat Area -->
+
+<!-- Start post Area -->
+<section class="post-area section-gap">
+	<div class="container">
+		<form id = "formSub">
+			<div class="row justify-content-center d-flex">
+				<div class="col-lg-8 post-list">
+					<div class="single-post d-flex flex-row">
+						<div class="thumb">
+							<img src="./../../fontimg/post.png" alt="">
+						</div>
+						<div class="details" style="width:500px">
+							<div class="title d-flex flex-row justify-content-between">
+								<div class="titles">
+									<a href="single.html"><h4 th:text="${job.getWorkname()}">Creative Art Designer</h4></a>
+									<h6>Premium Labels Limited</h6>
+								</div>
+								<ul class="btns">
+									<li><a th:href="@{/job/apply/{id}/{companyid}(id=${job.getWorkname()},companyid=${job.getCompanyid()})}">Apply</a></li>
+								</ul>
+							</div>
+							<div style="width:500px">
+								<p th:text="${job.getDescription()}" text-overflow:ellipsis;>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+								</p>
+							</div>
+							<h5>Job Nature: Full time</h5>
+							<p class="address" th:text="${job.getLocation()}"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+							<p class="address" th:text="${job.getSalary()}"><span class="lnr lnr-database"></span> 15k - 25k</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 sidebar">
+					<div class="single-slidebar">
+						<h4>工作简历</h4>
+						<ul class="cat-list" th:width="50px">
+							<li th:each="obj:${resumes}" class="justify-content-between d-flex"><input class="radio2" name ="resume" type="radio" th:value="${obj.getId()}"><label class="autocut" th:text="${obj.getFileName()}"></label></li>
+						</ul>
+					</div>
+
+					<div class="single-slidebar">
+						<h4>Top rated job posts</h4>
+						<div class="active-relatedjob-carusel">
+							<div class="single-rated">
+								<img class="img-fluid" src="./../../fontimg/r1.jpg" alt="">
+								<a href="single.html"><h4>Creative Art Designer</h4></a>
+								<h6>Premium Labels Limited</h6>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+								</p>
+								<h5>Job Nature: Full time</h5>
+								<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+								<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+								<a href="#" class="btns text-uppercase">Apply job</a>
+							</div>
+							<div class="single-rated">
+								<img class="img-fluid" src="./../../fontimg/r1.jpg" alt="">
+								<a href="single.html"><h4>Creative Art Designer</h4></a>
+								<h6>Premium Labels Limited</h6>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+								</p>
+								<h5>Job Nature: Full time</h5>
+								<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+								<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+								<a href="#" class="btns text-uppercase">Apply job</a>
+							</div>
+							<div class="single-rated">
+								<img class="img-fluid" src="./../../fontimg/r1.jpg" alt="">
+								<a href="single.html"><h4>Creative Art Designer</h4></a>
+								<h6>Premium Labels Limited</h6>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+								</p>
+								<h5>Job Nature: Full time</h5>
+								<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+								<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+								<a href="#" class="btns text-uppercase">Apply job</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="single-slidebar">
+						<h4>工作种类</h4>
+						<ul class="cat-list">
+							<li><a class="justify-content-between d-flex" href="category.html"><p>Technology</p><span>37</span></a></li>
+							<li><a class="justify-content-between d-flex" href="category.html"><p>Media & News</p><span>57</span></a></li>
+							<li><a class="justify-content-between d-flex" href="category.html"><p>Goverment</p><span>33</span></a></li>
+							<li><a class="justify-content-between d-flex" href="category.html"><p>Medical</p><span>36</span></a></li>
+							<li><a class="justify-content-between d-flex" href="category.html"><p>Restaurants</p><span>47</span></a></li>
+							<li><a class="justify-content-between d-flex" href="category.html"><p>Developer</p><span>27</span></a></li>
+							<li><a class="justify-content-between d-flex" href="category.html"><p>Accounting</p><span>17</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </form>
+	</div>
+</section>
+<!-- End post Area -->
+
+<!-- End calto-action Area -->
+<script th:src="@{./../../fontjs/vendor/jquery-2.2.4.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script th:src="@{./../../fontjs/vendor/bootstrap.min.js}"></script>
+
+<script th:src="@{./../../fontjs/easing.min.js}"></script>
+<script th:src="@{./../../fontjs/hoverIntent.js}"></script>
+<script th:src="@{./../../fontjs/superfish.min.js}"></script>
+<script th:src="@{./../../fontjs/jquery.ajaxchimp.min.js}"></script>
+<script th:src="@{./../../fontjs/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{./../../fontjs/owl.carousel.min.js}"></script>
+<script th:src="@{./../../fontjs/jquery.sticky.js}"></script>
+<script th:src="@{./../../fontjs/jquery.nice-select.min.js}"></script>
+<script th:src="@{./../../fontjs/parallax.min.js}"></script>
+<script th:src="@{./../../fontjs/mail-script.js}"></script>
+<script th:src="@{./../../fontjs/main.js}"></script>
+</body>
+</html>

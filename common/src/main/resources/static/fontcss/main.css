@@ -4151,7 +4151,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   border: none;
   background: #f9f9ff;
 }
-
+.autocut {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+  width:10px;
+  float: left;
+}
+radio2{
+  vertical-align:middle;
+  margin-top:-2px;
+  margin-bottom:1px;
+}
 /*
 ################
                End Blog Details  Page style

@@ -1,7 +1,9 @@
 package com.example.common.controller;
 
 import com.example.common.entity.Hire;
+import com.example.common.entity.Resume;
 import com.example.common.entity.WorkProcess;
+import com.example.common.service.UserService;
 import com.example.common.service.WorkService;
 import com.example.common.entity.WorkProcess;
 import com.example.common.service.WorkService;
@@ -12,13 +14,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/job")
 public class JobController {
     @Autowired
     private WorkService workService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/{state}")
     public String getWorkDetails(@PathVariable("state")String state, Model model, HttpServletRequest request){
@@ -109,5 +116,17 @@ public class JobController {
         workService.insertProcess(workProcess);
 
         return "1";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable("id")String id,Model model,HttpServletRequest request){
+        Map<String,String> map = new HashMap<>();
+        map.put("id",id);
+        String userName = (String)request.getSession().getAttribute("userName");
+        List<Hire> job = workService.searchJob(map);
+        List<Resume>resumes = userService.getResumes(userName);
+        model.addAttribute("job",job.get(0));
+        model.addAttribute("resumes",resumes);
+        return "front/jobdetail";
     }
 }

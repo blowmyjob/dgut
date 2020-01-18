@@ -242,7 +242,7 @@
 											<h6>Premium Labels Limited</h6>
 										</div>
 										<ul class="btns">
-											<li><a th:href="@{/job/apply/{id}/{companyid}(id=${obj.getId()},companyid=${obj.getCompanyid()})}">Apply</a></li>
+											<li><a th:href="@{/job/detail/{id}(id=${obj.getId()})}">Apply</a></li>
 										</ul>
 									</div>
 									<div style="width:500px">
@@ -349,9 +349,6 @@
 			<script th:src="@{./../fontjs/parallax.min.js}"></script>
 			<script th:src="@{./../fontjs/mail-script.js}"></script>
 			<script th:src="@{./../fontjs/main.js}"></script>
-		    <script>
-
-			</script>
 		</body>
 	</html>
 
