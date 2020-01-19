@@ -39,21 +39,13 @@
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-active"><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="category.html">Category</a></li>
-                    <li><a href="price.html">Price</a></li>
-                    <li><a href="blog-home.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="menu-has-children"><a href="">Pages</a>
-                        <ul>
-                            <li><a href="elements.html">elements</a></li>
-                            <li><a href="search.html">search</a></li>
-                            <li><a href="single.html">single</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="ticker-btn" th:href="@{/}">Signup</a></li>
-                    <li><a class="ticker-btn" th:href="@{/}">Login</a></li>
+                    <li class="menu-active"><a th:href="@{/fore/}">首页</a></li>
+                    <li><a href="about-us.html">关于我们</a></li>
+                    <li><a href="category.html">职位</a></li>
+                    <li><a class="ticker-btn" th:href="@{/resigter}" th:if="${session.userid==null}">注册</a></li>
+                    <li><a class="ticker-btn" th:href="@{/}" th:if="${session.userid==null}">登录</a></li>
+                    <li><a class="ticker-btn" th:href="@{/}" th:if="${session.userid!=null}">我的</a></li>
+                    <li><a class="ticker-btn" th:href="@{/logout}" th:if="${session.userid!=null}">注销</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
@@ -106,7 +98,7 @@
                             </div>
                             <ul class="btns">
                                 <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
+                                <li><a th:href="@{#}">Apply</a></li>
                             </ul>
                         </div>
                         <p>
@@ -120,24 +112,7 @@
                 </div>
                 <div class="single-post job-details" th:if="${job.getDescription()!=null}">
                     <h4 class="single-title">Whom we are looking for</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
-                        unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                        explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-                        qui dolorem ipsum quia dolor sit amet, consectetur.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
+                    <p th:text="${job.getDescription()}"></p>
                 </div>
                 <div class="single-post job-experience" th:if="${job.getRequirements()!=null}">
                     <h4 class="single-title">Experience Requirements</h4>
@@ -148,27 +123,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="single-post job-experience">
-                    <h4 class="single-title">Education Requirements</h4>
-                    <ul>
-                        <li>
-                            <img th:src="@{./../../fontimg/pages/list.jpg}" alt="">
-                            <span th:if="{}"></span>
-                        </li>
-                    </ul>
-                </div>
             </div>
             <div class="col-lg-4 sidebar">
                 <div class="single-slidebar">
                     <h4>Jobs by Location</h4>
                     <ul class="cat-list">
-                        <li><a class="justify-content-between d-flex" th:href="category.html"><p>New York</p><span>37</span></a></li>
-                        <li><a class="justify-content-between d-flex" th:href="category.html"><p>Park Montana</p><span>57</span></a></li>
-                        <li><a class="justify-content-between d-flex" th:href="category.html"><p>Atlanta</p><span>33</span></a></li>
-                        <li><a class="justify-content-between d-flex" th:href="category.html"><p>Arizona</p><span>36</span></a></li>
-                        <li><a class="justify-content-between d-flex" th:href="category.html"><p>Florida</p><span>47</span></a></li>
-                        <li><a class="justify-content-between d-flex" th:href="category.html"><p>Rocky Beach</p><span>27</span></a></li>
-                        <li><a class="justify-content-between d-flex" th:href="category.html"><p>Chicago</p><span>17</span></a></li>
+                        <li th:each="">
+                            <a class="justify-content-between d-flex" th:href="category.html"><p>New York</p><span>37</span></a>
+                        </li>
                     </ul>
                 </div>
 

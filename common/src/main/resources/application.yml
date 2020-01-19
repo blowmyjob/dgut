@@ -26,6 +26,9 @@ spring:
       maximum-pool-size: 10
       max-lifetime: 30000
       connection-test-query: select 1
+  devtools:
+    restart:
+      enabled: true
 eureka:
   client:
     serviceUrl:
@@ -33,3 +36,5 @@ eureka:
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+
+

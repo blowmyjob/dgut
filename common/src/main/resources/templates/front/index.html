@@ -263,13 +263,9 @@
 							<div class="single-slidebar">
 								<h4>工作分布地</h4>
 								<ul class="cat-list">
-									<li><a class="justify-content-between d-flex" href="category.html"><p>北京</p><span>37</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>上海</p><span>57</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>北京</p><span>33</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>北京</p><span>36</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>北京</p><span>47</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>北京</p><span>27</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>北京</p><span>17</span></a></li>
+									<li th:each="obj:${category2}" th:if="${category2 != null}">
+										<a class="justify-content-between d-flex" href="#"><p th:text="${obj.location}">北京</p><span th:text="${obj.count}">37</span></a>
+									</li>
 								</ul>
 							</div>
 
@@ -318,13 +314,9 @@
 							<div class="single-slidebar">
 								<h4>工作种类</h4>
 								<ul class="cat-list">
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Technology</p><span>37</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Media & News</p><span>57</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Goverment</p><span>33</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Medical</p><span>36</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Restaurants</p><span>47</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Developer</p><span>27</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Accounting</p><span>17</span></a></li>
+									<li th:each="obj1:${category1}" th:if="${category1 != null}">
+										<a class="justify-content-between d-flex" href="#"><p th:text="${obj1.category}">Technology</p><span th:text="${obj1.count}">37</span></a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -332,7 +324,22 @@
 				</div>	
 			</section>
 			<!-- End post Area -->
-
+			  <section class="callto-action-area section-gap">
+				  <div class="container">
+					  <div class="row d-flex justify-content-center">
+						  <div class="menu-content col-lg-9">
+							  <div class="title text-center">
+								  <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
+								  <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+									  exercitation.</p>
+								  <a class="primary-btn" href="#">I am a Candidate</a>
+								  <a class="primary-btn" href="#">We are an Employer</a>
+							  </div>
+						  </div>
+					  </div>
+				  </div>
+			  </section>
 			<!-- End calto-action Area -->
 			<script th:src="@{./../fontjs/vendor/jquery-2.2.4.min.js}"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

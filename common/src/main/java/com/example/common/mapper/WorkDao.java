@@ -2,6 +2,7 @@ package com.example.common.mapper;
 
 import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
+import com.example.common.vo.Category;
 import com.example.common.vo.WorkDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -35,4 +36,8 @@ public interface WorkDao {
     public List<Hire> selectAllJob();
 
     public List<Hire> searchJob(Map<String,String>map);
+
+    public List<Category>getCatesByCategory(Map<String,String>map);
+
+    public List<Category>getCatesByLocation(Map<String,String>map);
 }

@@ -6,6 +6,7 @@ import com.example.common.mapper.WorkDao;
 import com.example.common.entity.WorkProcess;
 import com.example.common.mapper.WorkDao;
 import com.example.common.service.WorkService;
+import com.example.common.vo.Category;
 import com.example.common.vo.WorkDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,5 +73,15 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public List<Hire> selectAllJob() {
         return workDao.selectAllJob();
+    }
+
+    @Override
+    public List<Category> getCatesByCategory(Map<String, String> map) {
+        return workDao.getCatesByCategory(map);
+    }
+
+    @Override
+    public List<Category> getCatesByLocation(Map<String, String> map) {
+        return workDao.getCatesByLocation(map);
     }
 }

@@ -2,6 +2,7 @@ package com.example.common.service;
 
 import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
+import com.example.common.vo.Category;
 import com.example.common.vo.WorkDetail;
 
 import java.util.List;
@@ -29,4 +30,8 @@ public interface WorkService {
     public List<Hire> selectAllJob();
 
     public List<Hire> searchJob(Map<String,String> map);
+
+    public List<Category>getCatesByCategory(Map<String,String>map);
+
+    public List<Category>getCatesByLocation(Map<String,String>map);
 }

@@ -62,6 +62,38 @@
                 AND category = #{category}
             </if>
         </where>
-        order by endtime
+        order by endtime limit 0 , 7
+    </select>
+
+    <select id="getCatesByCategory" resultType="com.example.common.vo.Category">
+        select count(*) as count,category from Hire
+        <where>
+            <if test="keyword != null">
+                workname like '%${keyword}%'
+            </if>
+            <if test="location != null">
+                AND location = #{location}
+            </if>
+            <if test="category != null">
+                AND category = #{category}
+            </if>
+        </where>
+        group by category
+    </select>
+
+    <select id="getCatesByLocation" resultType="com.example.common.vo.Category">
+        select count(*) as count,location from Hire
+        <where>
+            <if test="keyword != null">
+                workname like '%${keyword}%'
+            </if>
+            <if test="location != null">
+                AND location = #{location}
+            </if>
+            <if test="category != null">
+                AND category = #{category}
+            </if>
+        </where>
+        group by location limit 0 , 7
     </select>
 </mapper>
