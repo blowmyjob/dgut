@@ -29,7 +29,9 @@ public class ForeController {
         List<Hire>hires = workService.selectAllJob();
         List<Category>categories1 = workService.getCatesByCategory(new HashMap<>());
         List<Category>categories2 = workService.getCatesByLocation(new HashMap<>());
+        Integer count = workService.getJobLastWeek();
         model.addAttribute("hires",hires);
+        model.addAttribute("count",count);
         model.addAttribute("category1",categories1);
         model.addAttribute("category2",categories2);
         return "front/index";

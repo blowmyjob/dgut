@@ -84,4 +84,9 @@ public class WorkServiceImpl implements WorkService {
     public List<Category> getCatesByLocation(Map<String, String> map) {
         return workDao.getCatesByLocation(map);
     }
+
+    @Override
+    public Integer getJobLastWeek() {
+        return workDao.getJobLastWeek();
+    }
 }

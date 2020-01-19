@@ -42,7 +42,7 @@
     </update>
 
     <insert id="insertJob" parameterType="com.example.common.entity.Hire">
-        insert into Hire (workname,description,hirecount,companyid) values(#{workname},#{description},#{hirecount},#{companyid})
+        insert into Hire (workname,description,hirecount,companyid,createtime) values(#{workname},#{description},#{hirecount},#{companyid},now())
     </insert>
 
     <select id="selectAllJob" resultType="com.example.common.entity.Hire">
@@ -95,5 +95,9 @@
             </if>
         </where>
         group by location limit 0 , 7
+    </select>
+
+    <select id="getJobLastWeek" resultType="java.lang.Integer">
+        select count(*) from Hire where YEARWEEK(date_format(createtime,'%Y-%m-%d')) = YEARWEEK(now())-1
     </select>
 </mapper>

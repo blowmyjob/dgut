@@ -34,4 +34,6 @@ public interface WorkService {
     public List<Category>getCatesByCategory(Map<String,String>map);
 
     public List<Category>getCatesByLocation(Map<String,String>map);
+
+    public Integer getJobLastWeek();
 }
