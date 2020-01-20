@@ -4151,17 +4151,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   border: none;
   background: #f9f9ff;
 }
-.autocut {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: clip;
-  width:10px;
+.radio2 {
+  vertical-align: middle;
   float: left;
 }
-radio2{
+.autocut {
   vertical-align:middle;
-  margin-top:-2px;
-  margin-bottom:1px;
+  display: inline-block;
+  font-size: 14px;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 /*
 ################

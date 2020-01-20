@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,14 +46,18 @@ public class JobController {
     @PostMapping("/hr/发布")
     public String createJob(HttpServletRequest request,Model model){
         Integer userId = (Integer) request.getSession().getAttribute("userid");
-        String hireName = request.getParameter("");
-        Integer hireCount = Integer.valueOf(request.getParameter(""));
-        String hireDescription = request.getParameter("");
+        String hireName = request.getParameter("hireName");
+        Integer hireCount = Integer.valueOf(request.getParameter("hireCount"));
+        String hireDescription = request.getParameter("hireDescription");
+        String hireEndTime = request.getParameter("hireEndTime");
         Integer companyId = workService.findCompanyIdByUserId(userId);
         Hire hire = new Hire();
         hire.setWorkname(hireName);hire.setHirecount(hireCount);
+        hire.setCreatetime(new Timestamp(System.currentTimeMillis()));
         hire.setDescription(hireDescription);hire.setCompanyid(companyId);
-        return "";
+        hire.setEndtime(Timestamp.valueOf(hireEndTime));
+        workService.insertHire(hire);
+        return "200";
     }
 
     @GetMapping("/hr/{state}")
@@ -115,17 +121,5 @@ public class JobController {
         workProcess.setCompanyid(companyid);
         workService.insertProcess(workProcess);
         return "1";
-    }
-
-    @GetMapping("/detail/{id}")
-    public String detail(@PathVariable("id")String id,Model model,HttpServletRequest request){
-        Map<String,String> map = new HashMap<>();
-        map.put("id",id);
-        String userName = (String)request.getSession().getAttribute("userName");
-        List<Hire> job = workService.searchJob(map);
-        List<Resume>resumes = userService.getResumes(userName);
-        model.addAttribute("job",job.get(0));
-        model.addAttribute("resumes",resumes);
-        return "front/jobdetail";
     }
 }

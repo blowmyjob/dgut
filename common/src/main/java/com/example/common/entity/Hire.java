@@ -1,5 +1,7 @@
 package com.example.common.entity;
 
+import java.sql.Timestamp;
+
 public class Hire {
     private int id;
     private String workname;
@@ -10,22 +12,9 @@ public class Hire {
     private String salary;
     private String location;
     private String requirements;
-
-    public String getRequirements() {
-        return requirements;
-    }
-
-    public void setRequirements(String requirements) {
-        this.requirements = requirements;
-    }
-
-    public String getCompanyname() {
-        return companyname;
-    }
-
-    public void setCompanyname(String companyname) {
-        this.companyname = companyname;
-    }
+    private String category;
+    private Timestamp createtime;
+    private Timestamp endtime;
 
     public int getId() {
         return id;
@@ -67,6 +56,14 @@ public class Hire {
         this.companyid = companyid;
     }
 
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
+    }
+
     public String getSalary() {
         return salary;
     }
@@ -81,5 +78,37 @@ public class Hire {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Timestamp getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Timestamp createtime) {
+        this.createtime = createtime;
+    }
+
+    public Timestamp getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(Timestamp endtime) {
+        this.endtime = endtime;
     }
 }
