@@ -23,8 +23,6 @@
           <label for="sdkappid">SDKAPPID:&nbsp;</label>
           <input class="form-control" id="sdkappid" type="text" value="1400037025" />
         </div>
-          <label for="userId">用户名:</label>
-          <!-- <select class="form-control" id="userId"></select> -->
           <input class="form-control" id="userId" type="text" th:value="${userid}" />
           <label for="room-number">房间号:</label>
           <input class="form-control" id="roomid" type="text" value="" placeholder="请输入数字(1~999999999)" maxlength="9" minlength="1" onkeyup="value=value.replace(/[^\d]/g,'')">
