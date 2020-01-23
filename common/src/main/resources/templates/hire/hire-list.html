@@ -54,7 +54,6 @@
 						<a th:if="${obj.getState()=='待查看'}" title="待沟通" href="javascript:;" onclick="user_next(this,'待沟通')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
 						<a th:if="${obj.getState()=='待沟通'}" title="待面试" href="javascript:;" onclick="user_next(this,'待面试')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
 						<a th:if="${obj.getState()=='待面试'}" title="待入职" href="javascript:;" onclick="user_next(this,'待入职')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
-						<a th:if="${obj.getState()=='待入职'}" title="待入职" href="javascript:;" onclick="user_next(this,'准入职')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
                     </td>
 				</tr>
 			</tbody>

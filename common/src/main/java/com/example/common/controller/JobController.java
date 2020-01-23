@@ -44,12 +44,13 @@ public class JobController {
     }
 
     @PostMapping("/hr/发布")
+    @ResponseBody
     public String createJob(HttpServletRequest request,Model model){
         Integer userId = (Integer) request.getSession().getAttribute("userid");
         String hireName = request.getParameter("hireName");
         Integer hireCount = Integer.valueOf(request.getParameter("hireCount"));
         String hireDescription = request.getParameter("hireDescription");
-        String hireEndTime = request.getParameter("hireEndTime");
+        String hireEndTime = request.getParameter("hireEndTime");hireEndTime+=" 00:00:00";
         Integer companyId = workService.findCompanyIdByUserId(userId);
         Hire hire = new Hire();
         hire.setWorkname(hireName);hire.setHirecount(hireCount);

@@ -42,7 +42,7 @@
     </update>
 
     <insert id="insertJob" parameterType="com.example.common.entity.Hire">
-        insert into Hire (workname,description,hirecount,companyid,createtime) values(#{workname},#{description},#{hirecount},#{companyid},now())
+        insert into Hire (workname,description,hirecount,companyid,createtime,endtime) values(#{workname},#{description},#{hirecount},#{companyid},now(),#{endtime})
     </insert>
 
     <select id="selectAllJob" resultType="com.example.common.entity.Hire">
