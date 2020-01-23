@@ -13,6 +13,16 @@ public class WorkDetail {
     private String jobdescription;
     private String state;
     private Timestamp updatetime;
+    private int resumeid;
+
+
+    public int getResumeid() {
+        return resumeid;
+    }
+
+    public void setResumeid(int resumeid) {
+        this.resumeid = resumeid;
+    }
 
     public String getJobname() {
         return jobname;

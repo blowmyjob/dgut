@@ -30,6 +30,11 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
+    public List<SystemLog> getExceptionLogs() {
+        return systemDao.getExceptionLogs();
+    }
+
+    @Override
     public List<SystemLog> getLogs() {
         return systemDao.getLogs();
     }

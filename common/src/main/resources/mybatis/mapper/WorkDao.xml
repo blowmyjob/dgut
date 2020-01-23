@@ -22,7 +22,7 @@
     </select>
 
     <select id="getWorkDetails" resultType="com.example.common.vo.WorkDetail">
-        select DISTINCT Workprocess.id as id,userid,jobid,state,username as name,Hire.description,companyname,Hire.description as jobdescription,updatetime
+        select DISTINCT Workprocess.id as id,userid,jobid,state,username as name,Workprocess.resumeid, Hire.description,companyname,Hire.description as jobdescription,updatetime
         from Company,Workprocess ,User,Hire
         where Company.id=Workprocess.Companyid and Workprocess.userid=#{userid} and Workprocess.state=#{state} and Hire.companyid=Workprocess.companyid and User.id = Workprocess.userid
     </select>

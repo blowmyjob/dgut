@@ -30,4 +30,10 @@ public interface SystemService {
      * @param log
      */
     void addLog(SystemLog log);
+
+    /**
+     * 获取异常日志
+     * @return
+     */
+    List<SystemLog> getExceptionLogs();
 }

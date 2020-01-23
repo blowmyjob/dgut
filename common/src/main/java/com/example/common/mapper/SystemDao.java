@@ -19,4 +19,6 @@ public interface SystemDao {
     public List<SystemLog> getLogs();
 
     public void addLog(SystemLog log);
+
+    public List<SystemLog> getExceptionLogs();
 }

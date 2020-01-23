@@ -49,7 +49,8 @@
 					<td th:text="${obj.getState()}"></td>
 					<td th:text="${obj.getUpdatetime()}"></td>
 					<td class="f-14">
-                        <a title="删除" href="javascript:;" onclick="user_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                        <a title="删除" href="javascript:;" onclick="user_del(this)" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e2;</i></a>
+						<a title="查看" href="javascript:;" onclick="user_select(this)" class="ml-5" style="text-decoration:none" th:name="${obj.getResumeid()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
                     </td>
 				</tr>
 			</tbody>
@@ -78,7 +79,7 @@ $('.table-sort').dataTable({
 
 /*用户-删除*/
 function user_del(obj){
-    var id = $(obj).attr("id");
+    var id = $(obj).attr("name");
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
@@ -93,8 +94,14 @@ function user_del(obj){
 			error:function(data) {
 				console.log(data.msg);
 			},
-		});		
+		});
 	});
+}
+
+function user_select(obj) {
+	var id = $(obj).attr("name");
+	var url = '/'+id;
+	layer_show('查看简历',url,'',500);
 }
 </script>
 </body>

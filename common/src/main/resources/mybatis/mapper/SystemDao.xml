@@ -15,10 +15,13 @@
     </update>
 
     <select id="getLogs" resultType="com.example.common.entity.SystemLog">
-        select * from SystemLog
+        select * from SystemLog where state = 'work'
     </select>
 
+    <select id="getExceptionLogs" resultType="com.example.common.entity.SystemLog">
+        select * from SystemLog where state = 'exception'
+    </select>
     <insert id="addLog" parameterType="com.example.common.entity.SystemLog">
-        insert into SystemLog (userName,content,ipAddress,loginTime) values (#{userName},#{content},#{ipAddress},#{loginTime})
+        insert into SystemLog (userName,content,ipAddress,loginTime,state) values (#{userName},#{content},#{ipAddress},#{loginTime},'work')
     </insert>
 </mapper>

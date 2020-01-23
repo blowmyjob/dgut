@@ -50,10 +50,10 @@ public class SystemController {
 
     @GetMapping("/exception-log")
     public String exceptionLog(Model model){
-        List<SystemLog>logs = systemService.getLogs();
+        List<SystemLog>logs = systemService.getExceptionLogs();
         model.addAttribute("logs",logs);
         model.addAttribute("count",logs.size());
-        return "system/exception-log";
+        return "system/system-log";
     }
 
     @GetMapping("/user/logs/{username}")
