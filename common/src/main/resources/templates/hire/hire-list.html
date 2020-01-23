@@ -1,5 +1,4 @@
-﻿<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+﻿<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -35,8 +34,9 @@
 					<th width="80">ID</th>
 					<th width="100">用户名</th>
 					<th width="90">职位</th>
-					<th width="90">状态</th>
-					<th width="90">更新时间</th>
+					<th width="60">状态</th>
+					<th width="90">简历</th>
+					<th width="60">更新时间</th>
 					<th width="60">操作</th>
 				</tr>
 			</thead>
@@ -47,10 +47,14 @@
 					<td th:text="${obj.getName()}"></td>
 					<td th:text="${obj.getJobname()}"></td>
 					<td th:text="${obj.getState()}"></td>
+					<td><a th:href="${obj.getAddress()}" target="_blank">链接</a></td>
 					<td th:text="${obj.getUpdatetime()}"></td>
 					<td class="f-14">
-                        <a title="删除" href="javascript:;" onclick="user_del(this)" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e2;</i></a>
-						<a title="查看" href="javascript:;" onclick="user_select(this)" class="ml-5" style="text-decoration:none" th:name="${obj.getResumeid()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
+                        <a title="不适合" href="javascript:;" onclick="user_del(this)" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e2;</i></a>
+						<a th:if="${obj.getState()=='待查看'}" title="待沟通" href="javascript:;" onclick="user_next(this,'待沟通')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
+						<a th:if="${obj.getState()=='待沟通'}" title="待面试" href="javascript:;" onclick="user_next(this,'待面试')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
+						<a th:if="${obj.getState()=='待面试'}" title="待入职" href="javascript:;" onclick="user_next(this,'待入职')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
+						<a th:if="${obj.getState()=='待入职'}" title="待入职" href="javascript:;" onclick="user_next(this,'准入职')" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e0;</i></a>
                     </td>
 				</tr>
 			</tbody>
@@ -73,22 +77,22 @@ $('.table-sort').dataTable({
 	"bStateSave": true,//状态保存
 	"aoColumnDefs": [
 	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-	  {"orderable":false,"aTargets":[0,6]}// 制定列不参与排序
+	  {"orderable":false,"aTargets":[0,3,4,5,6]}// 制定列不参与排序
 	]
 });
 
 /*用户-删除*/
 function user_del(obj){
     var id = $(obj).attr("name");
-	layer.confirm('确认要删除吗？',function(index){
+	layer.confirm('确认要修改吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '/job/'+id,
+			url: '/job/hr/不合适/'+id,
 			dataType: 'json',
 			success: function(data){
 				if(data == 200) {
 					$(obj).parents("tr").remove();
-					layer.msg('已删除!', {icon: 1, time: 1000});
+					layer.msg('已修改!', {icon: 1, time: 1000});
 				}
 			},
 			error:function(data) {
@@ -98,10 +102,25 @@ function user_del(obj){
 	});
 }
 
-function user_select(obj) {
+/*用户-待面试*/
+function user_next(obj,state){
 	var id = $(obj).attr("name");
-	var url = '/'+id;
-	layer_show('查看简历',url,'',500);
+	layer.confirm('确认要修改吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '/job/hr/'+state+'/'+id,
+			dataType: 'json',
+			success: function(data){
+				if(data == 200) {
+					$(obj).parents("tr").remove();
+					layer.msg('已修改!', {icon: 1, time: 1000});
+				}
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});
+	});
 }
 </script>
 </body>

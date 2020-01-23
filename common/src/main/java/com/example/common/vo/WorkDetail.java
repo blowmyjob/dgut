@@ -14,7 +14,15 @@ public class WorkDetail {
     private String state;
     private Timestamp updatetime;
     private int resumeid;
+    private String address;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public int getResumeid() {
         return resumeid;

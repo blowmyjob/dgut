@@ -77,10 +77,9 @@ public class JobController {
 
     @PostMapping("/hr/{state}/{id}")
     @ResponseBody
-    public String updateState(@PathVariable("state")String state,@PathVariable("id")String id,HttpServletRequest request,Model model){
+    public String updateState(@PathVariable("state")String state,@PathVariable("id")String id){
         try{
-            String newState = request.getParameter("newState");
-            workService.updateProcess(newState,Integer.valueOf(id));
+            workService.updateProcess(state,Integer.valueOf(id));
             return "200";
         }catch (Exception e){
             e.printStackTrace();
