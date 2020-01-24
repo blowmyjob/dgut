@@ -71,7 +71,9 @@
 <!-- End banner Area -->
 
 <!-- Start post Area -->
-<form>
+<form id="form-article-add">
+    <input type="hidden" name="companyid" th:value="${job.getCompanyid()}" />
+    <input type="hidden" name="id" th:value="${job.getId()}">
     <section class="post-area section-gap">
         <div class="container">
             <div class="row justify-content-center d-flex">
@@ -98,8 +100,7 @@
                                     <h6>Premium Labels Limited</h6>
                                 </div>
                                 <ul class="btns">
-                                    <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                    <li><a th:href="@{#}">Apply</a></li>
+                                    <li><a href="javascript:void(0);" onclick="apply()">Apply</a></li>
                                 </ul>
                             </div>
                             <p>
@@ -295,5 +296,26 @@
 <script th:src="@{./../../fontjs/parallax.min.js}"></script>
 <script th:src="@{./../../fontjs/mail-script.js}"></script>
 <script th:src="@{./../../fontjs/main.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+   function apply() {
+       $.ajax({
+           type:'post',
+           url:'/job/apply',
+           cache: false,
+           data:$("#form-article-add").serialize(),  //重点必须为一个变量如：data
+           dataType:'json',
+           success:function(data){
+               if(data == 200){
+                   alert("投递成功！");
+               }else {
+                   alert("投递失败！")
+               }
+           },
+           error:function(){
+               alert("请求失败")
+           }
+       })
+   }
+</script>
 </body>
 </html>

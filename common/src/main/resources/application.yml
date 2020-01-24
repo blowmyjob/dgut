@@ -17,7 +17,7 @@ spring:
       content-type: text/html
     suffix: .html
   datasource:
-    url: jdbc:mysql://120.79.223.58:3306/test1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://120.79.223.58:3306/test1?serverTimezone=CTT&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: Dgut240938
     driver-class-name: com.mysql.jdbc.Driver

@@ -46,19 +46,24 @@ public class JobController {
     @PostMapping("/hr/发布")
     @ResponseBody
     public String createJob(HttpServletRequest request,Model model){
-        Integer userId = (Integer) request.getSession().getAttribute("userid");
-        String hireName = request.getParameter("hireName");
-        Integer hireCount = Integer.valueOf(request.getParameter("hireCount"));
-        String hireDescription = request.getParameter("hireDescription");
-        String hireEndTime = request.getParameter("hireEndTime");hireEndTime+=" 00:00:00";
-        Integer companyId = workService.findCompanyIdByUserId(userId);
-        Hire hire = new Hire();
-        hire.setWorkname(hireName);hire.setHirecount(hireCount);
-        hire.setCreatetime(new Timestamp(System.currentTimeMillis()));
-        hire.setDescription(hireDescription);hire.setCompanyid(companyId);
-        hire.setEndtime(Timestamp.valueOf(hireEndTime));
-        workService.insertHire(hire);
-        return "200";
+        try{
+            Integer userId = (Integer) request.getSession().getAttribute("userid");
+            String hireName = request.getParameter("hireName");
+            Integer hireCount = Integer.valueOf(request.getParameter("hireCount"));
+            String hireDescription = request.getParameter("hireDescription");
+            String hireEndTime = request.getParameter("hireEndTime");hireEndTime+=" 00:00:00";
+            Integer companyId = workService.findCompanyIdByUserId(userId);
+            Hire hire = new Hire();
+            hire.setWorkname(hireName);hire.setHirecount(hireCount);
+            hire.setCreatetime(new Timestamp(System.currentTimeMillis()));
+            hire.setDescription(hireDescription);hire.setCompanyid(companyId);
+            hire.setEndtime(Timestamp.valueOf(hireEndTime));
+            workService.insertHire(hire);
+            return "200";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "500";
+        }
     }
 
     @GetMapping("/hr/{state}")
@@ -111,15 +116,22 @@ public class JobController {
         return "500";
     }
 
-    @GetMapping("/apply/{id}/{companyid}")
+    @PostMapping("/apply")
     @ResponseBody
-    public String apply(@PathVariable("id")Integer id,@PathVariable("companyid")Integer companyid, HttpServletRequest request){
-        WorkProcess workProcess = new WorkProcess();
-        Integer userId = (Integer)request.getSession().getAttribute("userid");
-        workProcess.setUserid(userId);
-        workProcess.setJobid(id);
-        workProcess.setCompanyid(companyid);
-        workService.insertProcess(workProcess);
-        return "1";
+    public String apply(HttpServletRequest request){
+        try{
+            WorkProcess workProcess = new WorkProcess();
+            Integer userId = (Integer)request.getSession().getAttribute("userid");
+            Integer id = Integer.valueOf(request.getParameter("id"));
+            Integer companyid = Integer.valueOf(request.getParameter("companyid"));
+            workProcess.setUserid(userId);
+            workProcess.setJobid(id);
+            workProcess.setCompanyid(companyid);
+            workService.insertProcess(workProcess);
+            return "200";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "500";
+        }
     }
 }
