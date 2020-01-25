@@ -179,7 +179,7 @@ public class UserController {
             return "";
         }else {
             Subject subject = SecurityUtils.getSubject();
-            String path = request.getSession().getServletContext().getRealPath("/upload/");
+            String path = "D:/Path/";
             if (!file.isEmpty()) {
                 Resume resume = new Resume();
                 if (!file.isEmpty()) {
@@ -189,12 +189,14 @@ public class UserController {
                             filepath.mkdirs();
                         String savePath = path + file.getOriginalFilename();
                         resume.setUserName(String.valueOf(subject.getSession().getAttribute("userName")));
-                        resume.setAddress(savePath);
+                        resume.setAddress("/Path/"+path);
                         resume.setFileName(file.getOriginalFilename());
                         file.transferTo(new File(savePath));
                         userService.addResume(resume);
+                        return "200";
                     } catch (Exception e) {
                         e.printStackTrace();
+                        return "500";
                     }
                 }
             }
@@ -207,17 +209,6 @@ public class UserController {
     @ResponseBody
     public String delResume(@PathVariable(value = "id")String id){
         userService.deleteResume(Integer.valueOf(id));
-        return "1";
+        return "200";
     }
-
-
-    /*********面试进度**********/
-    @RequestMapping("/user/process/{id}/{state}")
-    public String selectProcess(@PathVariable("id")String id, @PathVariable("state")String state, Model model){
-        Integer userId = Integer.valueOf(id);
-
-        return "";
-    }
-
-
 }

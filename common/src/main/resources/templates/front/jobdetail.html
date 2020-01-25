@@ -71,9 +71,10 @@
 <!-- End banner Area -->
 
 <!-- Start post Area -->
-<form id="form-article-add">
+<form id="form-article-add" name="form-add">
     <input type="hidden" name="companyid" th:value="${job.getCompanyid()}" />
     <input type="hidden" name="id" th:value="${job.getId()}">
+    <input type="hidden" name="userid" th:value="${session.userid}" id="userid">
     <section class="post-area section-gap">
         <div class="container">
             <div class="row justify-content-center d-flex">
@@ -298,6 +299,16 @@
 <script th:src="@{./../../fontjs/main.js}"></script>
 <script type="text/javascript" th:inline="javascript">
    function apply() {
+       var resume = $("input:radio:checked").val();
+       var userid = $("#userid").val();
+       if(userid==null||userid==''){
+           alert("请先登录！");
+           return ;
+       }
+       if(resume==null || resume==''){
+           alert("请选择简历！");
+           return;
+       }
        $.ajax({
            type:'post',
            url:'/job/apply',
@@ -307,12 +318,13 @@
            success:function(data){
                if(data == 200){
                    alert("投递成功！");
+
                }else {
                    alert("投递失败！")
                }
            },
            error:function(){
-               alert("请求失败")
+               alert("请先登录！")
            }
        })
    }
