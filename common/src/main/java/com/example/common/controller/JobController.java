@@ -7,6 +7,7 @@ import com.example.common.service.UserService;
 import com.example.common.service.WorkService;
 import com.example.common.entity.WorkProcess;
 import com.example.common.service.WorkService;
+import com.example.common.tools.Result;
 import com.example.common.vo.WorkDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,10 +60,10 @@ public class JobController {
             hire.setDescription(hireDescription);hire.setCompanyid(companyId);
             hire.setEndtime(Timestamp.valueOf(hireEndTime));
             workService.insertHire(hire);
-            return "200";
+            return Result.SUCCESS;
         }catch(Exception e){
             e.printStackTrace();
-            return "500";
+            return Result.ERROR;
         }
     }
 
@@ -78,7 +79,7 @@ public class JobController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "500";
+        return Result.ERROR;
     }
 
     @PostMapping("/hr/{state}/{id}")
@@ -86,11 +87,11 @@ public class JobController {
     public String updateState(@PathVariable("state")String state,@PathVariable("id")String id){
         try{
             workService.updateProcess(state,Integer.valueOf(id));
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
+            return Result.ERROR;
         }
-        return "500";
     }
 
     @DeleteMapping("/user/{id}")
@@ -98,22 +99,22 @@ public class JobController {
     public String delWorkprocessByUser(@PathVariable("id")String id){
         try{
             workService.delProcessByUser(Integer.valueOf(id));
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
+            return Result.ERROR;
         }
-        return "500";
     }
     @DeleteMapping("/{id}")
     @ResponseBody
     public String delWorkprocessByHr(@PathVariable("id")String id){
         try {
             workService.delProcessByHr(Integer.valueOf(id));
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
+            return Result.ERROR;
         }
-        return "500";
     }
 
     @PostMapping("/apply")
@@ -128,10 +129,10 @@ public class JobController {
             workProcess.setJobid(id);
             workProcess.setCompanyid(companyid);
             workService.insertProcess(workProcess);
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
-            return "500";
+            return Result.ERROR;
         }
     }
 }

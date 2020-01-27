@@ -10,6 +10,7 @@ import com.example.common.service.PermService;
 import com.example.common.service.RoleService;
 import com.example.common.service.SystemService;
 import com.example.common.service.UserService;
+import com.example.common.tools.Result;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -115,9 +116,9 @@ public class UserController {
             role.setRole(roleName);
             role.setUsername(userName);
             roleService.addRole(role);
-            return "200";
+            return Result.SUCCESS;
         }else{
-            return "201";
+            return Result.EXITS;
         }
     }
     @GetMapping("/updatepasswd")
@@ -128,11 +129,16 @@ public class UserController {
     @PostMapping("/updatepasswd")
     @ResponseBody
     public String updatePassWd2(HttpServletRequest request){
-        Subject subject = SecurityUtils.getSubject();
-        String passwd=request.getParameter("new-password2");
-        String userName =String.valueOf(subject.getSession().getAttribute("userName"));
-        userService.updatePawd(passwd,userName);
-        return "200";
+        try{
+            Subject subject = SecurityUtils.getSubject();
+            String passwd=request.getParameter("new-password2");
+            String userName =String.valueOf(subject.getSession().getAttribute("userName"));
+            userService.updatePawd(passwd,userName);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
     @GetMapping("/updateuser")
     public String updateUser1(HttpServletRequest request,Model model){
@@ -145,16 +151,21 @@ public class UserController {
     @PostMapping("/updateuser")
     @ResponseBody
     public String updateUser2(HttpServletRequest request,Model model){
-        Integer userId = Integer.valueOf(request.getParameter("userId"));
-        String userName = request.getParameter("userName");
-        String sex = request.getParameter("sex");
-        User user = new User();
-        user.setUsername(userName); user.setId(userId); user.setSex(Sex.valueOf(sex));
-        userService.updateUser(user);
-        user = userService.getUser(userName);
-        request.getSession().setAttribute("userName",user.getUsername());
-        model.addAttribute("user",user);
-        return "200";
+        try{
+            Integer userId = Integer.valueOf(request.getParameter("userId"));
+            String userName = request.getParameter("userName");
+            String sex = request.getParameter("sex");
+            User user = new User();
+            user.setUsername(userName); user.setId(userId); user.setSex(Sex.valueOf(sex));
+            userService.updateUser(user);
+            user = userService.getUser(userName);
+            request.getSession().setAttribute("userName",user.getUsername());
+            model.addAttribute("user",user);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
     @GetMapping("/user-resume")
@@ -176,7 +187,7 @@ public class UserController {
     @ResponseBody
     public String addResume(@RequestParam("Resume") MultipartFile file,HttpServletRequest request){
         if(file.isEmpty()){
-            return "";
+            return Result.EMPTY;
         }else {
             Subject subject = SecurityUtils.getSubject();
             String path = "D:/Path/";
@@ -193,22 +204,22 @@ public class UserController {
                         resume.setFileName(file.getOriginalFilename());
                         file.transferTo(new File(savePath));
                         userService.addResume(resume);
-                        return "200";
+                        return Result.SUCCESS;
                     } catch (Exception e) {
                         e.printStackTrace();
-                        return "500";
+                        return Result.ERROR;
                     }
                 }
             }
             System.out.println(file.getOriginalFilename());
+            return Result.ERROR;
         }
-        return "200";
     }
 
     @DeleteMapping("/resume/{id}")
     @ResponseBody
     public String delResume(@PathVariable(value = "id")String id){
         userService.deleteResume(Integer.valueOf(id));
-        return "200";
+        return Result.SUCCESS;
     }
 }

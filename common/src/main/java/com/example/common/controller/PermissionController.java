@@ -6,6 +6,7 @@ import com.example.common.entity.User;
 import com.example.common.service.PermService;
 import com.example.common.service.RoleService;
 import com.example.common.service.UserService;
+import com.example.common.tools.Result;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,7 +64,7 @@ public class PermissionController {
         Integer userId = Integer.valueOf(id);
         try{
             userService.delUser(userId);
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -146,7 +147,7 @@ public class PermissionController {
         try{
             Integer userId = Integer.valueOf(id);
             userService.delUser(userId);
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -174,7 +175,7 @@ public class PermissionController {
         Integer userId = Integer.valueOf(id);
         try {
             userService.delUser(userId);
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
             return "500";
@@ -187,7 +188,7 @@ public class PermissionController {
         Integer userId = Integer.valueOf(id);
         try{
             userService.checkUser(userId);
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -200,7 +201,7 @@ public class PermissionController {
         Integer userId = Integer.valueOf(id);
         try{
             userService.stopUser(userId);
-            return "200";
+            return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
         }
