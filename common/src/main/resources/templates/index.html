@@ -33,15 +33,13 @@
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 		<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 			<ul class="cl">
-				<li>超级管理员</li>
+				<li th:text="${session.userName}"></li>
 				<li class="dropDown dropDown_hover">
-					<a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<a href="#" class="dropDown_A" th:text="${session.userName}"><i class="Hui-iconfont">&#xe6d5;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
-						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
 						<li><a href="/logout">退出</a></li>
 				</ul>
 			</li>
-				<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
 				<li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
 						<li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
@@ -66,6 +64,7 @@
 					<li><a data-href="/updateuser" data-title="修改个人信息" href="javascript:void(0)">修改个人信息</a></li>
 					<li><a data-href="/updatepasswd" data-title="修改密码" href="javascript:void(0)">修改密码</a></li>
 					<li><a data-href="/user-resume" data-title="个人简历" href="javascript:void(0)">个人简历</a></li>
+					<li><a data-href="/user-resume" data-title="账户注销" href="javascript:void(0)">个人注销</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -73,9 +72,8 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/users" data-title="会员列表" href="javascript:;">会员列表</a></li>
-					<li><a data-href="member-del.html"  data-title="删除的会员" href="javascript:;">删除的会员</a></li>
-					<li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
+					<li><a data-href="/User" data-title="用户列表" href="javascript:void(0)">用户列表</a></li>
+					<li><a data-href="/User/selectDel"  data-title="删除的会员" href="javascript:;">删除的会员</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -83,7 +81,6 @@
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/User" data-title="用户管理" href="javascript:void(0)">用户管理</a></li>
 					<li><a data-href="/Manager" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 			</ul>
 		</dd>
@@ -105,7 +102,7 @@
 				<ul>
 					<li><a data-href="/job/hr/发布"  data-title="发布" href="javascript:void(0)">发布</a></li>
 					<li><a data-href="/job/hr/待查看" data-title="待查看" href="javascript:void(0)">待查看</a></li>
-					<li><a data-href="/job/hr/待沟通" data-title="待沟通" href="javascript:void(0)">待查看</a></li>
+					<li><a data-href="/job/hr/待沟通" data-title="待沟通" href="javascript:void(0)">待沟通</a></li>
 					<li><a data-href="/job/hr/不合适" data-title="不合适" href="javascript:void(0)">不合适</a></li>
 					<li><a data-href="/job/hr/待面试" data-title="待面试" href="javascript:void(0)">待面试</a></li>
 					<li><a data-href="/job/hr/待入职" data-title="待入职" href="javascript:void(0)">待入职</a></li>

@@ -5,6 +5,7 @@ import com.example.common.entity.SysRole;
 import com.example.common.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
     /**
@@ -102,4 +103,15 @@ public interface UserService {
      * @param userId
      */
     void stopUser(Integer userId);
+
+    /**
+     * 查找某一类型的用户
+     */
+    List<User>selectUserByType(Map<String,String>map);
+
+    /**
+     * 批量删除用户
+     * @param ids
+     */
+    void delUsers(List<Integer>ids);
 }

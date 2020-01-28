@@ -20,6 +20,7 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/job")
@@ -85,8 +86,13 @@ public class JobController {
     @PostMapping("/hr/{state}/{id}")
     @ResponseBody
     public String updateState(@PathVariable("state")String state,@PathVariable("id")String id){
+        Integer roomId = null;
         try{
-            workService.updateProcess(state,Integer.valueOf(id));
+            if(state.equals("待面试")){
+                Random random = new Random();
+                roomId = random.nextInt(1000)%(1001);
+            }
+            workService.updateProcess(state,roomId,Integer.valueOf(id));
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();

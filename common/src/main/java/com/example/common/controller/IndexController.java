@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -22,7 +23,7 @@ public class IndexController {
     private SystemService systemService;
 
     @RequestMapping("/index")
-    public String index( ){
+    public String index(){
         System system = systemService.selectSystem();
         SystemUtils.setSystem(system);
         return "index";

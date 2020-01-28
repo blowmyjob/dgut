@@ -11,7 +11,7 @@ import java.util.Map;
 public interface WorkService {
     public List<WorkProcess>getProcessByUserId(Integer id,String state);
 
-    public void updateProcess(String state,Integer id);
+    public void updateProcess(String state,Integer roomId,Integer id);
 
     public void insertProcess(WorkProcess workProcess);
 

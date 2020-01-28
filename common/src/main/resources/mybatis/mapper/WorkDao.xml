@@ -6,7 +6,16 @@
     </select>
 
     <update id="updateProcess">
-        update Workprocess set state = #{state} where id = #{id}
+        update Workprocess
+            <set>
+                <if test="state != null">
+                   state = #{state},
+                </if>
+                <if test="roomId != null">
+                   roomid = #{roomId}
+                </if>
+            </set>
+         where id = #{id}
     </update>
 
     <insert id="insertProcess">

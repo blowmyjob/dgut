@@ -5,18 +5,20 @@ import com.example.common.entity.User;
 import com.example.common.enums.Sex;
 import com.example.common.enums.identify;
 import com.example.common.service.UserService;
+import com.example.common.tools.Result;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ManagerController {
@@ -70,4 +72,32 @@ public class ManagerController {
         return "user/admin-role-edit";
     }
 
+    @GetMapping("/User/selectDel")
+    public String selectUserByDelete(Model model){
+        Map<String,String>map = new HashMap();
+        map.put("isdel","true");
+        List<User>users = userService.selectUserByType(map);
+        model.addAttribute("users",users);
+        model.addAttribute("size",users.size());
+        return "user/user-list";
+    }
+
+
+    @PostMapping("/User/userDel")
+    @ResponseBody
+    public String userdel(String checkList){
+        try{
+            System.out.println("==>"+checkList);
+            String[] strs = checkList.split(",");
+            List<Integer> ids = new ArrayList<>();
+            for(String str:strs){
+                ids.add(Integer.parseInt(str));
+            }
+            userService.delUsers(ids);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
+    }
 }

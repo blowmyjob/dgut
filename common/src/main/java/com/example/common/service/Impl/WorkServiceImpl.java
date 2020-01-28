@@ -25,8 +25,8 @@ public class WorkServiceImpl implements WorkService {
     }
 
     @Override
-    public void updateProcess(String state,Integer id) {
-        workDao.updateProcess(state,id);
+    public void updateProcess(String state,Integer roomId,Integer id) {
+        workDao.updateProcess(state,roomId,id);
     }
 
 

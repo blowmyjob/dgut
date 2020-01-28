@@ -26,6 +26,8 @@
           <set>
               <if test="username != null">username = #{username}, </if>
               <if test="sex != null">sex = #{sex} </if>
+              <if test="available != null">available = #{available}</if>
+              <if test="isdel != null">isdel = #{isdel}</if>
           </set>
         where id= #{id}
     </update>
@@ -66,4 +68,34 @@
     <select id="getManagers" resultType="com.example.common.entity.User">
         select * from User where identify = 'ADMIN'
     </select>
+
+    <select id="selectUserByType" resultType="com.example.common.entity.User">
+        select *  from User
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="username != null">
+                and username = #{username}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+            <if test="identify != null">
+               and identity = #{identity}
+            </if>
+            <if test="available != null">
+                and available = #{available}
+            </if>
+            <if test="isdel != null"></if>
+                and isdel = #{isdel}
+        </where>
+    </select>
+
+    <delete id="delUsers" parameterType="list">
+        delete from User where id in
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

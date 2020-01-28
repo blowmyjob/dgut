@@ -9,6 +9,7 @@ import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -93,4 +94,16 @@ public interface UserDao {
      */
     public List<User> getManagers();
 
+    /**
+     * 根据类型查找用户
+     * @param map
+     * @return
+     */
+    public List<User> selectUserByType(Map<String,String>map);
+
+    /**
+     * 批量删除用户
+     * @param ids
+     */
+    public void delUsers(List<Integer>ids);
 }

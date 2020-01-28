@@ -45,7 +45,7 @@
 			</thead>
 			<tbody>
 			<tr class="text-c" th:each="obj:${managers}">
-				<td><input type="checkbox" th:value="${obj.getId()}" name="id"></td>
+				<td><input type="checkbox" th:value="${obj.getId()}" name="checkId" id="checkId"></td>
 				<td th:text="${obj.getId()}"></td>
 				<td th:text="${obj.getUsername()}">admin</td>
 				<td th:text="${obj.getIdentify()}">13000000000</td>
@@ -165,6 +165,36 @@ function admin_start(obj){
 		});
 	});
 }
+	function datadel() {
+		var checkNum = $("input[name='checkId']:checked").length;
+
+		if(checkNum==0){
+			layer.msg('至少选择一项!', {icon: 6,time:1000});
+			return;
+		}
+
+		if(confirm("确定要删除吗？")){
+			var checkList = new Array();
+			$("input[name='checkId']:checked").each(function () {
+				checkList.push($(this).val())
+			});
+			$.ajax({
+				url:"/User/userDel",
+				type:"post",
+				data:{
+					checkList:checkList.toString()
+				},
+				datatype:"json",
+				success:function (data) {
+					layer.msg('删除成功!', {icon: 6,time:1000});
+					location.reload();
+				},
+				error:function (msg) {
+					layer.msg('删除失败!', {icon: 6,time:1000});
+				}
+			})
+		}
+	}
 </script>
 </body>
 </html>

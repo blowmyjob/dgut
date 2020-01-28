@@ -36,5 +36,9 @@ eureka:
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
-
-
+logging:
+  level:
+    com:
+      example:
+        common:
+          mapper: debug

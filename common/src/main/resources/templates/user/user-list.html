@@ -12,11 +12,11 @@
 	<script type="text/javascript" th:src="@{./lib/html5shiv.js}"></script>
 	<script type="text/javascript" th:src="@{./lib/respond.min.js}"></script>
 	<![endif]-->
-	<link rel="stylesheet" type="text/css" th:href="@{../h-ui/css/H-ui.min.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{./h-ui.admin/css/H-ui.admin.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{./lib/Hui-iconfont/1.0.8/iconfont.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{./h-ui.admin/skin/default/skin.css}" id="skin" />
-	<link rel="stylesheet" type="text/css" th:href="@{./h-ui.admin/css/style.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{./../h-ui/css/H-ui.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{./../h-ui.admin/css/H-ui.admin.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{./../lib/Hui-iconfont/1.0.8/iconfont.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{./../h-ui.admin/skin/default/skin.css}" id="skin" />
+	<link rel="stylesheet" type="text/css" th:href="@{./../h-ui.admin/css/style.css}" />
 	<!--[if IE 6]>
 	<script type="text/javascript" th:src="@{./lib/DD_belatedPNG_0.0.8a-min.js}" ></script>
 	<script>DD_belatedPNG.fix('*');</script>
@@ -41,7 +41,7 @@
 			</thead>
 			<tbody>
 			<tr class="text-c" th:each="obj:${users}">
-                <td><input type="checkbox" th:value="${obj.getId()}" name="id"></td>
+                <td><input type="checkbox" th:value="${obj.getId()}" name="checkId" id="checkId"></td>
 				<td th:text="${obj.getId()}"></td>
 				<td th:text="${obj.getUsername()}">admin</td>
 				<td th:text="${obj.getIdentify()}">13000000000</td>
@@ -60,15 +60,15 @@
 	</div>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" th:src="@{./lib/jquery/1.9.1/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{./lib/layer/2.4/layer.js}"></script>
-<script type="text/javascript" th:src="@{./h-ui/js/H-ui.min.js}"></script>
-<script type="text/javascript" th:src="@{./h-ui.admin/js/H-ui.admin.js}"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" th:src="@{./../lib/jquery/1.9.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{./../lib/layer/2.4/layer.js}"></script>
+<script type="text/javascript" th:src="@{./../h-ui/js/H-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{./../h-ui.admin/js/H-ui.admin.js}"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" th:src="@{./lib/My97DatePicker/4.8/WdatePicker.js}"></script>
-<script type="text/javascript" th:src="@{./lib/datatables/1.10.0/jquery.dataTables.min.js}"></script>
-<script type="text/javascript" th:src="@{./lib/laypage/1.2/laypage.js}"></script>
+<script type="text/javascript" th:src="@{./../lib/My97DatePicker/4.8/WdatePicker.js}"></script>
+<script type="text/javascript" th:src="@{./../lib/datatables/1.10.0/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{./../lib/laypage/1.2/laypage.js}"></script>
 <script type="text/javascript" th:inline="none">
 	$('.table-sort').dataTable({
 		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
@@ -163,6 +163,40 @@
 				},
 			});
 		});
+	}
+
+	/**
+	 * 批量删除
+	 */
+	function datadel() {
+		var checkNum = $("input[name='checkId']:checked").length;
+
+		if(checkNum==0){
+			layer.msg('至少选择一项!', {icon: 6,time:1000});
+			return;
+		}
+
+		if(confirm("确定要删除吗？")){
+			var checkList = new Array();
+			$("input[name='checkId']:checked").each(function () {
+				checkList.push($(this).val())
+			});
+			$.ajax({
+				url:"/User/userDel",
+				type:"post",
+				data:{
+					checkList:checkList.toString()
+				},
+				datatype:"json",
+				success:function (data) {
+					layer.msg('删除成功!', {icon: 6,time:1000});
+					location.reload();
+				},
+				error:function (msg) {
+					layer.msg('删除失败!', {icon: 6,time:1000});
+				}
+			})
+		}
 	}
 </script>
 </body>
