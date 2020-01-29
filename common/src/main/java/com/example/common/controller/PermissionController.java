@@ -150,8 +150,8 @@ public class PermissionController {
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
+            return Result.ERROR;
         }
-        return "500";
     }
 
     /**
@@ -163,8 +163,13 @@ public class PermissionController {
     @PostMapping("/user/check/{id}")
     @ResponseBody
     public String checkUser(@PathVariable("id")String id){
-        userService.checkUser(Integer.valueOf(id));
-        return "1";
+        try {
+            userService.checkUser(Integer.valueOf(id));
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
 

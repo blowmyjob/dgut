@@ -110,6 +110,8 @@ public class UserController {
                 user.setIdentify(identify.HR);
             }else if(roleName.equals("USER")){
                 user.setIdentify(identify.USER);
+            }else if(roleName.equals("ADMIN")){
+                user.setIdentify(identify.ADMIN);
             }
             userService.addUser(user);
             SysRole role = new SysRole();
