@@ -15,7 +15,7 @@ public interface RoleService {
      * 添加角色
      * @param role
      */
-    public void addRole(SysRole role);
+    public void addRole(SysRole role,List<Integer>list);
 
     /**
      * 删除角色
@@ -36,4 +36,11 @@ public interface RoleService {
      * @return
      */
     public SysRole getRoleById(Integer id);
+
+    /**
+     * 修改角色的权限
+     * @param permission
+     * @param id
+     */
+    public void updateRolePerm(List<Integer>permission,Integer id);
 }

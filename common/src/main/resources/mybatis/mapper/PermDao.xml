@@ -44,7 +44,7 @@
         select * from SysRole
     </select>
 
-    <insert id="addRole" parameterType="com.example.common.entity.SysRole">
+    <insert id="addRole" parameterType="com.example.common.entity.SysRole" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into SysRole (role,description,username) values (#{role},#{description},#{username})
     </insert>
 
@@ -56,7 +56,18 @@
         delete from SysRole where id = #{id}
     </delete>
 
+    <delete id="delRolePerm">
+        delete from Role_Permission where role_id = #{id}
+    </delete>
+
     <select id="getRoleById">
         select * from SysRole where id = #{id}
     </select>
+
+    <insert id="addRolePerm">
+        insert into Role_Permission(permission_id,role_id) values
+        <foreach collection="lists" item="emp" separator=",">
+            (#{emp},#{id})
+        </foreach>
+    </insert>
 </mapper>

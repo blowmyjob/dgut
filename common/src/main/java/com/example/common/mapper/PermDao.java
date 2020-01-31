@@ -24,11 +24,15 @@ public interface PermDao {
 
     public List<SysRole> getRole();
 
-    public void addRole(SysRole role);
+    public Integer addRole(SysRole role);
 
     public void updateRole(@Param(value = "role") SysRole role,@Param(value = "id") Integer id);
 
     public void deleteRole(Integer id);
 
     public SysRole getRoleById(Integer id);
+
+    public void addRolePerm(@Param("lists")List<Integer>lists,@Param("id") Integer id);
+
+    public void delRolePerm(Integer id);
 }

@@ -5,6 +5,7 @@ import com.example.common.mapper.PermDao;
 import com.example.common.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,8 +20,12 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addRole(SysRole role) {
+    @Transactional
+    public void addRole(SysRole role,List<Integer>list) {
         permDao.addRole(role);
+        if(role.getId()!=null){
+            permDao.addRolePerm(list,role.getId());
+        }
     }
 
     @Override
@@ -36,5 +41,12 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public SysRole getRoleById(Integer id) {
         return permDao.getRoleById(id);
+    }
+
+    @Override
+    @Transactional
+    public void updateRolePerm(List<Integer> permission, Integer id) {
+        permDao.addRolePerm(permission,id);
+        permDao.delRolePerm(id);
     }
 }

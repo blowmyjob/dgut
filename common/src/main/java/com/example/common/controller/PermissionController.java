@@ -10,11 +10,14 @@ import com.example.common.tools.Result;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -45,17 +48,32 @@ public class PermissionController {
     }
 
     @RequiresPermissions("userInfo:role")
-    @GetMapping("/user/toEditRole")
+    @GetMapping("/user/toEditRole/{id}")
     public String toEditRole(@PathVariable("id")Integer id, Model model){
+        List<SysPermission>sysPermissions = permService.seePerm();
         model.addAttribute("id",id);
+        model.addAttribute("sysPermissions",sysPermissions);
         return "user/admin-role-edit";
     }
 
-
-    @RequestMapping("/user/editRole/{id}")
-    public String editRole(@PathVariable("id")Integer id, Model model){
-        SysRole role = roleService.getRoleById(id);
-        return "user/admin-role-edit";
+    @PostMapping("/Role/edit")
+    @ResponseBody
+    public String EditRole(HttpServletRequest request){
+        try{
+            Integer id = Integer.valueOf(request.getParameter("id"));
+            String roleName = request.getParameter("roleName");
+            String description = request.getParameter("description");
+            String []permissions = request.getParameterValues("permission");
+            List<Integer>permission = new ArrayList<>();
+            for(String temp : permissions){
+                permission.add(Integer.valueOf(temp));
+            }
+            roleService.updateRolePerm(permission,id);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
     @DeleteMapping("/Role/{id}")
@@ -72,15 +90,32 @@ public class PermissionController {
     }
 
     @GetMapping("/Role/add")
-    public String toAdd(){
+    public String toAdd(Model model){
+        List<SysPermission>sysPermissions = permService.seePerm();
+        model.addAttribute("sysPermissions",sysPermissions);
         return "user/admin-role-add";
     }
 
-    @PostMapping("/Role/add1")
+    @PostMapping("/Role/add")
     @ResponseBody
+    @Transactional
     public String addRole(HttpServletRequest request){
-        String roleName = request.getParameter("roleName");
-        return Result.SUCCESS;
+        try{
+            String roleName = request.getParameter("roleName");
+            String description = request.getParameter("description");
+            String []permissions = request.getParameterValues("permission");
+            List<Integer>permission = new ArrayList<>();
+            for(String temp : permissions){
+                permission.add(Integer.valueOf(temp));
+            }
+            SysRole role = new SysRole();
+            role.setRole(roleName); role.setDescription(description);
+            roleService.addRole(role,permission);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
     /*************权限模块**************/
     /**
@@ -96,16 +131,31 @@ public class PermissionController {
         return "user/admin-permission";
     }
 
+
     /**
      * 添加权限
-     * @param id
-     * @param permId
      * @return
      */
-    @RequiresPermissions("userPerm:add")
-    @PostMapping("/user/addPerm/{permId}/{id}")
-    public String addPerm(String permId,String id){
-        return "1";
+    @GetMapping("/user/addPerm")
+    public String toAddPerm(){
+        return "user/admin-permission-add";
+    }
+
+    @PostMapping("/user/addPerm")
+    @ResponseBody
+    public String addPerm(HttpServletRequest request){
+        try{
+            String permName = request.getParameter("permName");
+            String url = request.getParameter("url");
+            String permission = request.getParameter("permission");
+            SysPermission sysPermission = new SysPermission();
+            sysPermission.setName(permName); sysPermission.setPermission(permission); sysPermission.setUrl(url);
+            permService.addPerm(sysPermission);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
     /**

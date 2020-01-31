@@ -39,7 +39,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">备注：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="description">
+				<input type="text" class="input-text" value="" placeholder="" id="description" name="description">
 			</div>
 		</div>
 		<div class="row cl">
@@ -47,33 +47,15 @@
 			<div class="formControls col-xs-8 col-sm-9">
 				<dl class="permission-list">
 					<dt>
-						<label>
-							<input type="checkbox" value="" name="user-Character-0" id="user-Character-1">
-							用户中心</label>
+						<label><input type="checkbox" value="" name="user-Character-0" id="user-Character-1">权限管理</label>
 					</dt>
 					<dd>
 						<dl class="cl permission-list2">
 							<dt>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0" id="user-Character-1-0">
-									用户管理</label>
+								<label class=""><input type="checkbox" value="" name="user-Character-1-0" id="user-Character-1-0">全部权限</label>
 							</dt>
 							<dd>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-0">
-									添加</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-1">
-									修改</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-2">
-									删除</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-3">
-									查看</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-4">
-									审核</label>
+								<label class="" th:each="obj:${sysPermissions}"><input type="checkbox" th:value="${obj.getId()}" name="permission" id="user-Character-1-0-0" th:text="${obj.getName()}"></label>
 							</dd>
 						</dl>
 					</dd>
@@ -129,9 +111,24 @@ $(function(){
 		focusCleanup:true,
 		success:"valid",
 		submitHandler:function(form){
-			$(form).ajaxSubmit();
-			var index = parent.layer.getFrameIndex(window.name);
-			parent.layer.close(index);
+			$(form).ajaxSubmit({
+				type: 'POST', // 提交方式 get/post
+				url: '/Role/add', // 需要提交的 url
+				success: function(data) { // data 保存提交后返回的数据，一般为 json 数据
+					if(data == "200"){
+						layer.msg('success!',{icon:1,time:1000});
+						var index = parent.layer.getFrameIndex(window.name);
+						parent.layer.close(index);
+					}else if(data == "500"){
+						layer.msg('fail!',{icon:1,time:1000});
+						var index = parent.layer.getFrameIndex(window.name);
+						parent.layer.close(index);
+					}
+				},
+				error: function(XmlHttpRequest, textStatus, errorThrown){
+					layer.msg('error!',{icon:1,time:1000});
+				}
+			});
 		}
 	});
 });

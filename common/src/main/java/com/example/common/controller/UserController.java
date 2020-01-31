@@ -117,7 +117,7 @@ public class UserController {
             SysRole role = new SysRole();
             role.setRole(roleName);
             role.setUsername(userName);
-            roleService.addRole(role);
+            //roleService.addRole(role);
             return Result.SUCCESS;
         }else{
             return Result.EXITS;
