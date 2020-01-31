@@ -68,6 +68,9 @@ public class PermissionController {
             for(String temp : permissions){
                 permission.add(Integer.valueOf(temp));
             }
+            SysRole role = new SysRole();
+            role.setRole(roleName); role.setDescription(description);
+            roleService.updateRole(id,role);
             roleService.updateRolePerm(permission,id);
             return Result.SUCCESS;
         }catch (Exception e){

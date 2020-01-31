@@ -46,7 +46,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional
     public void updateRolePerm(List<Integer> permission, Integer id) {
-        permDao.addRolePerm(permission,id);
         permDao.delRolePerm(id);
+        permDao.addRolePerm(permission,id);
     }
 }
