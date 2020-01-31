@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -44,18 +45,17 @@ public class PermissionController {
     }
 
     @RequiresPermissions("userInfo:role")
-    @RequestMapping("/user/toEditRole")
-    public String toEditRole(){
-        return "/user/admin-role-edit";
+    @GetMapping("/user/toEditRole")
+    public String toEditRole(@PathVariable("id")Integer id, Model model){
+        model.addAttribute("id",id);
+        return "user/admin-role-edit";
     }
 
-    @RequestMapping("/user/editRole")
-    public String editRole(HttpServletRequest request){
-        Integer roleId = Integer.valueOf(request.getParameter(""));
-        String roleName = request.getParameter("");
-        String roleValue = request.getParameter("");
-        SysRole role = new SysRole();
-        return "";
+
+    @RequestMapping("/user/editRole/{id}")
+    public String editRole(@PathVariable("id")Integer id, Model model){
+        SysRole role = roleService.getRoleById(id);
+        return "user/admin-role-edit";
     }
 
     @DeleteMapping("/Role/{id}")
@@ -67,10 +67,21 @@ public class PermissionController {
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
+            return Result.ERROR;
         }
-        return "500";
     }
 
+    @GetMapping("/Role/add")
+    public String toAdd(){
+        return "user/admin-role-add";
+    }
+
+    @PostMapping("/Role/add1")
+    @ResponseBody
+    public String addRole(HttpServletRequest request){
+        String roleName = request.getParameter("roleName");
+        return Result.SUCCESS;
+    }
     /*************权限模块**************/
     /**
      * 查看权限
@@ -183,7 +194,7 @@ public class PermissionController {
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
-            return "500";
+            return Result.ERROR;
         }
     }
 
@@ -196,8 +207,8 @@ public class PermissionController {
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
+            return Result.ERROR;
         }
-        return "500";
     }
 
     @RequestMapping("/admin/stop/{id}")
@@ -209,8 +220,7 @@ public class PermissionController {
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
+            return Result.ERROR;
         }
-        return "500";
     }
-
 }

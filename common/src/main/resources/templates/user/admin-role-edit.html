@@ -1,3 +1,4 @@
+<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -6,66 +7,118 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="Bookmark" th:href="@{../../favicon.ico}" >
-    <link rel="Shortcut Icon" th:href="@{../../favicon.ico}" />
+    <link rel="Bookmark" th:href="@{/favicon.ico}" >
     <!--[if lt IE 9]>
-    <script type="text/javascript" th:src="@{../../lib/html5shiv.js}"></script>
-    <script type="text/javascript" th:src="@{../../lib/respond.min.js}"></script>
+    <script type="text/javascript" th:src="@{./../lib/html5shiv.js}"></script>
+    <script type="text/javascript" th:src="@{./../lib/respond.min.js}"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" th:href="@{../../h-ui/css/H-ui.min.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{../../h-ui.admin/css/H-ui.admin.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{../../lib/Hui-iconfont/1.0.8/iconfont.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{../../h-ui.admin/skin/default/skin.css}" id="skin" />
-    <link rel="stylesheet" type="text/css" th:href="@{../../h-ui.admin/css/style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{./../h-ui/css/H-ui.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{./../h-ui.admin/css/H-ui.admin.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{./../lib/Hui-iconfont/1.0.8/iconfont.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{./../h-ui.admin/skin/default/skin.css}" id="skin" />
+    <link rel="stylesheet" type="text/css" th:href="@{./../h-ui.admin/css/style.css}" />
     <!--[if IE 6]>
-    <script type="text/javascript" th:src="@{../../lib/DD_belatedPNG_0.0.8a-min.js}" ></script>
+    <script type="text/javascript" th:src="@{./../lib/DD_belatedPNG_0.0.8a-min.js}" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
-    <title>管理员修改</title>
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>新建网站角色 - 管理员管理 - H-ui.admin v3.1</title>
+    <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+    <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
-<div class="page-container">
-    <form class="form form-horizontal">
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-admin-role-add">
+        <input type="hidden" name="id" th:value="${id}">
         <div class="row cl">
-            <div> <input type="hidden" th:value="${user.id}" name="userId" /></div>
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
-            <div class="formControls col-xs-8 col-sm-4">
-                <input disabled="disabled" type="text" class="input-text" th:value="${user.username}" placeholder="" id="userName" name="userName">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名称：</label><div class="formControls col-xs-8 col-sm-9"><input type="text" class="input-text" th:value="${}" placeholder="" id="roleName" name="roleName"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">备注：</label><div class="formControls col-xs-8 col-sm-9"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">网站角色：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <dl class="permission-list">
+                    <dt>
+                        <label>
+                            <input type="checkbox" value="" name="user-Character-0" id="user-Character-1">
+                            用户中心</label>
+                    </dt>
+                    <dd>
+                        <dl class="cl permission-list2">
+                            <dt>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0" id="user-Character-1-0">用户管理</label>
+                            </dt>
+                            <dd>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-0">添加</label>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-1">修改</label>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-2">删除</label>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-3">查看</label>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-4">审核</label>
+                            </dd>
+                        </dl>
+                    </dd>
+                </dl>
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">角色：</label>
-            <div class="formControls col-xs-8 col-sm-4">
-                <select name="role">
-                    <option value="ADMIN">管理员</option>
-                    <option value="HR">Hr</option>
-                    <option value="TECH">面试官</option>
-                    <option value="USER">应聘者</option>
-                </select>
-            </div>
-        </div>
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-                <button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 取消</button>
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
             </div>
         </div>
     </form>
-</div>
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" th:src="@{../../lib/jquery/1.9.1/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{../../lib/layer/2.4/layer.js}"></script>
-<script type="text/javascript" th:src="@{../../h-ui/js/H-ui.min.js}"></script>
-<script type="text/javascript" th:src="@{../../h-ui.admin/js/H-ui.admin.js}"></script> <!--/_footer 作为公共模版分离出去-->
+</article>
+
+<script type="text/javascript" th:src="@{./../lib/jquery/1.9.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{./../lib/layer/2.4/layer.js}"></script>
+<script type="text/javascript" th:src="@{./../h-ui/js/H-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{./../h-ui.admin/js/H-ui.admin.js}"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" th:src="@{../../lib/My97DatePicker/4.8/WdatePicker.js}"></script>
-<script type="text/javascript" th:src="@{../../lib/datatables/1.10.0/jquery.dataTables.min.js}"></script>
-<script type="text/javascript" th:src="@{../../lib/laypage/1.2/laypage.js}"></script>
-<script type="text/javascript" th:inline="none">
-    function article_save(){
-        window.parent.location.reload();
-    }
+<script type="text/javascript" th:src="@{./../lib/jquery.validation/1.14.0/jquery.validate.js}"></script>
+<script type="text/javascript" th:src="@{./../lib/jquery.validation/1.14.0/validate-methods.js}"></script>
+<script type="text/javascript" th:src="@{./../lib/jquery.validation/1.14.0/messages_zh.js}"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".permission-list dt input:checkbox").click(function(){
+            $(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+        });
+        $(".permission-list2 dd input:checkbox").click(function(){
+            var l =$(this).parent().parent().find("input:checked").length;
+            var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
+            if($(this).prop("checked")){
+                $(this).closest("dl").find("dt input:checkbox").prop("checked",true);
+                $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
+            }
+            else{
+                if(l==0){
+                    $(this).closest("dl").find("dt input:checkbox").prop("checked",false);
+                }
+                if(l2==0){
+                    $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
+                }
+            }
+        });
+
+        $("#form-admin-role-add").validate({
+            rules:{
+                roleName:{
+                    required:true,
+                },
+            },
+            onkeyup:false,
+            focusCleanup:true,
+            success:"valid",
+            submitHandler:function(form){
+                $(form).ajaxSubmit();
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            }
+        });
+    });
 </script>
+<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

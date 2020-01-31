@@ -55,4 +55,8 @@
     <delete id="deleteRole">
         delete from SysRole where id = #{id}
     </delete>
+
+    <select id="getRoleById">
+        select * from SysRole where id = #{id}
+    </select>
 </mapper>

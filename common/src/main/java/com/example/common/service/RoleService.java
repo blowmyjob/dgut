@@ -29,4 +29,11 @@ public interface RoleService {
      * @param role
      */
     public void updateRole(Integer id,SysRole role);
+
+    /**
+     * 查看角色
+     * @param id
+     * @return
+     */
+    public SysRole getRoleById(Integer id);
 }

@@ -29,4 +29,6 @@ public interface PermDao {
     public void updateRole(@Param(value = "role") SysRole role,@Param(value = "id") Integer id);
 
     public void deleteRole(Integer id);
+
+    public SysRole getRoleById(Integer id);
 }

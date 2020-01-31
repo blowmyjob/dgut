@@ -32,4 +32,9 @@ public class RoleServiceImpl implements RoleService {
     public void updateRole(Integer id, SysRole role) {
         permDao.updateRole(role,id);
     }
+
+    @Override
+    public SysRole getRoleById(Integer id) {
+        return permDao.getRoleById(id);
+    }
 }
