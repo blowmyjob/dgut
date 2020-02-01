@@ -87,7 +87,7 @@
 			</ul>
 		</dd>
 	</dl>
-		<dl id="menu-faceTalk" th:if="${session.user.getIdentify().name()== 'ADMIN'}">
+		<dl id="menu-faceTalk" th:if="${session.user.getIdentify().name()== 'USER'}">
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 招聘进度<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
@@ -98,7 +98,7 @@
 			</ul>
 		</dd>
 	</dl>
-		<dl id="recruit-manage" th:if="${session.user.getIdentify().name()== 'ADMIN'}">
+		<dl id="recruit-manage" th:if="${session.user.getIdentify().name()== 'HR'}">
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 招聘管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
