@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -66,6 +67,7 @@ public class UserController {
             subject.getSession().setAttribute("userName",token.getUsername());
             User user = userService.getUser(token.getUsername());
             request.getSession().setAttribute("userid",user.getId());
+            request.getSession().setAttribute("user",user);
             log.setContent("登陆成功");
             log.setLoginTime(new Timestamp(System.currentTimeMillis()));
             log.setUserName(token.getUsername());

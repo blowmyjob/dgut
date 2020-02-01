@@ -33,7 +33,7 @@
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 		<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 			<ul class="cl">
-				<li th:text="${session.userName}"></li>
+				<li th:text="${session.user.getIdentify()}"></li>
 				<li class="dropDown dropDown_hover">
 					<a href="#" class="dropDown_A" th:text="${session.userName}"><i class="Hui-iconfont">&#xe6d5;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
@@ -77,7 +77,7 @@
 			</ul>
 		</dd>
 	</dl>
-		<dl id="menu-admin">
+		<dl id="menu-admin" th:if="${session.user.getIdentify().name()== 'ADMIN'}">
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
@@ -87,7 +87,7 @@
 			</ul>
 		</dd>
 	</dl>
-		<dl id="menu-faceTalk">
+		<dl id="menu-faceTalk" th:if="${session.user.getIdentify().name()== 'ADMIN'}">
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 招聘进度<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
@@ -98,7 +98,7 @@
 			</ul>
 		</dd>
 	</dl>
-		<dl id="recruit-manage">
+		<dl id="recruit-manage" th:if="${session.user.getIdentify().name()== 'ADMIN'}">
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 招聘管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
@@ -121,7 +121,7 @@
 			</ul>
 		</dd>
 	</dl>
-		<dl id="menu-system">
+		<dl id="menu-system" th:if="${session.user.getIdentify().name()== 'ADMIN'}">
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>

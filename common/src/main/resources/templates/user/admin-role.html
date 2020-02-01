@@ -124,8 +124,12 @@ function admin_role_del(obj){
 				},
 				datatype:"json",
 				success:function (data) {
-					layer.msg('删除成功!', {icon: 6,time:1000});
-					location.reload();
+					if(data == '200'){
+						layer.msg('删除成功!', {icon: 6,time:1000});
+						location.reload();
+					}else{
+						layer.msg('删除失败!', {icon: 6,time:1000});
+					}
 				},
 				error:function (msg) {
 					layer.msg('删除失败!', {icon: 6,time:1000});
