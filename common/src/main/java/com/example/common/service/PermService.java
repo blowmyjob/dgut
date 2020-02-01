@@ -29,4 +29,10 @@ public interface PermService {
      * @param permission
      */
     public void updatePerm(Integer id,SysPermission permission);
+
+    /**
+     * 批量删除
+     * @param list
+     */
+    public void delPerms(List<Integer>list);
 }

@@ -41,7 +41,7 @@
 			</thead>
 			<tbody>
 			<tr class="text-c" th:each="obj:${roles}">
-				<td><input type="checkbox" th:value="${obj.getId()}" name=""></td>
+				<td><input type="checkbox" th:value="${obj.getId()}" name="checkId" id="checkId"></td>
 				<td th:text="${obj.getId()}"></td>
 				<td th:text="${obj.getRole()}">超级管理员</td>
 				<td th:text="${obj.getDescription()}">拥有至高无上的权利</td>
@@ -103,6 +103,36 @@ function admin_role_del(obj){
 		});		
 	});
 }
+	function datadel() {
+		var checkNum = $("input[name='checkId']:checked").length;
+
+		if(checkNum==0){
+			layer.msg('至少选择一项!', {icon: 6,time:1000});
+			return;
+		}
+
+		if(confirm("确定要删除吗？")){
+			var checkList = new Array();
+			$("input[name='checkId']:checked").each(function () {
+				checkList.push($(this).val())
+			});
+			$.ajax({
+				url:"/User/delRoles",
+				type:"post",
+				data:{
+					checkList:checkList.toString()
+				},
+				datatype:"json",
+				success:function (data) {
+					layer.msg('删除成功!', {icon: 6,time:1000});
+					location.reload();
+				},
+				error:function (msg) {
+					layer.msg('删除失败!', {icon: 6,time:1000});
+				}
+			})
+		}
+	}
 </script>
 </body>
 </html>

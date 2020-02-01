@@ -35,4 +35,10 @@ public interface PermDao {
     public void addRolePerm(@Param("lists")List<Integer>lists,@Param("id") Integer id);
 
     public void delRolePerm(Integer id);
+
+    public void delRolePermByPerm(Integer id);
+
+    public void delRoles(List<Integer>list);
+
+    public void delPerms(List<Integer>list);
 }

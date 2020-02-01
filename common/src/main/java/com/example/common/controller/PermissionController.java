@@ -81,10 +81,9 @@ public class PermissionController {
 
     @DeleteMapping("/Role/{id}")
     @ResponseBody
-    public String delRole(@PathVariable("id")String id){
-        Integer userId = Integer.valueOf(id);
+    public String delRole(@PathVariable("id")Integer id){
         try{
-            userService.delUser(userId);
+            roleService.delRole(id);
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
@@ -120,6 +119,8 @@ public class PermissionController {
             return Result.ERROR;
         }
     }
+
+
     /*************权限模块**************/
     /**
      * 查看权限
@@ -132,6 +133,24 @@ public class PermissionController {
         model.addAttribute("permissions",permissions);
         model.addAttribute("count",permissions.size());
         return "user/admin-permission";
+    }
+
+    @RequiresPermissions("userPerm:del")
+    @PostMapping("/user/delRoles")
+    @ResponseBody
+    public String delRoles(String checkList){
+        try{
+            String[] strs = checkList.split(",");
+            List<Integer> ids = new ArrayList<>();
+            for(String str:strs){
+                ids.add(Integer.parseInt(str));
+            }
+            roleService.delRoles(ids);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
 
@@ -163,16 +182,39 @@ public class PermissionController {
 
     /**
      * 删除权限
-     * @param permId
      * @param id
      * @return
      */
     @RequiresPermissions("userPerm:del")
-    @PostMapping("/user/delPerm/{permId}/id")
-    public String delPerm(String permId,String id){
-        return "1";
+    @PostMapping("/user/delPerm/{id}")
+    @ResponseBody
+    public String delPerm(@PathVariable("id")Integer id){
+        try{
+            permService.delPerm(id);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
+    @RequiresPermissions("userPerm:del")
+    @PostMapping("/user/delPerms")
+    @ResponseBody
+    public String delPerms(String checkList){
+        try{
+            String[] strs = checkList.split(",");
+            List<Integer> ids = new ArrayList<>();
+            for(String str:strs){
+                ids.add(Integer.parseInt(str));
+            }
+            permService.delPerms(ids);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
+    }
 
 
     /**********用户模块************/

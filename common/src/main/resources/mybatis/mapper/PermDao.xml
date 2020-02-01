@@ -16,8 +16,8 @@
     <select id="getRoles" resultMap="RoleMap">
         select a.id as id,a.role as role, a.description as description,a.username as username,b.id as id1,
                b.name as name,b.url as url,b.permission as permission
-        from SysRole a,SysPermission b
-        where username = #{userName} and a.role = b.name
+        from SysRole a,SysPermission b,User c,User_Role d,Role_Permission e
+        where c.username = #{userName} and d.roleid = a.id and d.userid = c.id and a.id = e.role_id and b.id = e.permission_id
     </select>
 
     <select id="getPermsByRole" resultType="com.example.common.entity.SysRole">
@@ -40,6 +40,9 @@
         delete from SysPermission where id = #{id}
     </delete>
 
+    <delete id="delRolePermByPerm">
+        delete from Role_Permission where permission_id = #{id}
+    </delete>
     <select id="getRole" resultType="com.example.common.entity.SysRole">
         select * from SysRole
     </select>
@@ -70,4 +73,18 @@
             (#{emp},#{id})
         </foreach>
     </insert>
+
+    <delete id="delRoles" parameterType="list">
+        delete from SysRole where id in
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="delPerms" parameterType="list">
+        delete from SysPermission where id in
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

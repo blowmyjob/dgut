@@ -5,6 +5,7 @@ import com.example.common.mapper.PermDao;
 import com.example.common.service.PermService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,12 +25,19 @@ public class PermServiceImpl implements PermService {
     }
 
     @Override
+    @Transactional
     public void delPerm(Integer id) {
         permDao.delPerm(id);
+        //permDao.delRolePermByPerm(id);
     }
 
     @Override
     public void updatePerm(Integer id, SysPermission permission) {
         permDao.updatePerm(permission,id);
+    }
+
+    @Override
+    public void delPerms(List<Integer> list) {
+        permDao.delPerms(list);
     }
 }

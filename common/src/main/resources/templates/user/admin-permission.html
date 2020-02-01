@@ -46,11 +46,11 @@
 		</thead>
 		<tbody>
 			<tr class="text-c" th:each="obj:${permissions}">
-				<td><input type="checkbox" th:value="${obj.getId()}" th:name="perm"></td>
+				<td><input type="checkbox" th:value="${obj.getId()}" name="checkId" id="checkId"></td>
 				<td th:text="${obj.getId()}"></td>
 				<td th:text="${obj.getName()}"></td>
 				<td th:text="${obj.getPermission()}"></td>
-				<td><a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				<td><a title="删除" href="javascript:;" th:name="${obj.getId()}" onclick="admin_permission_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -92,15 +92,21 @@ function admin_permission_edit(title,url,id,w,h){
 }
 
 /*管理员-权限-删除*/
-function admin_permission_del(obj,id){
+function admin_permission_del(obj){
+	var id = $(obj).attr("name");
+	alert(id);
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: '/user/delPerm/'+id,
 			dataType: 'json',
 			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
+				if(data =="200"){
+					$(obj).parents("tr").remove();
+					layer.msg('已删除!',{icon:1,time:1000});
+				}else{
+					layer.msg('删除失败!',{icon:1,time:1000});
+				}
 			},
 			error:function(data) {
 				console.log(data.msg);
@@ -108,6 +114,37 @@ function admin_permission_del(obj,id){
 		});		
 	});
 }
+
+	function datadel() {
+		var checkNum = $("input[name='checkId']:checked").length;
+
+		if(checkNum==0){
+			layer.msg('至少选择一项!', {icon: 6,time:1000});
+			return;
+		}
+
+		if(confirm("确定要删除吗？")){
+			var checkList = new Array();
+			$("input[name='checkId']:checked").each(function () {
+				checkList.push($(this).val())
+			});
+			$.ajax({
+				url:"/user/delPerms",
+				type:"post",
+				data:{
+					checkList:checkList.toString()
+				},
+				datatype:"json",
+				success:function (data) {
+					layer.msg('删除成功!', {icon: 6,time:1000});
+					location.reload();
+				},
+				error:function (msg) {
+					layer.msg('删除失败!', {icon: 6,time:1000});
+				}
+			})
+		}
+	}
 </script>
 </body>
 </html>

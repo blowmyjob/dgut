@@ -43,4 +43,10 @@ public interface RoleService {
      * @param id
      */
     public void updateRolePerm(List<Integer>permission,Integer id);
+
+    /**
+     * 批量删除
+     * @param list
+     */
+    public void delRoles(List<Integer>list);
 }
