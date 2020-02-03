@@ -71,8 +71,6 @@ public class ForeController {
         String userName = (String)request.getSession().getAttribute("userName");
         List<Hire> job = workService.searchJob(map);
         List<Resume>resumes = userService.getResumes(userName);
-        Company company = workService.selectCompany(job.get(0).getCompanyid());
-        model.addAttribute("company",company);
         if(job.get(0).getRequirements()!= null) {
             List<String> requirements = Tranfer.transfer(job.get(0).getRequirements());
             model.addAttribute("requirements",requirements);

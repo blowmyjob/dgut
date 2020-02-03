@@ -1,3 +1,4 @@
+﻿/* eslint-disable require-jsdoc */
 /*
  * Module:   GenerateTestUserSig
  *
@@ -22,8 +23,7 @@ function genTestUserSig(userID) {
    * 进入腾讯云实时音视频[控制台](https://console.cloud.tencent.com/rav ) 创建应用，即可看到 SDKAppId，
    * 它是腾讯云用于区分客户的唯一标识。
    */
-  var SDKAPPID = 1400246531;
-
+  const SDKAPPID = 1400291207;
 
   /**
    * 签名过期时间，建议不要设置的过短
@@ -31,8 +31,7 @@ function genTestUserSig(userID) {
    * 时间单位：秒
    * 默认时间：7 x 24 x 60 x 60 = 604800 = 7 天
    */
-  var EXPIRETIME = 604800;
-
+  const EXPIRETIME = 604800;
 
   /**
    * 计算签名用的加密密钥，获取步骤如下：
@@ -44,12 +43,19 @@ function genTestUserSig(userID) {
    * 注意：该方案仅适用于调试Demo，正式上线前请将 UserSig 计算代码和密钥迁移到您的后台服务器上，以避免加密密钥泄露导致的流量盗用。
    * 文档：https://cloud.tencent.com/document/product/647/17275#Server
    */
-  var SECRETKEY = "321d13532ff43b96da84e9052eb5ae1956d402efcbfa07212cdd9e97c5962f32";
+  const SECRETKEY = 'a6cd4050d3d1abec9aa46ac588463787ed8121ef29f0f665b7beec9c50ace4ac';
 
-  var generator = new LibGenerateTestUserSig(SDKAPPID, SECRETKEY, EXPIRETIME);
-  var userSig = generator.genTestUserSig(userID);
+  // a soft reminder to guide developer to configure sdkAppId/secretKey
+  if (SDKAPPID === '' || SECRETKEY === '') {
+    alert(
+      '请先配置好您的账号信息： SDKAPPID 及 SECRETKEY ' +
+        '\r\n\r\nPlease configure your SDKAPPID/SECRETKEY in js/debug/GenerateTestUserSig.js'
+    );
+  }
+  const generator = new LibGenerateTestUserSig(SDKAPPID, SECRETKEY, EXPIRETIME);
+  const userSig = generator.genTestUserSig(userID);
   return {
-    sdkappid: SDKAPPID,
+    sdkAppId: SDKAPPID,
     userSig: userSig
   };
 }
