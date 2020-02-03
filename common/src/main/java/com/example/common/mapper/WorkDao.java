@@ -1,5 +1,6 @@
 package com.example.common.mapper;
 
+import com.example.common.entity.Company;
 import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.vo.Category;
@@ -42,4 +43,6 @@ public interface WorkDao {
     public List<Category>getCatesByLocation(Map<String,String>map);
 
     public Integer getJobLastWeek();
+
+    public Company selectCompanyById(Integer id);
 }

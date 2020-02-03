@@ -98,7 +98,7 @@
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
                                     <a href="#"><h4 th:text="${job.getWorkname()}"></h4></a>
-                                    <h6>Premium Labels Limited</h6>
+                                    <h6 th:text="${company.getCompanyname()}">Premium Labels Limited</h6>
                                 </div>
                                 <ul class="btns">
                                     <li><a href="javascript:void(0);" onclick="apply()">Apply</a></li>
@@ -121,9 +121,9 @@
                     <div class="single-post job-experience" th:if="${job.getRequirements()!=null}">
                         <h4 class="single-title">Experience Requirements</h4>
                         <ul>
-                            <li>
+                            <li th:each="obj:${requirements}">
                                 <img th:src="@{./../../fontimg/pages/list.jpg}" alt="">
-                                <span th:text="${job.getRequirements()}"></span>
+                                <span th:text="${obj}"></span>
                             </li>
                         </ul>
                     </div>

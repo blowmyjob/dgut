@@ -1,5 +1,6 @@
 package com.example.common.service;
 
+import com.example.common.entity.Company;
 import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.vo.Category;
@@ -36,4 +37,6 @@ public interface WorkService {
     public List<Category>getCatesByLocation(Map<String,String>map);
 
     public Integer getJobLastWeek();
+
+    public Company selectCompany(Integer id);
 }

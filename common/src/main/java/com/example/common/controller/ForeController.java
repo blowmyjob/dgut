@@ -1,10 +1,12 @@
 package com.example.common.controller;
 
+import com.example.common.entity.Company;
 import com.example.common.entity.Hire;
 import com.example.common.entity.Resume;
 import com.example.common.service.DataDictServcie;
 import com.example.common.service.UserService;
 import com.example.common.service.WorkService;
+import com.example.common.tools.Tranfer;
 import com.example.common.vo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,8 +71,12 @@ public class ForeController {
         String userName = (String)request.getSession().getAttribute("userName");
         List<Hire> job = workService.searchJob(map);
         List<Resume>resumes = userService.getResumes(userName);
-        List<Category>category1 = workService.getCatesByCategory(map);
-        List<Category>category2 = workService.getCatesByLocation(map);
+        Company company = workService.selectCompany(job.get(0).getCompanyid());
+        model.addAttribute("company",company);
+        if(job.get(0).getRequirements()!= null) {
+            List<String> requirements = Tranfer.transfer(job.get(0).getRequirements());
+            model.addAttribute("requirements",requirements);
+        }
         model.addAttribute("job",job.get(0));
         model.addAttribute("resumes",resumes);
         return "front/jobdetail";

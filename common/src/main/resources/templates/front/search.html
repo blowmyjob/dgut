@@ -142,7 +142,7 @@
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.html"><h4 th:text="${obj.getWorkname()}">Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
+                                <h6 th:text="${obj.getCompanyname()}">Premium Labels Limited</h6>
                             </div>
                             <ul class="btns">
                                 <li><a th:href="@{/fore/detail/{id}(id=${obj.getId()})}">Apply</a></li>
@@ -154,8 +154,8 @@
                             </p>
                         </div>
                         <h5>Job Nature: Full time</h5>
-                        <p class="address" th:text="${obj.getLocation()}"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address" th:text="${obj.getSalary()}"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                        <p class="address"><span class="lnr lnr-map" th:text="${obj.getLocation()}"></span></p>
+                        <p class="address"><span class="lnr lnr-database" th:text="${obj.getSalary()}"></span></p>
                     </div>
                 </div>
 

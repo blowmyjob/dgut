@@ -51,18 +51,19 @@
     </update>
 
     <insert id="insertJob" parameterType="com.example.common.entity.Hire">
-        insert into Hire (workname,description,hirecount,companyid,createtime,endtime) values(#{workname},#{description},#{hirecount},#{companyid},now(),#{endtime})
+        insert into Hire (workname,description,hirecount,companyid,createtime,endtime,location,category,salary,requirements) values(#{workname},#{description},#{hirecount},#{companyid},now(),#{endtime},#{location},#{category},#{salary},#{requirements})
     </insert>
 
     <select id="selectAllJob" resultType="com.example.common.entity.Hire">
-        select * from Hire limit 0,6
+        select Hire.*,Company.companyname from Hire,Company where Hire.companyid = Company.id limit 0,6
     </select>
 
     <select id="searchJob" resultType="com.example.common.entity.Hire">
-        select * from Hire
+        select Hire.*,Company.companyname from Hire,Company
         <where>
+            Hire.companyid = Company.id
             <if test="keyword != null">
-                 workname like '%${keyword}%'
+                 And workname like '%${keyword}%'
             </if>
             <if test="location != null">
                 AND location = #{location}
@@ -111,5 +112,9 @@
 
     <select id="getJobLastWeek" resultType="java.lang.Integer">
         select count(*) from Hire where YEARWEEK(date_format(createtime,'%Y-%m-%d')) = YEARWEEK(now())-1
+    </select>
+
+    <select id="selectCompanyById" resultType="com.example.common.entity.Company">
+        select * from Company where id = #{id}
     </select>
 </mapper>

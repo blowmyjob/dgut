@@ -51,15 +51,19 @@ public class JobController {
         try{
             Integer userId = (Integer) request.getSession().getAttribute("userid");
             String hireName = request.getParameter("hireName");
+            String hireLocation = request.getParameter("hireLocation");
+            String hireCategory = request.getParameter("hireCategory");
+            String hireSalary = request.getParameter("hireSalary");
+            String hireRequirements = request.getParameter("hireRequirements");
             Integer hireCount = Integer.valueOf(request.getParameter("hireCount"));
             String hireDescription = request.getParameter("hireDescription");
             String hireEndTime = request.getParameter("hireEndTime");hireEndTime+=" 00:00:00";
             Integer companyId = workService.findCompanyIdByUserId(userId);
             Hire hire = new Hire();
-            hire.setWorkname(hireName);hire.setHirecount(hireCount);
-            hire.setCreatetime(new Timestamp(System.currentTimeMillis()));
-            hire.setDescription(hireDescription);hire.setCompanyid(companyId);
-            hire.setEndtime(Timestamp.valueOf(hireEndTime));
+            hire.setWorkname(hireName);hire.setHirecount(hireCount);hire.setCategory(hireCategory);
+            hire.setCreatetime(new Timestamp(System.currentTimeMillis()));hire.setLocation(hireLocation);
+            hire.setDescription(hireDescription);hire.setCompanyid(companyId);hire.setSalary(hireSalary);
+            hire.setEndtime(Timestamp.valueOf(hireEndTime));hire.setRequirements(hireRequirements);
             workService.insertHire(hire);
             return Result.SUCCESS;
         }catch(Exception e){

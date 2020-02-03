@@ -1,5 +1,6 @@
 package com.example.common.service.Impl;
 
+import com.example.common.entity.Company;
 import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.mapper.WorkDao;
@@ -88,5 +89,10 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public Integer getJobLastWeek() {
         return workDao.getJobLastWeek();
+    }
+
+    @Override
+    public Company selectCompany(Integer id) {
+        return workDao.selectCompanyById(id);
     }
 }
