@@ -6,6 +6,7 @@ import com.example.common.entity.User;
 import com.example.common.service.PermService;
 import com.example.common.service.RoleService;
 import com.example.common.service.UserService;
+import com.example.common.service.PowerService;
 import com.example.common.tools.Result;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -30,6 +29,9 @@ public class PermissionController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private PowerService powerService;
 
     /*************角色模块*************/
 
@@ -82,13 +84,14 @@ public class PermissionController {
     @DeleteMapping("/Role/{id}")
     @ResponseBody
     public String delRole(@PathVariable("id")Integer id){
-        try{
-            roleService.delRole(id);
-            return Result.SUCCESS;
-        }catch (Exception e){
-            e.printStackTrace();
-            return Result.ERROR;
-        }
+       return powerService.delRole(id);
+//        try{
+//            roleService.delRole(id);
+//            return Result.SUCCESS;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            return Result.ERROR;
+//        }
     }
 
     @GetMapping("/Role/add")

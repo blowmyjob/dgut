@@ -8,12 +8,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
         <module name="eureka-server" />
+        <module name="powermanage" />
         <module name="service-zuul" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="powermanage" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

@@ -1,0 +1,35 @@
+server:
+  port: 8764
+spring:
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 1MB
+  application:
+    name: powermanage
+  datasource:
+    url: jdbc:mysql://120.79.223.58:3306/test1?serverTimezone=CTT&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: Dgut240938
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 10
+      max-lifetime: 30000
+      connection-test-query: select 1
+  devtools:
+    restart:
+      enabled: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://120.79.223.58:8761/eureka/
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+logging:
+  level:
+    com:
+      example:
+        powermanage:
+          mapper: debug

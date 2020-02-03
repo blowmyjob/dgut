@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.powermanage.mapper.PermDao" >
+    <resultMap id="RoleMap" type="com.example.powermanage.entity.SysRole">
+        <result property = "id" column = "id" />
+        <result property = "role" column = "role" />
+        <result property = "description" column = "description"/>
+        <result property = "username" column = "username" />
+        <collection property="syspermissions" ofType="com.example.powermanage.entity.SysPermission">
+            <id property="id" column = "id1" javaType="Integer" jdbcType="INTEGER"/>
+            <result property="name" column = "name" javaType="String" jdbcType="VARCHAR"/>
+            <result property="url" column = "url" javaType="String" jdbcType="VARCHAR"/>
+            <result property="permission" column = "permission" javaType="String" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+    <select id="getRoles" resultMap="RoleMap">
+        select a.id as id,a.role as role, a.description as description,a.username as username,b.id as id1,
+               b.name as name,b.url as url,b.permission as permission
+        from SysRole a,SysPermission b,User c,User_Role d,Role_Permission e
+        where c.username = #{userName} and d.roleid = a.id and d.userid = c.id and a.id = e.role_id and b.id = e.permission_id
+    </select>
+
+    <select id="getPermsByRole" resultType="com.example.powermanage.entity.SysRole">
+        select * from SysPermission where name = #{role}
+    </select>
+
+    <select id="getPerm" resultType="com.example.powermanage.entity.SysPermission">
+        select * from SysPermission
+    </select>
+
+    <insert id="addPerm" parameterType="com.example.powermanage.entity.SysPermission">
+        insert into SysPermission (name,url,permission) values (#{name},#{url},#{permission})
+    </insert>
+
+    <update id="updatePerm">
+        update SysPermission set name = #{sysPermission.name},url = #{sysPermission.url},permission=#{sysPermission.permission} where id = #{id}
+    </update>
+
+    <delete id="delPerm">
+        delete from SysPermission where id = #{id}
+    </delete>
+
+    <delete id="delRolePermByPerm">
+        delete from Role_Permission where permission_id = #{id}
+    </delete>
+    <select id="getRole" resultType="com.example.powermanage.entity.SysRole">
+        select * from SysRole
+    </select>
+
+    <insert id="addRole" parameterType="com.example.powermanage.entity.SysRole" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into SysRole (role,description,username) values (#{role},#{description},#{username})
+    </insert>
+
+    <update id="updateRole">
+        update SysRole set role = #{role.role},description=#{role.description}where id = #{id}
+    </update>
+
+    <delete id="deleteRole">
+        delete from SysRole where id = #{id}
+    </delete>
+
+    <delete id="delRolePerm">
+        delete from Role_Permission where role_id = #{id}
+    </delete>
+
+    <select id="getRoleById">
+        select * from SysRole where id = #{id}
+    </select>
+
+    <insert id="addRolePerm">
+        insert into Role_Permission(permission_id,role_id) values
+        <foreach collection="lists" item="emp" separator=",">
+            (#{emp},#{id})
+        </foreach>
+    </insert>
+
+    <delete id="delRoles" parameterType="list">
+        delete from SysRole where id in
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="delPerms" parameterType="list">
+        delete from SysPermission where id in
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
