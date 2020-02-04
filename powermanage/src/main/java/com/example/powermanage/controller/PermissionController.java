@@ -65,17 +65,8 @@ public class PermissionController {
     @PostMapping("/Role/add")
     @ResponseBody
     @Transactional
-    public String addRole(HttpServletRequest request){
+    public String addRole(SysRole role, List<Integer> permission){
         try{
-            String roleName = request.getParameter("roleName");
-            String description = request.getParameter("description");
-            String []permissions = request.getParameterValues("permission");
-            List<Integer>permission = new ArrayList<>();
-            for(String temp : permissions){
-                permission.add(Integer.valueOf(temp));
-            }
-            SysRole role = new SysRole();
-            role.setRole(roleName); role.setDescription(description);
             roleService.addRole(role,permission);
             return Result.SUCCESS;
         }catch (Exception e){
