@@ -36,7 +36,6 @@
                 <th width="90">公司名</th>
                 <th width="60">状态</th>
                 <th width="90">职位</th>
-                <th width="60">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -47,9 +46,6 @@
                 <td th:text="${obj.getCompanyname()}"></td>
                 <td th:text="${obj.getState()}"></td>
                 <td th:text="${obj.getPosition()}"></td>
-                <td class="f-14">
-                    <a title="不适合" href="javascript:;" onclick="user_del(this)" class="ml-5" style="text-decoration:none" th:name="${obj.getId()}"><i class="Hui-iconfont">&#xe6e2;</i></a>
-                </td>
             </tr>
             </tbody>
         </table>
