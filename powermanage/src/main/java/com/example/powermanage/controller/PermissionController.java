@@ -65,7 +65,7 @@ public class PermissionController {
     @PostMapping("/Role/add")
     @ResponseBody
     @Transactional
-    public String addRole(SysRole role, List<Integer> permission){
+    public String addRole(@RequestBody SysRole role, @RequestParam("permission") List<Integer> permission){
         try{
             roleService.addRole(role,permission);
             return Result.SUCCESS;

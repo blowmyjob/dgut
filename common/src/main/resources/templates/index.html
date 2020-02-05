@@ -111,6 +111,16 @@
 			</ul>
 		</dd>
 	</dl>
+		<dl id="Employee" th:if="${session.user.getIdentify().name()== 'HR'}">
+			<dt><i class="Hui-iconfont">&#xe61a;</i> 人员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="/job/employee/待入职"  data-title="在职员工" href="javascript:void(0)">待入职员工</a></li>
+					<li><a data-href="/job/employee/入职"  data-title="在职" href="javascript:void(0)">在职员工</a></li>
+					<li><a data-href="/job/employee/离职"  data-title="离职" href="javascript:void(0)">离职员工</a></li>
+				</ul>
+			</dd>
+		</dl>
 		<dl id="menu-tongji">
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>

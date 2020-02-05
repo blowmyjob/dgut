@@ -24,4 +24,17 @@
     <insert id="addLog" parameterType="com.example.common.entity.SystemLog">
         insert into SystemLog (userName,content,ipAddress,loginTime,state) values (#{userName},#{content},#{ipAddress},#{loginTime},'work')
     </insert>
+
+    <select id="getLogsByType" resultType="com.example.common.entity.SystemLog">
+        select * from SystemLog
+        <where>
+          <if test="userName!= null">
+              userName = #{userName}
+          </if>
+          <if test="identify != null">
+              and identify =#{identify}
+          </if>
+        </where>
+        order by loginTime desc
+    </select>
 </mapper>

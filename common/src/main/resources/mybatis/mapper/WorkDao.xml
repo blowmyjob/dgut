@@ -117,4 +117,22 @@
     <select id="selectCompanyById" resultType="com.example.common.entity.Company">
         select * from Company where id = #{id}
     </select>
+
+    <insert id="createCompany" parameterType="com.example.common.entity.Company" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into Company(companyname,count,description) values(#{companyname},#{count},#{description})
+    </insert>
+
+    <insert id="createRelationship" parameterType="com.example.common.vo.Relationship" >
+        insert into Employee_Relationship (userid,companyid,position) values (#{userid},#{companyid},#{position})
+    </insert>
+
+    <select id="selectEmploy" resultType="com.example.common.entity.Employee">
+        select a.id as id,a.username as name,c.position as position,c.state as state,b.companyname as companyname
+        from User a,Company b,Employee_Relationship c
+        <where>
+           a.id = c.userid and b.id = c.companyid
+           <if test="state != null"> and c.state =#{state}</if>
+           <if test="id != null"> and b.id = #{id}</if>
+        </where>
+    </select>
 </mapper>

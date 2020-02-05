@@ -1,9 +1,11 @@
 package com.example.common.mapper;
 
 import com.example.common.entity.Company;
+import com.example.common.entity.Employee;
 import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.vo.Category;
+import com.example.common.vo.Relationship;
 import com.example.common.vo.WorkDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -45,4 +47,10 @@ public interface WorkDao {
     public Integer getJobLastWeek();
 
     public Company selectCompanyById(Integer id);
+
+    public void createCompany(Company company);
+
+    public void createRelationship(Relationship relationship);
+
+    public List<Employee> selectEmploy(Map<String,String>map);
 }

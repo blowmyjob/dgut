@@ -4,6 +4,7 @@ import com.example.common.entity.System;
 import com.example.common.entity.SystemLog;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SystemService {
     /**
@@ -36,4 +37,11 @@ public interface SystemService {
      * @return
      */
     List<SystemLog> getExceptionLogs();
+
+    /**
+     * 按照类型查找日志
+     * @param map
+     * @return
+     */
+    List<SystemLog> getLogsByType(Map<String,String> map);
 }

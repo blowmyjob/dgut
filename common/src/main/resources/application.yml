@@ -47,3 +47,6 @@ logging:
       example:
         common:
           mapper: debug
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

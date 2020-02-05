@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SystemServiceImpl implements SystemService {
@@ -32,6 +33,11 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public List<SystemLog> getExceptionLogs() {
         return systemDao.getExceptionLogs();
+    }
+
+    @Override
+    public List<SystemLog> getLogsByType(Map<String, String> map) {
+        return systemDao.getLogsByType(map);
     }
 
     @Override

@@ -20,7 +20,7 @@ public interface PowerService {
 
 
     @PostMapping("/Role/add")
-    public String addRole(SysRole role, List<Integer> permission);
+    public String addRole(@RequestBody SysRole role, @RequestParam("permission") List<Integer> permission);
 
     @PostMapping("/user/delRoles")
     public String delRoles(String checkList);

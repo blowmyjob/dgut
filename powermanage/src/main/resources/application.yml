@@ -24,6 +24,11 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://120.79.223.58:8761/eureka/
+  instance:
+    hostname: 120.79.223.58
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+    ip-address: 120.79.223.58
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml

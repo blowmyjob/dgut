@@ -1,13 +1,12 @@
 package com.example.common.service.Impl;
 
-import com.example.common.entity.Company;
-import com.example.common.entity.Hire;
-import com.example.common.entity.WorkProcess;
+import com.example.common.entity.*;
 import com.example.common.mapper.WorkDao;
 import com.example.common.entity.WorkProcess;
 import com.example.common.mapper.WorkDao;
 import com.example.common.service.WorkService;
 import com.example.common.vo.Category;
+import com.example.common.vo.Relationship;
 import com.example.common.vo.WorkDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,7 +91,26 @@ public class WorkServiceImpl implements WorkService {
     }
 
     @Override
+    public void createRelationship(Integer userid, Integer companyid, String position) {
+        Relationship relationship = new Relationship();
+        relationship.setCompanyid(companyid);
+        relationship.setPosition(position);
+        relationship.setUserid(userid);
+        workDao.createRelationship(relationship);
+    }
+
+    @Override
+    public void createCompany(Company company) {
+        workDao.createCompany(company);
+    }
+
+    @Override
     public Company selectCompany(Integer id) {
         return workDao.selectCompanyById(id);
+    }
+
+    @Override
+    public List<Employee> getEmployee(Map<String, String> map) {
+        return workDao.selectEmploy(map);
     }
 }

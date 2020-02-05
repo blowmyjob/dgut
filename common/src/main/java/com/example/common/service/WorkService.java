@@ -1,9 +1,11 @@
 package com.example.common.service;
 
 import com.example.common.entity.Company;
+import com.example.common.entity.Employee;
 import com.example.common.entity.Hire;
 import com.example.common.entity.WorkProcess;
 import com.example.common.vo.Category;
+import com.example.common.vo.Relationship;
 import com.example.common.vo.WorkDetail;
 
 import java.util.List;
@@ -39,4 +41,10 @@ public interface WorkService {
     public Integer getJobLastWeek();
 
     public Company selectCompany(Integer id);
+
+    public void createCompany(Company company);
+
+    public void createRelationship(Integer userid,Integer companyid,String position);
+
+    public List<Employee> getEmployee(Map<String,String>map);
 }

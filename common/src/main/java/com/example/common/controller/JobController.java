@@ -1,8 +1,6 @@
 package com.example.common.controller;
 
-import com.example.common.entity.Hire;
-import com.example.common.entity.Resume;
-import com.example.common.entity.WorkProcess;
+import com.example.common.entity.*;
 import com.example.common.service.UserService;
 import com.example.common.service.WorkService;
 import com.example.common.entity.WorkProcess;
@@ -15,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.System;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -40,8 +39,36 @@ public class JobController {
         return "user/hire-list";
     }
 
+    @GetMapping("/hr/createcompany")
+    public String toCreateCompany(){
+        return "hire/company-new";
+    }
+
+    @PostMapping("/hr/createcompany")
+    @ResponseBody
+    public String createCompany(HttpServletRequest request){
+        try{
+            String companyName = request.getParameter("companyName");
+            Integer companyCount = Integer.valueOf(request.getParameter("companyCount"));
+            String companyDescription = request.getParameter("companyDescription");
+            Company company = new Company();
+            company.setCompanyname(companyName); company.setCount(companyCount); company.setDescription(companyDescription);
+            workService.createCompany(company);
+            Integer userid = (Integer)request.getSession().getAttribute("userid");
+            workService.createRelationship(userid,company.getId(),"hr");
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
+    }
     @GetMapping("/hr/发布")
-    public String toCreateJob(){
+    public String toCreateJob(HttpServletRequest request){
+        Integer userId = (Integer) request.getSession().getAttribute("userid");
+        Integer companyId = workService.findCompanyIdByUserId(userId);
+        if(companyId == null){
+            return "hire/company-new";
+        }
         return "hire/hire-new";
     }
 
@@ -144,5 +171,18 @@ public class JobController {
             e.printStackTrace();
             return Result.ERROR;
         }
+    }
+
+    @GetMapping("/employee/{state}")
+    public String getEmployee(@PathVariable("state")String state,Model model,HttpServletRequest request){
+        Map<String,String>map = new HashMap<>();
+        Integer userId = (Integer)request.getSession().getAttribute("userid");
+        String companyId = String.valueOf(workService.findCompanyIdByUserId(userId));
+        map.put("state",state);
+        map.put("id",companyId);
+        List<Employee>employees = workService.getEmployee(map);
+        model.addAttribute("employees",employees);
+        model.addAttribute("count",employees.size());
+        return "hire/employee-list";
     }
 }

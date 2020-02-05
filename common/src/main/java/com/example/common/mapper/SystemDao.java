@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -21,4 +22,6 @@ public interface SystemDao {
     public void addLog(SystemLog log);
 
     public List<SystemLog> getExceptionLogs();
+
+    public List<SystemLog> getLogsByType(Map<String,String> map);
 }
