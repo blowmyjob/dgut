@@ -11,4 +11,6 @@ public interface DataDictServcie {
     public void deleteById(Integer id);
 
     public void updateDict(DataDict dataDict);
+
+    public List<DataDict>selectDataDicts();
 }

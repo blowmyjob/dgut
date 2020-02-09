@@ -2,8 +2,12 @@ package com.example.common.controller;
 
 import com.example.common.entity.System;
 import com.example.common.entity.SystemLog;
+import com.example.common.service.DataDictServcie;
 import com.example.common.service.SystemService;
+import com.example.common.tools.Result;
 import com.example.common.tools.SystemUtils;
+import com.example.common.vo.DataDict;
+import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +24,13 @@ public class SystemController {
     @Autowired
     private SystemService systemService;
 
+    @Autowired
+    private DataDictServcie dataDictServcie;
+
+
     @GetMapping("/system-base")
     public String updateSystem1(Model model){
-        model.addAttribute("system", SystemUtils.getSystem());
+        model.addAttribute("system", systemService.selectSystem());
         return "system/system-base";
     }
 
@@ -36,7 +44,7 @@ public class SystemController {
         newSystem.setWebsiteUploadfile(request.getParameter("website-uploadfile"));
         systemService.updateSystem(newSystem);
         SystemUtils.setSystem(newSystem);
-        model.addAttribute("system",SystemUtils.getSystem());
+        model.addAttribute("system",systemService.selectSystem());
         return "200";
     }
 
@@ -56,8 +64,39 @@ public class SystemController {
         return "system/system-log";
     }
 
-    @GetMapping("/user/logs/{username}")
-    public String logsByUser(@PathVariable(value = "username")String username, Model model){
-        return "";
+    @GetMapping("/datadict")
+    public String dataDict(Model model){
+        List<DataDict>dataDicts = dataDictServcie.selectDataDicts();
+        model.addAttribute("datadicts",dataDicts);
+        model.addAttribute("count",dataDicts.size());
+        return "system/datadict-list";
+    }
+
+    @PostMapping("/adddict")
+    @ResponseBody
+    public String addDict(HttpServletRequest request){
+        String name = request.getParameter("name");
+        String value = request.getParameter("value");
+        String code = request.getParameter("code");
+        DataDict dataDict = new DataDict();
+        dataDict.setDictname(name); dataDict.setDictvalue(value);dataDict.setDictcode(code);
+        dataDictServcie.insertDict(dataDict);
+        return Result.SUCCESS;
+    }
+
+    @GetMapping("/adddict")
+    public String toAdd(){
+        return "system/datadict-add";
+    }
+
+    @PostMapping("/deldict/{id}")
+    public String delDict(@PathVariable("id")Integer id){
+        try{
+            dataDictServcie.deleteById(id);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 }

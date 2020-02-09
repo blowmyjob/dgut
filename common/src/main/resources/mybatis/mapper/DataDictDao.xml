@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.common.mapper.DataDictDao" >
-    <select id="" resultType="com.example.common.vo.DataDict">
-        select * from data_dict where code = #{code}
+    <select id="selectDictByCode" resultType="com.example.common.vo.DataDict">
+        select * from Data_dict where code = #{code}
     </select>
+
+    <select id="selectDataDicts" resultType="com.example.common.vo.DataDict">
+        select * from Data_dict
+    </select>
+
+    <delete id="delete">
+        delete from Data_dict where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.example.common.vo.DataDict">
+        update Data_dict
+        <set>
+            <if test="dictname != null">
+                dictname = #{dictname},
+            </if>
+            <if test="dictvalue != null">
+                dictvalue = #{dictvalue},
+            </if>
+            <if test="dictcode != null">
+                dictcode = #{dictcode}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <insert id="insert" parameterType="com.example.common.vo.DataDict">
+        insert into Data_dict (dictname,dictvalue,dictcode) values(#{dictname},#{dictvalue},#{dictcode})
+    </insert>
 </mapper>

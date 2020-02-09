@@ -4,6 +4,7 @@ public class DataDict {
     private int id;
     private String dictname;
     private String dictvalue;
+    private String dictcode;
 
     public int getId() {
         return id;
@@ -27,5 +28,13 @@ public class DataDict {
 
     public void setDictvalue(String dictvalue) {
         this.dictvalue = dictvalue;
+    }
+
+    public String getDictcode() {
+        return dictcode;
+    }
+
+    public void setDictcode(String dictcode) {
+        this.dictcode = dictcode;
     }
 }
