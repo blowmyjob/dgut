@@ -40,18 +40,24 @@ public class ManagerController {
         return "user/admin-add";
     }
 
-    @RequestMapping("/Manageradd1")
+    @PostMapping("/Manageradd")
+    @ResponseBody
     public String addManager(HttpServletRequest request,Model model){
-        String adminName = request.getParameter("adminName");
-        String password = request.getParameter("password");
-        String sex = request.getParameter("sex");
-        User user  =new User();
-        user.setSex(Sex.valueOf(sex));
-        user.setUsername(adminName);
-        user.setPassword(password);
-        user.setIdentify(identify.ADMIN);
-        userService.addUser(user);
-        return "user/admin-list";
+        try{
+            String adminName = request.getParameter("adminName");
+            String password = request.getParameter("password");
+            String sex = request.getParameter("sex");
+            User user  =new User();
+            user.setSex(Sex.valueOf(sex));
+            user.setUsername(adminName);
+            user.setPassword(password);
+            user.setIdentify(identify.ADMIN);
+            userService.addUser(user);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
 

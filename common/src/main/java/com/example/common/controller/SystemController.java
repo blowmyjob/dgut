@@ -75,13 +75,18 @@ public class SystemController {
     @PostMapping("/adddict")
     @ResponseBody
     public String addDict(HttpServletRequest request){
-        String name = request.getParameter("name");
-        String value = request.getParameter("value");
-        String code = request.getParameter("code");
-        DataDict dataDict = new DataDict();
-        dataDict.setDictname(name); dataDict.setDictvalue(value);dataDict.setDictcode(code);
-        dataDictServcie.insertDict(dataDict);
-        return Result.SUCCESS;
+        try{
+            String name = request.getParameter("name");
+            String value = request.getParameter("value");
+            String code = request.getParameter("code");
+            DataDict dataDict = new DataDict();
+            dataDict.setDictname(name); dataDict.setDictvalue(value);dataDict.setDictcode(code);
+            dataDictServcie.insertDict(dataDict);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 
     @GetMapping("/adddict")
