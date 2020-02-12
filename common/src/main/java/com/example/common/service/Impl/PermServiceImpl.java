@@ -40,4 +40,9 @@ public class PermServiceImpl implements PermService {
     public void delPerms(List<Integer> list) {
         permDao.delPerms(list);
     }
+
+    @Override
+    public List<SysPermission> getPermByUserId(Integer id) {
+        return permDao.getPermByUserid(id);
+    }
 }

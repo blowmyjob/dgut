@@ -4,14 +4,20 @@
     <select id="getUserOneMonthById" resultType="com.example.common.entity.Statics">
         select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
         from Workprocess,Hire
-        where Workprocess.userid = #{userId} and month(updatetime)=#{month} and state=#{state} and Workprocess.jobid = Hire.id
+        where Workprocess.userid = #{userId} and month(updatetime)=#{month} and Workprocess.jobid = Hire.id
+        <if test="state != null">
+            and state = #{state}
+        </if>
         GROUP BY month(updatetime)
     </select>
 
     <select id="getUserOneYearById" resultType="com.example.common.entity.Statics">
         select year(updatetime) as year,month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
         from Workprocess,Hire
-        where userid = #{userId} and year(updatetime)=#{year} and state=#{state} and Workprocess.jobid = Hire.id
+        where userid = #{userId} and year(updatetime)=#{year}  and Workprocess.jobid = Hire.id
+        <if test="state != null">
+            and state = #{state}
+        </if>
         group by month(updatetime)
     </select>
 
@@ -19,6 +25,9 @@
         select month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
         from Workprocess,Hire
         where Workprocess.companyid = #{companyid} and month(updatetime)=#{month} and Workprocess.jobid = Hire.id
+        <if test="state != null">
+            and state = #{state}
+        </if>
         GROUP BY month(updatetime)
     </select>
 
@@ -26,10 +35,13 @@
         select count(*),year(updatetime) as year,month(updatetime) as month,Workprocess.id as id,state,workname,count(*) as count
         from Workprocess,Hire
         where Workprocess.companyid = #{companyid} and year(updatetime)=#{year} and Workprocess.jobid = Hire.id
+        <if test="state != null">
+            and state = #{state}
+        </if>
         GROUP BY year(updatetime)
     </select>
 
-    <select id="getCompanyIdByUserId" resultType="com.example.common.entity.Statics">
+    <select id="getCompanyIdByUserId" resultType="Integer">
         select companyid from Employee_Relationship where userid = #{userid}
     </select>
 </mapper>

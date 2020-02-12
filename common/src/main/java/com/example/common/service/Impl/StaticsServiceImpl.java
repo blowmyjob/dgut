@@ -28,14 +28,14 @@ public class StaticsServiceImpl implements StaticsService {
     }
 
     @Override
-    public String ChartCompanyByMonth(Integer companyId, Integer month) {
-        List<Statics>statics = staticsDao.getCompanyOneMonthById(companyId,month);
+    public String ChartCompanyByMonth(Integer companyId, Integer month,String state) {
+        List<Statics>statics = staticsDao.getCompanyOneMonthById(companyId,month,state);
         return JSON.toJSONString(statics);
     }
 
     @Override
-    public String ChartCompanyByYear(Integer companyId, Integer year) {
-        List<Statics>statics = staticsDao.getCompanyOneYearById(companyId,year);
+    public String ChartCompanyByYear(Integer companyId, Integer year,String state) {
+        List<Statics>statics = staticsDao.getCompanyOneYearById(companyId,year,state);
         return JSON.toJSONString(statics);
     }
 

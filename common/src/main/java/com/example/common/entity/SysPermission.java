@@ -50,4 +50,10 @@ public class SysPermission {
     public void setRoles(List<SysRole> roles) {
         this.roles = roles;
     }
+
+    @Override
+    public boolean equals(Object anObject) {
+        SysPermission anObject1 = (SysPermission)anObject;
+        return id == anObject1.getId();
+    }
 }

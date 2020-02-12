@@ -87,4 +87,10 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="getPermByUserid" resultType="com.example.common.entity.SysPermission">
+        select e.*
+        from User a,User_Role b,SysRole c,Role_Permission d,SysPermission e
+        where a.id = b.userid and b.roleid=c.id and c.id=d.role_id and e.id = d.permission_id and a.id = #{id}
+    </select>
 </mapper>

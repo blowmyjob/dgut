@@ -51,9 +51,13 @@ public class PermissionController {
 
     @RequiresPermissions("userInfo:role")
     @GetMapping("/user/toEditRole/{id}")
-    public String toEditRole(@PathVariable("id")Integer id, Model model){
+    public String toEditRole(@PathVariable("id")Integer id, Model model,HttpServletRequest request){
         List<SysPermission>sysPermissions = permService.seePerm();
+        Integer userId = (Integer)request.getSession().getAttribute("userid");
+        List<SysPermission>sysPermissions1 = permService.getPermByUserId(userId);
+        sysPermissions.removeAll(sysPermissions1);
         model.addAttribute("id",id);
+        model.addAttribute("sysPermissions1",sysPermissions1);
         model.addAttribute("sysPermissions",sysPermissions);
         return "user/admin-role-edit";
     }

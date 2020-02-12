@@ -14,9 +14,9 @@ public interface StaticsDao {
 
     List<Statics>getUserOneYearById(Integer userId,Integer year,String state);
 
-    List<Statics>getCompanyOneMonthById(Integer companyid,Integer month);
+    List<Statics>getCompanyOneMonthById(Integer companyid,Integer month,String state);
 
-    List<Statics>getCompanyOneYearById(Integer companyid,Integer year);
+    List<Statics>getCompanyOneYearById(Integer companyid,Integer year,String state);
 
     Integer getCompanyIdByUserId(Integer userId);
 }

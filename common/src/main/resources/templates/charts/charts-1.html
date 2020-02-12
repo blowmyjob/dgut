@@ -29,6 +29,7 @@
 	    <input id="state" th:value="${state}" hidden>
 	    <input id="year" th:value="${year}" hidden>
 	    <input id="month" th:value="${month}" hidden>
+		<input id="charts" th:value="${charts}" hidden="">
 	</form>
 	<div id="main" style="min-width:700px;height:400px"></div>
 </div>
@@ -45,10 +46,11 @@
     var year = $("#year").val();
     var month = $("#month").val();
     var state = $("#state").val();
+	var charts = $("#charts").val();
     var xName;
     var url ;
     if(time=='year'){
-        url="type=user&time=year&year="+year+"&state="+state;
+        url="type="+charts+"&time=year&year="+year+"&state="+state;
         xName = '月份';
     }else{
         url="type=user&time=month&month="+month+"&state="+state;

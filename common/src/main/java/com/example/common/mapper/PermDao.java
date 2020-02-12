@@ -41,4 +41,6 @@ public interface PermDao {
     public void delRoles(List<Integer>list);
 
     public void delPerms(List<Integer>list);
+
+    public List<SysPermission> getPermByUserid(Integer id);
 }

@@ -35,4 +35,6 @@ public interface PermService {
      * @param list
      */
     public void delPerms(List<Integer>list);
+
+    public List<SysPermission>getPermByUserId(Integer id);
 }

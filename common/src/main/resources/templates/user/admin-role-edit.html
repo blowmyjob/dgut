@@ -53,10 +53,18 @@
                     <dd>
                         <dl class="cl permission-list2">
                             <dt>
-                                <label class=""><input type="checkbox" value="" name="user-Character-1-0" id="user-Character-1-0">全部权限</label>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0" id="user-Character-1-0">已选权限</label>
                             </dt>
                             <dd>
-                                <label class="" th:each="obj:${sysPermissions}"><input type="checkbox" th:value="${obj.getId()}" name="permission" id="user-Character-1-0-0" th:text="${obj.getName()}"></label>
+                                <label class="" th:each="obj:${sysPermissions1}"><input type="checkbox" checked="checked" th:value="${obj.getId()}" name="permission" id="user-Character-1-0-0" th:text="${obj.getName()}"></label>
+                            </dd>
+                        </dl>
+                        <dl class="cl permission-list2">
+                            <dt>
+                                <label class=""><input type="checkbox" value="" name="user-Character-1-0" id="user-Character-1-1">未选权限</label>
+                            </dt>
+                            <dd>
+                                <label class="" th:each="obj:${sysPermissions}"><input type="checkbox" th:value="${obj.getId()}" name="permission" id="user-Character-1-0-1" th:text="${obj.getName()}"></label>
                             </dd>
                         </dl>
                     </dd>

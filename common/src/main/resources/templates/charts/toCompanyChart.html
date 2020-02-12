@@ -54,11 +54,11 @@
                 </div>
             </div>
         </div>
-        <div class="row cl">
+        <div class="row cl" id="state">
             <label class="form-label col-xs-4 col-sm-2">状态：</label>
             <div class="formControls col-xs-4 col-sm-2">
                 <select name="state" class="input-text">
-                    <option value=" "> </option>
+                    <option value=" ">全部</option>
                     <option value="待查看">待查看</option>
                     <option value="不合适">不合适</option>
                     <option value="待沟通">待沟通</option>
@@ -70,10 +70,9 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">查看方式：</label>
             <div class="formControls col-xs-4 col-sm-2">
-                <select name="chartType" class="input-text">
+                <select name="chartType" class="input-text" onchange="test2()" id="type">
                     <option value="1">折线图</option>
-                    <option value="2">柱状图</option>
-                    <option value="3">饼状图</option>
+                    <option value="3">柱状图</option>
                 </select>
             </div>
         </div>
@@ -103,6 +102,15 @@
             document.getElementById("yearSelect").style.display = 'inline-block';
         } else if (vs == 'month') {
             document.getElementById("monthSelect").style.display = 'inline-block';
+        }
+    }
+
+    function test2() {
+        var vs = $("#type").find("option:selected").val();
+        console.log(vs);
+        document.getElementById("state").style.display = 'none';
+        if (vs == '1') {
+            document.getElementById("state").style.display = 'block';
         }
     }
 </script>
