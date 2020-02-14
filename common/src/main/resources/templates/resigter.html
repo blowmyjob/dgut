@@ -13,7 +13,7 @@
       <h2>Welcome</h2>
       <form class="form" id="form-article-add">
           <input name="userName" type="text" id="userName" placeholder="请输入用户名">
-          <select th:width="250px" placeholder="请选择用户角色" name="role">
+          <select th:width="250px" placeholder="请选择用户角色" name="role" id="role">
             <option value="HR">招聘方</option>
             <option value="USER">应聘方</option>
             <option value="ADMIN">管理员</option>
@@ -48,12 +48,15 @@
     var userName = $("userName").val();
     var password1 = $("password1").val();
     var password2 = $("password2").val();
+    var role = $("role").val();
     console.log("表单序列化=============="+data+" , "+userName);
     if(userName == ""){
       return;
     }else if(password1 == '' || password2 == ''){
       return;
     }else if(password1 != password2){
+      return ;
+    }else if(role ==''){
       return ;
     }
     $.ajax({

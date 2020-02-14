@@ -24,7 +24,7 @@
               <div class="form-group bmd-form-group">
                 <input type="hidden" class="form-control" name="userId" id="userId" th:value="${session.userName}">
                 <label for="roomId" class="bmd-label-floating">房间号:</label>
-                <input type="text" class="form-control" name="roomId" id="roomId">
+                <input type="text" class="form-control" name="roomId" id="roomId" value="888">
               </div>
               <div class="form-group bmd-form-group">
                 <button id="join" type="button" class="btn btn-raised btn-primary rtc-primary-bg">加入房间</button>
@@ -39,10 +39,7 @@
               </div>
             </div>
             <div class="card">
-              <button class="btn btn-raised rtc-expand-btn" id="settings" data-toggle="collapse"
-                      data-target="#setting-collapse" aria-expanded="false" aria-controls="collapse">
-                设置
-              </button>
+              <button class="btn btn-raised rtc-expand-btn" id="settings" data-toggle="collapse" data-target="#setting-collapse" aria-expanded="false" aria-controls="collapse">设置</button>
               <div id="setting-collapse" class="collapse" aria-labelledby="setting-collapse">
                 <div class="card-body">
                   <div class="form-group">

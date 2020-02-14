@@ -6,6 +6,7 @@ import com.example.common.enums.Sex;
 import com.example.common.enums.identify;
 import com.example.common.service.UserService;
 import com.example.common.tools.Result;
+import com.sun.applet2.preloader.event.InitEvent;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,36 @@ public class ManagerController {
             user.setPassword(password);
             user.setIdentify(identify.ADMIN);
             userService.addUser(user);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
+    }
+
+
+    @GetMapping("/ManagerEdit/{id}")
+    public String toEdit(@PathVariable("id") Integer id, Model model){
+        User user  = userService.getUser(id);
+        model.addAttribute("user",user);
+        return "user/admin-edit";
+    }
+
+    @PostMapping("/ManagerEdit")
+    @ResponseBody
+    public String Edit(HttpServletRequest request){
+        try{
+            Integer id = Integer.valueOf(request.getParameter("id"));
+            String role = request.getParameter("role");
+            String roleName = request.getParameter("roleName");
+            User user  = userService.getUser(id);
+            if(!user.getUsername().equals(roleName)){
+                user.setUsername(roleName);
+            }
+            if(!user.getIdentify().toString().equals(role)){
+                user.setIdentify(identify.valueOf(role));
+            }
+            userService.updateUser(user);
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
