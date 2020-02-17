@@ -8,7 +8,7 @@
         <if test="state != null">
             and state = #{state}
         </if>
-        GROUP BY month(updatetime)
+        GROUP BY day(updatetime)
     </select>
 
     <select id="getUserOneYearById" resultType="com.example.common.entity.Statics">
@@ -28,7 +28,7 @@
         <if test="state != null">
             and state = #{state}
         </if>
-        GROUP BY month(updatetime)
+        GROUP BY day(updatetime)
     </select>
 
     <select id="getCompanyOneYearById" resultType="com.example.common.entity.Statics">
@@ -38,7 +38,7 @@
         <if test="state != null">
             and state = #{state}
         </if>
-        GROUP BY year(updatetime)
+        GROUP BY month(updatetime)
     </select>
 
     <select id="getCompanyIdByUserId" resultType="Integer">

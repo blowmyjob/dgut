@@ -11,10 +11,28 @@ public class User {
     private String username;   //用户名
     private String password;   //用户密码
     private Sex sex;           //性别
+    private String phone;      //手机
     private identify identify; //身份
     private Boolean available; //可用状态
     private Timestamp entertime; //加入的时间
     private SysRole role;       // 一个用户具有一个角色
+    private String email;       //邮箱
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public identify getIdentify() {
         return identify;

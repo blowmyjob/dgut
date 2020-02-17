@@ -72,7 +72,7 @@
                 AND category = #{category}
             </if>
             <if test="id != null">
-                AND id = #{id}
+                AND Hire.id = #{id}
             </if>
         </where>
         order by endtime limit 0 , 7
