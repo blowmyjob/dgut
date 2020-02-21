@@ -135,4 +135,15 @@
            <if test="id != null"> and b.id = #{id}</if>
         </where>
     </select>
+
+    <select id="selectHire" resultType="com.example.common.entity.Hire">
+        select * from Hire
+        <where>
+            <if test="companyid != null"> companyid = #{companyid}</if>
+        </where>
+    </select>
+
+    <update id="downHire">
+        update Hire set state = #{state} where id = #{id}
+    </update>
 </mapper>

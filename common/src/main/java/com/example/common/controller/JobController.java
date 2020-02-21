@@ -16,10 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.System;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 @RequestMapping("/job")
@@ -184,5 +181,31 @@ public class JobController {
         model.addAttribute("employees",employees);
         model.addAttribute("count",employees.size());
         return "hire/employee-list";
+    }
+
+    @GetMapping("/getHire")
+    public String getHire(Model model,HttpServletRequest request){
+        Integer id = (Integer) request.getSession().getAttribute("userid");
+        String companyId = String.valueOf(workService.findCompanyIdByUserId(id));
+        Map<String,String>map = new HashMap<>();
+        map.put("id",companyId);
+        List<Hire>hires =new ArrayList<>();
+        if(companyId != null)
+            workService.selectHire(map);
+        model.addAttribute("hires",hires);
+        model.addAttribute("count",hires.size());
+        return "hire/hires-list";
+    }
+
+    @PostMapping("/hr/Hire/{state}/{id}")
+    @ResponseBody
+    public String downHire(@PathVariable("state")String state,@PathVariable("id")Integer id){
+        try{
+            workService.changeHire(state,id);
+            return Result.SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.ERROR;
+        }
     }
 }

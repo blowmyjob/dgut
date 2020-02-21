@@ -113,4 +113,14 @@ public class WorkServiceImpl implements WorkService {
     public List<Employee> getEmployee(Map<String, String> map) {
         return workDao.selectEmploy(map);
     }
+
+    @Override
+    public void changeHire(String state,Integer id) {
+        workDao.downHire(state,id);
+    }
+
+    @Override
+    public List<Hire> selectHire(Map<String, String> map) {
+        return workDao.selectHire(map);
+    }
 }

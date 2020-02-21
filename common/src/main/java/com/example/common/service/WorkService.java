@@ -47,4 +47,8 @@ public interface WorkService {
     public void createRelationship(Integer userid,Integer companyid,String position);
 
     public List<Employee> getEmployee(Map<String,String>map);
+
+    public List<Hire>selectHire(Map<String,String>map);
+
+    public void changeHire(String state,Integer id);
 }

@@ -53,4 +53,8 @@ public interface WorkDao {
     public void createRelationship(Relationship relationship);
 
     public List<Employee> selectEmploy(Map<String,String>map);
+
+    public List<Hire>selectHire(Map<String,String>map);
+
+    public void downHire(String state,Integer id);
 }
