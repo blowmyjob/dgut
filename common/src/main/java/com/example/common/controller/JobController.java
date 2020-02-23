@@ -188,10 +188,11 @@ public class JobController {
         Integer id = (Integer) request.getSession().getAttribute("userid");
         String companyId = String.valueOf(workService.findCompanyIdByUserId(id));
         Map<String,String>map = new HashMap<>();
-        map.put("id",companyId);
         List<Hire>hires =new ArrayList<>();
-        if(companyId != null)
-            workService.selectHire(map);
+        if(companyId != null){
+            map.put("companyid",companyId);
+            hires=workService.selectHire(map);
+        }
         model.addAttribute("hires",hires);
         model.addAttribute("count",hires.size());
         return "hire/hires-list";

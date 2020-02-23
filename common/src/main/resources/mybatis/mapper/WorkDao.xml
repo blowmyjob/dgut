@@ -31,15 +31,34 @@
     </select>
 
     <select id="getWorkDetails" resultType="com.example.common.vo.WorkDetail">
-        select DISTINCT Workprocess.id as id,userid,jobid,state,User.username as name,Hire.description,companyname,Hire.description as jobdescription,updatetime,Resume.address as address,Workprocess.resumeid as resumeid
-        from Company,Workprocess ,User,Hire,Resume
-        where Company.id=Workprocess.Companyid and Workprocess.userid=#{userid} and Workprocess.state=#{state} and Hire.companyid=Workprocess.companyid and User.id = Workprocess.userid and Resume.id = Workprocess.resumeid
+        SELECT DISTINCT
+	      Workprocess.id AS id,
+	      userid,
+	      jobid,
+	      Workprocess.state,
+	      updatetime,
+	      Hire.workname,
+	      Hire.description as jobdescription,
+	      companyname,
+	      Resume.address as address,
+	      Workprocess.resumeid as resumeid
+        FROM
+	      Company,
+	      Workprocess,
+	      Hire,
+	      Resume
+        WHERE
+	      Company.id = Workprocess.Companyid
+	      AND Workprocess.userid = #{userid}
+	      AND Workprocess.state = #{state}
+	      AND Hire.id = Workprocess.jobid
+	     And Resume.id = Workprocess.resumeid
     </select>
 
     <select id="getProcessByCompanyId" resultType="com.example.common.vo.WorkDetail">
-        select Workprocess.id as id,Workprocess.userid,state,User.username as name,jobid,Hire.workname as jobname,Hire.companyid,updatetime,Hire.description,Resume.address AS address,Workprocess.resumeid AS resumeid
+        select Workprocess.id as id,Workprocess.userid,Workprocess.state,User.username as name,jobid,Hire.workname as jobname,Hire.companyid,updatetime,Hire.description,Resume.address AS address,Workprocess.resumeid AS resumeid
         from Workprocess,User,Hire,Resume
-        where User.id = Workprocess.userid and Hire.id = Workprocess.jobid and Workprocess.companyid=#{companyid} and state=#{state} and Resume.id = Workprocess.resumeid
+        where User.id = Workprocess.userid and Hire.id = Workprocess.jobid and Workprocess.companyid=#{companyid} and Workprocess.state=#{state} and Resume.id = Workprocess.resumeid
     </select>
 
     <select id="findCompanyIdByUserId" resultType="java.lang.Integer">
