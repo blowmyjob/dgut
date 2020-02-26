@@ -71,11 +71,8 @@
 									<div class="col-lg-3 form-cols">
 										<div class="default-select" id="default-selects">
 											<select name="area">
-												<option value="all">地区</option>
-												<option value="guangzhou">广州</option>
-												<option value="shenzhou">深圳</option>
-												<option value="shanghai">上海</option>
-												<option value="beijing">北京</option>
+												<option value="all">所有地区</option>
+												<option th:each="obj: ${datadicts1}" th:value="${obj.getDictvalue()}" th:text="${obj.getDictvalue()}">广州</option>
 											</select>
 										</div>
 									</div>
@@ -83,10 +80,7 @@
 										<div class="default-select" id="default-selects2">
 											<select name="category">
 												<option value="all">所有种类</option>
-												<option value="2">医学</option>
-												<option value="3">技术</option>
-												<option value="4">国企</option>
-												<option value="5">开发</option>
+												<option th:each="obj: ${datadicts2}" th:value="${obj.getDictvalue()}" th:text="${obj.getDictvalue()}">广州</option>
 											</select>
 										</div>										
 									</div>

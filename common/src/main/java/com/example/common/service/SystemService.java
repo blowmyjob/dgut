@@ -2,6 +2,7 @@ package com.example.common.service;
 
 import com.example.common.entity.System;
 import com.example.common.entity.SystemLog;
+import com.example.common.vo.DataDict;
 
 import java.util.List;
 import java.util.Map;
@@ -44,4 +45,11 @@ public interface SystemService {
      * @return
      */
     List<SystemLog> getLogsByType(Map<String,String> map);
+
+    /**
+     * 查找数据字典
+     * @param map
+     * @return
+     */
+    List<DataDict> getDataDict(Map<String,String>map);
 }

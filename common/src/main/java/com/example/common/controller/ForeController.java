@@ -4,10 +4,12 @@ import com.example.common.entity.Company;
 import com.example.common.entity.Hire;
 import com.example.common.entity.Resume;
 import com.example.common.service.DataDictServcie;
+import com.example.common.service.SystemService;
 import com.example.common.service.UserService;
 import com.example.common.service.WorkService;
 import com.example.common.tools.Tranfer;
 import com.example.common.vo.Category;
+import com.example.common.vo.DataDict;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,16 +35,25 @@ public class ForeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SystemService systemService;
+
     @RequestMapping("")
     public String index(Model model){
         List<Hire>hires = workService.selectAllJob();
         List<Category>categories1 = workService.getCatesByCategory(new HashMap<>());
         List<Category>categories2 = workService.getCatesByLocation(new HashMap<>());
+        Map<String,String>map1 = new HashMap<>();map1.put("dictcode","area");
+        Map<String,String>map2 = new HashMap<>();map2.put("dictcode","category");
+        List<DataDict>dataDicts1 = systemService.getDataDict(map1);
+        List<DataDict>dataDicts2 = systemService.getDataDict(map2);
         Integer count = workService.getJobLastWeek();
         model.addAttribute("hires",hires);
         model.addAttribute("count",count);
         model.addAttribute("category1",categories1);
         model.addAttribute("category2",categories2);
+        model.addAttribute("datadicts1",dataDicts1);
+        model.addAttribute("datadicts2",dataDicts2);
         return "front/index";
     }
 

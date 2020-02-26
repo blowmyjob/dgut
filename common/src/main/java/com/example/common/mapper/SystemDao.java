@@ -2,6 +2,7 @@ package com.example.common.mapper;
 
 import com.example.common.entity.System;
 import com.example.common.entity.SystemLog;
+import com.example.common.vo.DataDict;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -24,4 +25,6 @@ public interface SystemDao {
     public List<SystemLog> getExceptionLogs();
 
     public List<SystemLog> getLogsByType(Map<String,String> map);
+
+    public List<DataDict> getDataDict(Map<String,String>map);
 }

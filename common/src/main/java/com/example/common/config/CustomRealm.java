@@ -42,12 +42,14 @@ public class CustomRealm extends AuthorizingRealm {
         String userName = (String) authenticationToken.getPrincipal();
         String userPwd = String.valueOf((char[])authenticationToken.getCredentials());
         //根据用户名从数据库获取密码
-        String password = userService.findPasswd(userName);
+        User user = userService.getUser(userName);
         if (userName == null) {
             throw new AccountException("用户名不正确");
-        } else if (!userPwd.equals(password )) {
+        } else if (!userPwd.equals(user.getPassword() )) {
             throw new AccountException("密码不正确");
+        } else if(user.getAvailable()==false){
+            throw new AccountException("用户未审核");
         }
-        return new SimpleAuthenticationInfo(userName, password,getName());
+        return new SimpleAuthenticationInfo(userName, user.getPassword(),getName());
     }
 }

@@ -37,4 +37,14 @@
         </where>
         order by loginTime desc
     </select>
+
+    <select id="getDataDict" resultType="com.example.common.vo.DataDict">
+        select * from Data_dict
+        <where>
+            <if test="id != null">id = #{id}</if>
+            <if test="dictname != null"> dictname = #{dictname}</if>
+            <if test="dictvalue != null">dictvalue = #{dictvalue}</if>
+            <if test="dictcode != null">dictcode = #{dictcode}</if>
+        </where>
+    </select>
 </mapper>
