@@ -104,4 +104,9 @@ public class UserServiceImpl implements UserService {
     public void delUsers(List<Integer> ids) {
         userDao.delUsers(ids);
     }
+
+    @Override
+    public List<User> getUserByRole(Integer roleid) {
+        return userDao.getUserByRole(roleid);
+    }
 }

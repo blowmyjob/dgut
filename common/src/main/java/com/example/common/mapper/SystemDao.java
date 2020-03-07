@@ -27,4 +27,6 @@ public interface SystemDao {
     public List<SystemLog> getLogsByType(Map<String,String> map);
 
     public List<DataDict> getDataDict(Map<String,String>map);
+
+    public void addDataDict(DataDict dataDict);
 }

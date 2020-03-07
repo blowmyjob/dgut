@@ -106,4 +106,9 @@ public interface UserDao {
      * @param ids
      */
     public void delUsers(List<Integer>ids);
+
+    /**
+     * 根据roleid找用户
+     */
+    public List<User>getUserByRole(Integer roleid);
 }

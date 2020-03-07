@@ -98,4 +98,8 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="getUserByRole" resultType="com.example.common.entity.User">
+        select * from User a,User_Role b from a.id = b.userid and b.roleid=#{roleid}
+    </select>
 </mapper>

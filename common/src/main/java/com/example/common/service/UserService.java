@@ -114,4 +114,9 @@ public interface UserService {
      * @param ids
      */
     void delUsers(List<Integer>ids);
+
+    /**
+     * 根据roleid查找用户
+     */
+    List<User>getUserByRole(Integer roleid);
 }

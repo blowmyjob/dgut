@@ -1,11 +1,13 @@
 package com.example.common.controller;
 
 import com.example.common.entity.*;
+import com.example.common.service.SystemService;
 import com.example.common.service.UserService;
 import com.example.common.service.WorkService;
 import com.example.common.entity.WorkProcess;
 import com.example.common.service.WorkService;
 import com.example.common.tools.Result;
+import com.example.common.vo.DataDict;
 import com.example.common.vo.WorkDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,9 @@ public class JobController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SystemService systemService;
 
     @GetMapping("/{state}")
     public String getWorkDetails(@PathVariable("state")String state, Model model, HttpServletRequest request){
@@ -60,7 +65,7 @@ public class JobController {
         }
     }
     @GetMapping("/hr/发布")
-    public String toCreateJob(HttpServletRequest request){
+    public String toCreateJob(HttpServletRequest request,Model model){
         Integer userId = (Integer) request.getSession().getAttribute("userid");
         Integer companyId = workService.findCompanyIdByUserId(userId);
         if(companyId == null){
@@ -89,6 +94,18 @@ public class JobController {
             hire.setDescription(hireDescription);hire.setCompanyid(companyId);hire.setSalary(hireSalary);
             hire.setEndtime(Timestamp.valueOf(hireEndTime));hire.setRequirements(hireRequirements);
             workService.insertHire(hire);
+            Map<String,String>map = new HashMap<>();map.put("dictcode","area");map.put("dictvalue",hireLocation);
+            if(systemService.getDataDict(map)==null){
+                DataDict dataDict = new DataDict();
+                dataDict.setDictcode("area");dataDict.setDictname("省份");dataDict.setDictvalue(hireLocation);
+                systemService.addDataDict(dataDict);
+            }
+            Map<String,String>map1 = new HashMap<>();map.put("dictcode","category");map.put("dictvalue",hireCategory);
+            if(systemService.getDataDict(map)==null){
+                DataDict dataDict = new DataDict();
+                dataDict.setDictcode("category");dataDict.setDictname("种类");dataDict.setDictvalue(hireCategory);
+                systemService.addDataDict(dataDict);
+            }
             return Result.SUCCESS;
         }catch(Exception e){
             e.printStackTrace();

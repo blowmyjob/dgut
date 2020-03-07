@@ -47,4 +47,8 @@
             <if test="dictcode != null">dictcode = #{dictcode}</if>
         </where>
     </select>
+
+    <insert id="addDataDict" parameterType="com.example.common.vo.DataDict">
+        insert into Data_dict (dictname,dictvalue,dictcode) values(#{dictname},#{dictvalue},#{dictcode})
+    </insert>
 </mapper>

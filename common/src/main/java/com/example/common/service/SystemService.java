@@ -52,4 +52,10 @@ public interface SystemService {
      * @return
      */
     List<DataDict> getDataDict(Map<String,String>map);
+
+    /**
+     * 新增数据字典
+     * @param dataDict
+     */
+    void addDataDict(DataDict dataDict);
 }

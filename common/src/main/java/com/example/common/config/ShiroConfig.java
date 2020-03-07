@@ -1,11 +1,13 @@
 package com.example.common.config;
 
+import com.example.common.service.ShiroService;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,6 +16,8 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
+    @Autowired
+    private ShiroService shiroService;
     /**
      *  开启Shiro的注解(如@RequiresRoles,@RequiresPermissions)
      * @return
@@ -42,25 +46,9 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //拦截器.
-        Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
+        Map<String,String> filterChainDefinitionMap =shiroService.loadFilterChainDefinitions();
         //配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
-        filterChainDefinitionMap.put("/static/**","anon");
-        filterChainDefinitionMap.put("/css/**","anon");
-        filterChainDefinitionMap.put("/js/**","anon");
-        filterChainDefinitionMap.put("/fore/**","anon");
-        filterChainDefinitionMap.put("/lib/**","anon");
 
-        filterChainDefinitionMap.put("/fonts/**","anon");
-        filterChainDefinitionMap.put("/fontimg/**","anon");
-        filterChainDefinitionMap.put("/fontjs/**","anon");
-        filterChainDefinitionMap.put("/fontcss/**","anon");
-        filterChainDefinitionMap.put("/fontscss/**","anon");
-        filterChainDefinitionMap.put("/resigter","anon");
-
-        filterChainDefinitionMap.put("/logout", "logout");
-        filterChainDefinitionMap.put("/login", "anon");
-        // authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问
-        filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setLoginUrl("/login");
         //登录成功跳转的链接 (这个不知道怎么用，我都是自己实现跳转的)
         shiroFilterFactoryBean.setSuccessUrl("/index");

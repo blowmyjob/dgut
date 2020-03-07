@@ -51,4 +51,9 @@ public class SystemServiceImpl implements SystemService {
     public List<SystemLog> getLogs() {
         return systemDao.getLogs();
     }
+
+    @Override
+    public void addDataDict(DataDict dataDict) {
+        systemDao.addDataDict(dataDict);
+    }
 }
