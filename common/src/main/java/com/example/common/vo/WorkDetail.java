@@ -15,6 +15,15 @@ public class WorkDetail {
     private Timestamp updatetime;
     private int resumeid;
     private String address;
+    private Integer roomid;
+
+    public Integer getRoomid() {
+        return roomid;
+    }
+
+    public void setRoomid(Integer roomid) {
+        this.roomid = roomid;
+    }
 
     public String getAddress() {
         return address;

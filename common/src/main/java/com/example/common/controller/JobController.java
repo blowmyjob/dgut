@@ -36,6 +36,9 @@ public class JobController {
     public String getWorkDetails(@PathVariable("state")String state, Model model, HttpServletRequest request){
         Integer userid = (Integer)request.getSession().getAttribute("userid");
         List<WorkDetail>workDetails = workService.getWorkDetailsByUserId(Integer.valueOf(userid),state);
+        if(state.equals("待面试")){
+            model.addAttribute("State","待面试");
+        }
         model.addAttribute("workDetails",workDetails);
         model.addAttribute("count",workDetails.size());
         return "user/hire-list";

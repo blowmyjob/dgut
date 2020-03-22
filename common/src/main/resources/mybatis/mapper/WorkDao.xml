@@ -41,7 +41,8 @@
 	      Hire.description as jobdescription,
 	      companyname,
 	      Resume.address as address,
-	      Workprocess.resumeid as resumeid
+	      Workprocess.resumeid as resumeid,
+	      Workprocess.roomid
         FROM
 	      Company,
 	      Workprocess,
