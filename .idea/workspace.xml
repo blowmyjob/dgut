@@ -6,12 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3d4ccb2-5ffc-4608-813f-72d54479ac33" name="Default Changelist" comment="数据字典模块添加">
+    <list default="true" id="d3d4ccb2-5ffc-4608-813f-72d54479ac33" name="Default Changelist" comment="改进">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/vo/WorkDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/vo/WorkDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/templates/user/hire-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/templates/user/hire-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/eureka-server/target/" />
@@ -59,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+            <state relative-caret-position="105">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -92,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+            <state relative-caret-position="140">
+              <caret line="106" column="102" selection-start-line="106" selection-start-column="102" selection-end-line="106" selection-end-column="102" />
             </state>
           </provider>
         </entry>
@@ -218,7 +215,6 @@
         <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/StaticsDao.xml" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/charts/charts-3.html" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/charts/charts-1.html" />
-        <option value="$PROJECT_DIR$/common/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/entity/Hire.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/WorkDao.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/WorkService.java" />
@@ -247,6 +243,7 @@
         <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/user/hire-list.html" />
+        <option value="$PROJECT_DIR$/common/src/main/resources/templates/index.html" />
       </list>
     </option>
   </component>
@@ -331,8 +328,7 @@
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
@@ -340,19 +336,8 @@
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dgut" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -368,7 +353,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584169566721" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584858359284" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../leetcode" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -541,7 +526,7 @@
       <workItem from="1583591812009" duration="37000" />
       <workItem from="1584167103940" duration="2432000" />
       <workItem from="1584172549656" duration="600000" />
-      <workItem from="1584857563603" duration="32000" />
+      <workItem from="1584857563603" duration="788000" />
     </task>
     <task id="LOCAL-00001" summary="功能修补">
       <created>1579696536440</created>
@@ -753,17 +738,24 @@
       <option name="project" value="LOCAL" />
       <updated>1583555155101</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="改进">
+      <created>1584857664414</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1584857664414</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270288000" />
+    <option name="totallyTimeSpent" value="271044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17473525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1429652" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -773,7 +765,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3590164" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3590164" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40983605" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -784,7 +776,7 @@
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.39508197" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.42786884" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.3295082" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -851,7 +843,8 @@
     <MESSAGE value="权限管理模块添加" />
     <MESSAGE value="人员管理模块添加" />
     <MESSAGE value="数据字典模块添加" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据字典模块添加" />
+    <MESSAGE value="改进" />
+    <option name="LAST_COMMIT_MESSAGE" value="改进" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -987,13 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="101" selection-start-line="101" selection-end-line="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="104" column="43" selection-start-line="104" selection-start-column="43" selection-end-line="104" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1274,26 +1260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/vo/WorkDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -1320,8 +1286,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+        <state relative-caret-position="105">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/vo/WorkDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="23" />
+          <folding>
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="106" column="102" selection-start-line="106" selection-start-column="102" selection-end-line="106" selection-end-column="102" />
         </state>
       </provider>
     </entry>
