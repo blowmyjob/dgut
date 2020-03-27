@@ -1,10 +1,12 @@
 package com.example.common.controller;
 
+import com.example.common.entity.Hire;
 import com.example.common.entity.SysRole;
 import com.example.common.entity.User;
 import com.example.common.enums.Sex;
 import com.example.common.enums.identify;
 import com.example.common.service.UserService;
+import com.example.common.service.WorkService;
 import com.example.common.tools.Result;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -23,6 +25,9 @@ import java.util.Map;
 public class ManagerController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private WorkService workService;
 
     @GetMapping("/Manager")
     @RequiresPermissions("manager:see")
@@ -135,4 +140,14 @@ public class ManagerController {
             return Result.ERROR;
         }
     }
+
+    @GetMapping("/Manage/Jobs")
+    public String checkJob(Model model){
+        Map<String,String>map = new HashMap<>();
+        map.put("state","on");
+        List<Hire>hires=workService.selectHire(map);
+        model.addAttribute("hires",hires);
+        return "hire/hires-list";
+    }
+
 }

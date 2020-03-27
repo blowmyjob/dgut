@@ -159,7 +159,8 @@
     <select id="selectHire" resultType="com.example.common.entity.Hire">
         select * from Hire
         <where>
-            <if test="companyid != null"> companyid = #{companyid}</if>
+            <if test="companyid != null"> companyid = #{companyid} </if>
+            <if test="state != null"> and state = #{state}</if>
         </where>
     </select>
 
