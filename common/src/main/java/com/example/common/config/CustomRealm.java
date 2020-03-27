@@ -48,7 +48,7 @@ public class CustomRealm extends AuthorizingRealm {
         } else if (!userPwd.equals(user.getPassword() )) {
             throw new AccountException("密码不正确");
         } else if(user.getAvailable()==false){
-            throw new AccountException("用户未审核");
+            throw new LockedAccountException("用户未审核");
         }
         return new SimpleAuthenticationInfo(userName, user.getPassword(),getName());
     }
