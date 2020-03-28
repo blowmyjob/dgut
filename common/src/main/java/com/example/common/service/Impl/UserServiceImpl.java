@@ -81,8 +81,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updatePawd(String newPawd, String userName) {
-        userDao.updatePasswd(newPawd,userName);
+    public void updatePawd(String passWd,String newPawd, String userName) {
+        userDao.updatePasswd(passWd,newPawd,userName);
     }
 
     @Override

@@ -6,9 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3d4ccb2-5ffc-4608-813f-72d54479ac33" name="Default Changelist" comment="改进">
+    <list default="true" id="d3d4ccb2-5ffc-4608-813f-72d54479ac33" name="Default Changelist" comment="修改sql语句">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/static/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/templates/user/user-password-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/templates/user/user-password-edit.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/eureka-server/target/" />
@@ -24,57 +31,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/WorkServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1452">
-              <caret line="100" selection-start-line="100" selection-end-line="100" />
-              <folding>
-                <element signature="e#876#877#0" expanded="true" />
-                <element signature="e#930#931#0" expanded="true" />
-                <element signature="e#1892#1893#0" expanded="true" />
-                <element signature="e#1937#1938#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/config/ShiroConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/config/CustomRealm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="44" column="50" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/user/hire-list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1144">
-              <caret line="52" column="63" selection-start-line="52" selection-start-column="63" selection-end-line="52" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/vo/WorkDetail.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
@@ -89,29 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="106" column="102" selection-start-line="106" selection-start-column="102" selection-end-line="106" selection-end-column="102" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java">
+        <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/StaticsDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/RtcController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="132">
+              <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -119,11 +57,78 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/ManagerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="183">
+              <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/user/user-password-edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-79">
+              <caret line="70" column="27" lean-forward="true" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="140" column="42" selection-start-line="140" selection-start-column="42" selection-end-line="140" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/UserServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+              <folding>
+                <element signature="e#2465#2466#0" expanded="true" />
+                <element signature="e#2517#2518#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/UserDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="50" column="47" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/UserDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="39" column="66" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3476">
+              <caret line="158" column="26" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -141,11 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>datadel</find>
-      <find>/Role/</find>
-      <find>/User/userDel</find>
-      <find>detail</find>
-      <find>href</find>
       <find>src</find>
       <find>video-grid</find>
       <find>entity</find>
@@ -171,6 +171,11 @@
       <find>hire-new</find>
       <find>roomid</find>
       <find>WorkDetail</find>
+      <find>downHire</find>
+      <find>select</find>
+      <find>selectHire</find>
+      <find>889988</find>
+      <find>/updatepasswd</find>
     </findStrings>
     <replaceStrings>
       <replace>Result.SUCCESS</replace>
@@ -193,8 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/PermDao.xml" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/PermService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/PermServiceImpl.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/PermissionController.java" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/user/admin-role-edit.html" />
@@ -212,7 +215,6 @@
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/webrtc/index.html" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/entity/User.java" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/user/user-information-edit.html" />
-        <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/StaticsDao.xml" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/charts/charts-3.html" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/charts/charts-1.html" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/entity/Hire.java" />
@@ -221,29 +223,32 @@
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/WorkServiceImpl.java" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/hire/hires-list.html" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/hire/employee-list.html" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/ManagerController.java" />
         <option value="$PROJECT_DIR$/common/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/common/src/main/resources/templates/user/user-password-edit.html" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/config/CustomRealm.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/ForeController.java" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/front/index.html" />
         <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/SystemDao.xml" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/SystemDao.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/SystemService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/SystemServiceImpl.java" />
-        <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/UserDao.xml" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/UserDao.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/UserService.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/ShiroService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/ShiroServiceImpl.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/filter/CustomRolesAuthorizationFilter.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/config/ShiroConfig.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/vo/WorkDetail.java" />
-        <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/user/hire-list.html" />
+        <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/StaticsDao.xml" />
+        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/config/CustomRealm.java" />
+        <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml" />
         <option value="$PROJECT_DIR$/common/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/common/src/main/resources/static/js/index.js" />
+        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/ManagerController.java" />
+        <option value="$PROJECT_DIR$/common/src/main/resources/templates/user/user-password-edit.html" />
+        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/UserService.java" />
+        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/UserDao.java" />
+        <option value="$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/UserDao.xml" />
+        <option value="$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -288,7 +293,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -328,7 +332,56 @@
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dgut" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dgut" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="Impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dgut" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dgut" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dgut" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
@@ -339,10 +392,21 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="dgut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dgut" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -353,7 +417,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584858359284" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584863204029" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../leetcode" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -526,7 +590,11 @@
       <workItem from="1583591812009" duration="37000" />
       <workItem from="1584167103940" duration="2432000" />
       <workItem from="1584172549656" duration="600000" />
-      <workItem from="1584857563603" duration="788000" />
+      <workItem from="1584857563603" duration="4534000" />
+      <workItem from="1585035045286" duration="97000" />
+      <workItem from="1585313444663" duration="1914000" />
+      <workItem from="1585315540731" duration="426000" />
+      <workItem from="1585378335843" duration="3291000" />
     </task>
     <task id="LOCAL-00001" summary="功能修补">
       <created>1579696536440</created>
@@ -745,17 +813,45 @@
       <option name="project" value="LOCAL" />
       <updated>1584857664414</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="修改tab位置">
+      <created>1584858384241</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1584858384241</updated>
+    </task>
+    <task id="LOCAL-00033" summary="修改sql语句">
+      <created>1584859159848</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1584859159848</updated>
+    </task>
+    <task id="LOCAL-00034" summary="修改sql语句">
+      <created>1585313522824</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1585313522824</updated>
+    </task>
+    <task id="LOCAL-00035" summary="增加职位审核">
+      <created>1585315079086</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1585315079086</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271044000" />
+    <option name="totallyTimeSpent" value="280518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1429652" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14599092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -765,7 +861,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3590164" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.43278688" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40983605" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -776,7 +872,7 @@
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.42786884" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.42716858" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.3295082" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -844,7 +940,10 @@
     <MESSAGE value="人员管理模块添加" />
     <MESSAGE value="数据字典模块添加" />
     <MESSAGE value="改进" />
-    <option name="LAST_COMMIT_MESSAGE" value="改进" />
+    <MESSAGE value="修改tab位置" />
+    <MESSAGE value="修改sql语句" />
+    <MESSAGE value="增加职位审核" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加职位审核" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -929,46 +1028,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/user/user-information-edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="968">
-          <caret line="44" column="77" selection-start-line="44" selection-start-column="77" selection-end-line="44" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/StaticsDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-          <folding>
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/charts/charts-1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/hire/hire-list.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/charts/charts-3.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1364">
@@ -990,20 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/hire/hires-list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
-          <caret line="53" column="75" selection-start-line="53" selection-start-column="75" selection-end-line="53" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/WorkService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -1021,13 +1066,6 @@
             <element signature="e#560#561#0" expanded="true" />
             <element signature="e#594#595#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/WorkDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="58" column="38" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1073,13 +1111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/user/user-password-edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/SystemDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
@@ -1108,38 +1139,6 @@
     </entry>
     <entry file="file://G:/baiduyun/spring-boot-shiro-master/spring-boot-shiro-master/src/main/java/com/example/springboot/shiro/service/impl/AuthorityServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="112" column="51" lean-forward="true" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/UserDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="101" column="29" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="109" column="43" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
-          <folding>
-            <element signature="e#2465#2466#0" expanded="true" />
-            <element signature="e#2495#2496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://G:/baiduyun/spring-boot-shiro-master/spring-boot-shiro-master/src/main/java/com/example/springboot/shiro/service/impl/ShiroServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1226,15 +1225,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/user/hire-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1144">
+          <caret line="52" column="63" selection-start-line="52" selection-start-column="63" selection-end-line="52" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/mvnRespo/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/authc/AbstractAuthenticator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/RtcController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/config/CustomRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="47" column="58" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/hire/hire-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-792" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/WorkDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/WorkServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        <state relative-caret-position="427">
+          <caret line="123" column="27" selection-start-line="123" selection-start-column="27" selection-end-line="123" selection-end-column="27" />
           <folding>
             <element signature="e#876#877#0" expanded="true" />
             <element signature="e#930#931#0" expanded="true" />
             <element signature="e#1892#1893#0" expanded="true" />
             <element signature="e#1937#1938#0" expanded="true" />
+            <element signature="e#3302#3303#0" expanded="true" />
+            <element signature="e#3348#3349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1246,55 +1294,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/config/CustomRealm.java">
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/StaticsDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="44" column="50" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
+        <state relative-caret-position="132">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/user/hire-list.html">
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/hire/hires-list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="52" column="63" selection-start-line="52" selection-start-column="63" selection-end-line="52" selection-end-column="63" />
+        <state relative-caret-position="1166">
+          <caret line="53" column="75" selection-start-line="53" selection-start-column="75" selection-end-line="53" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/WorkService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        <state relative-caret-position="902">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/RtcController.java">
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="3476">
+          <caret line="158" column="26" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/ManagerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="183">
+          <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/JobController.java">
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/static/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="352">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/WorkDao.xml">
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/webrtc/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+        <state relative-caret-position="154">
+          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="86" column="100" selection-start-line="86" selection-start-column="100" selection-end-line="86" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -1311,10 +1366,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/templates/user/user-password-edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="106" column="102" selection-start-line="106" selection-start-column="102" selection-end-line="106" selection-end-column="102" />
+        <state relative-caret-position="-79">
+          <caret line="70" column="27" lean-forward="true" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/service/Impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+          <folding>
+            <element signature="e#2465#2466#0" expanded="true" />
+            <element signature="e#2517#2518#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/mapper/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="50" column="47" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/example/common/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="140" column="42" selection-start-line="140" selection-start-column="42" selection-end-line="140" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/resources/mybatis/mapper/UserDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="39" column="66" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
         </state>
       </provider>
     </entry>

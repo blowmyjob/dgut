@@ -144,7 +144,7 @@ public class ManagerController {
     @GetMapping("/Manage/Jobs")
     public String checkJob(Model model){
         Map<String,String>map = new HashMap<>();
-        map.put("state","on");
+        map.put("state","off");
         List<Hire>hires=workService.selectHire(map);
         model.addAttribute("hires",hires);
         return "hire/hires-list";

@@ -48,7 +48,7 @@ public interface UserDao {
      * @param password
      * @param username
      */
-    public void updatePasswd(String password,String username);
+    public void updatePasswd(String oldpassword,String password,String username);
 
     /**
      * 注册用户

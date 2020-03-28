@@ -37,7 +37,7 @@
          <set>
            <if test="password != null">password = #{password}</if>
         </set>
-         where username = #{username}
+         where username = #{username} and password = #{oldpassword}
     </update>
 
     <insert id="addUser">

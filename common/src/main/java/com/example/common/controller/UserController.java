@@ -135,9 +135,10 @@ public class UserController {
     public String updatePassWd2(HttpServletRequest request){
         try{
             Subject subject = SecurityUtils.getSubject();
-            String passwd=request.getParameter("new-password2");
+            String passwd = request.getParameter("password");
+            String newpasswd=request.getParameter("new-password2");
             String userName =String.valueOf(subject.getSession().getAttribute("userName"));
-            userService.updatePawd(passwd,userName);
+            userService.updatePawd(passwd,newpasswd,userName);
             return Result.SUCCESS;
         }catch (Exception e){
             e.printStackTrace();

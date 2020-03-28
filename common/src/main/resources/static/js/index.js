@@ -2,7 +2,7 @@
 
 // initialize userId/roomId
 $('#userId').val('user_' + parseInt(Math.random() * 100000000));
-$('#roomId').val('889988');
+$('#roomId').val('请输入房间号');
 
 let rtc = null;
 

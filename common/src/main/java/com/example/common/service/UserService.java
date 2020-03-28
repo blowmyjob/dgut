@@ -45,7 +45,7 @@ public interface UserService {
      * @param newPawd
      * @param userName
      */
-    public void updatePawd(String newPawd,String userName);
+    public void updatePawd(String passWd,String newPawd,String userName);
 
     /**
      * 列出所有的用户
