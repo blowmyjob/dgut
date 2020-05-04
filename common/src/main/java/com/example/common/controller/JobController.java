@@ -179,9 +179,11 @@ public class JobController {
             Integer userId = (Integer)request.getSession().getAttribute("userid");
             Integer id = Integer.valueOf(request.getParameter("id"));
             Integer companyid = Integer.valueOf(request.getParameter("companyid"));
+            Integer resumeId = Integer.valueOf(request.getParameter("resume"));
             workProcess.setUserid(userId);
             workProcess.setJobid(id);
             workProcess.setCompanyid(companyid);
+            workProcess.setResumeid(resumeId);
             workService.insertProcess(workProcess);
             return Result.SUCCESS;
         }catch (Exception e){

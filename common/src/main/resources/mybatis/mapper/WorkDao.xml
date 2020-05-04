@@ -19,7 +19,7 @@
     </update>
 
     <insert id="insertProcess">
-        insert into Workprocess (userid,state,jobid,resumeid) values(#{userid},'待查看',#{jobid},#{resumeid})
+        insert into Workprocess (userid,state,jobid,resumeid,companyid) values(#{userid},'待查看',#{jobid},#{resumeid},#{companyid})
     </insert>
 
     <delete id="delProcess">

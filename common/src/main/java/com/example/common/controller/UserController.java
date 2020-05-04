@@ -195,17 +195,16 @@ public class UserController {
             return Result.EMPTY;
         }else {
             Subject subject = SecurityUtils.getSubject();
-            String path = "D:/Path/";
             if (!file.isEmpty()) {
                 Resume resume = new Resume();
                 if (!file.isEmpty()) {
                     try {
-                        File filepath = new File(path);
+                        File filepath = new File("D:/Path");
                         if (!filepath.exists())
                             filepath.mkdirs();
-                        String savePath = path + file.getOriginalFilename();
+                        String savePath = file.getOriginalFilename();
                         resume.setUserName(String.valueOf(subject.getSession().getAttribute("userName")));
-                        resume.setAddress("/Path/"+path);
+                        resume.setAddress("/Path/"+savePath);
                         resume.setFileName(file.getOriginalFilename());
                         file.transferTo(new File(savePath));
                         userService.addResume(resume);
