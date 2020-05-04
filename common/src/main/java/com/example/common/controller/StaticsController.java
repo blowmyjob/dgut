@@ -99,7 +99,7 @@ public class StaticsController {
                 String state = request.getParameter("state");
                 String charts = "";
                 if (!state.equals(""))
-                    charts = staticsService.ChartUserByMonth(userid, month, "待查看");
+                    charts = staticsService.ChartUserByMonth(userid, month, state);
                 else
                     charts = staticsService.ChartUserByMonth(userid, month, null);
                 return charts;

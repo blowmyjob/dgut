@@ -91,8 +91,14 @@
 		success : function(result) {
 			//请求成功时执行该函数内容，result即为服务器返回的json对象
 			if (result) {
-				for(var i=0;i<result.length;i++){
-					names.push(result[i].month);    //挨个取出类别并填入类别数组
+				if(time=='year') {
+					for (var i = 0; i < result.length; i++) {
+						names.push(result[i].month);    //挨个取出类别并填入类别数组
+					}
+				}else{
+					for (var i = 0; i < result.length; i++) {
+						names.push(result[i].day);    //挨个取出类别并填入类别数组
+					}
 				}
 				for(var i=0;i<result.length;i++){
 					nums.push(result[i].count);    //挨个取出销量并填入销量数组
