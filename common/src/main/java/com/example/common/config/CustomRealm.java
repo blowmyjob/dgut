@@ -30,7 +30,7 @@ public class CustomRealm extends AuthorizingRealm {
         for(SysRole role:roles){
             info.addRole(role.getRole());
             for(SysPermission p:role.getSyspermissions()){
-                info.addStringPermission(p.getPermission());
+                info.addStringPermission(p.getUrl());
             }
         }
         return info;
