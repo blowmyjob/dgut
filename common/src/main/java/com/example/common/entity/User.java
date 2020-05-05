@@ -17,6 +17,15 @@ public class User {
     private Timestamp entertime; //加入的时间
     private SysRole role;       // 一个用户具有一个角色
     private String email;       //邮箱
+    private String isdel;
+
+    public String getIsdel() {
+        return isdel;
+    }
+
+    public void setIsdel(String isdel) {
+        this.isdel = isdel;
+    }
 
     public String getPhone() {
         return phone;

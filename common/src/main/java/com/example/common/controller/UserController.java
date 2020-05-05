@@ -160,8 +160,11 @@ public class UserController {
             Integer userId = Integer.valueOf(request.getParameter("userId"));
             String userName = request.getParameter("userName");
             String sex = request.getParameter("sex");
+            String phone = request.getParameter("phone");
+            String email = request.getParameter("email");
             User user = new User();
             user.setUsername(userName); user.setId(userId); user.setSex(Sex.valueOf(sex));
+            user.setEmail(email);user.setPhone(phone);
             userService.updateUser(user);
             user = userService.getUser(userName);
             request.getSession().setAttribute("userName",user.getUsername());

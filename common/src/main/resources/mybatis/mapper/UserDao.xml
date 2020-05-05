@@ -25,8 +25,10 @@
         update User
           <set>
               <if test="username != null">username = #{username}, </if>
-              <if test="sex != null">sex = #{sex} </if>
-              <if test="available != null">available = #{available}</if>
+              <if test="sex != null">sex = #{sex},</if>
+              <if test="available != null">available = #{available},</if>
+              <if test="email!=null">email = #{email},</if>
+              <if test="phone!=null">phone = #{phone},</if>
               <if test="isdel != null">isdel = #{isdel}</if>
           </set>
         where id= #{id}
